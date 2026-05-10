@@ -27,18 +27,29 @@
 ## 🛠 Tech Stacks
 
 ### **Language & UI**
-**Language**  
+
+**Language**
+
 <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=Kotlin&logoColor=white">
-**UI Framework**  
+
+**UI Framework**
+
 <img src="https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=Jetpack%20Compose&logoColor=white">
-**Design Pattern**  
+
+**Design Pattern**
+
 <img src="https://img.shields.io/badge/MVVM-7CA82B?style=for-the-badge"> <img src="https://img.shields.io/badge/Google%20Recommended%20Architecture-4285F4?style=for-the-badge&logo=Google&logoColor=white">
 
-### **Library**  
 
-**Network**  
-<img src="https://img.shields.io/badge/Retrofit2-FF6F00?style=for-the-badge"> <img src="https://img.shields.io/badge/OkHttp-CC0000?style=for-the-badge"> <img src="https://img.shields.io/badge/Kotlin%20Serialization-7F52FF?style=for-the-badge&logo=Kotlin&logoColor=white">  
-**Dependency**  
+
+### **Library**
+
+**Network**
+
+<img src="https://img.shields.io/badge/Retrofit2-FF6F00?style=for-the-badge"> <img src="https://img.shields.io/badge/OkHttp-CC0000?style=for-the-badge"> <img src="https://img.shields.io/badge/Kotlin%20Serialization-7F52FF?style=for-the-badge&logo=Kotlin&logoColor=white">
+
+**Dependency**
+
 <img src="https://img.shields.io/badge/Hilt-00CCFF?style=for-the-badge">
 
 ---
