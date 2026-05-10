@@ -3,20 +3,6 @@
 > ⚡번개장터(BUNJANG)
 
 ---
-## 🪧 Convention
-
-#### 📌 Tag
-| 유형 | 설명 | 유형 | 설명 |
-| :---: | :--- | :---: | :--- |
-| `feat` | 새로운 기능 구현 | `mod` | 코드 수정 |
-| `add` | 부수적인 코드/라이브러리 추가 | `del` | 코드 삭제 |
-| `fix` | 버그 수정 | `refactor` | 리팩토링 |
-| `init` | 프로젝트 초기 세팅 | `chore` | 변수명/함수명 등 사소한 수정 |
-
-#### 💬 Commit
-**Commit Format**: `Type/#IssueNumber: 작업 내용` (ex: `feature/#2: 홈 뷰 구현`)
-
----
 ## 👥 Team
 | 최승재 | 박지영 | 김예지 |
 | :---: | :---: | :---: |
@@ -67,10 +53,9 @@
 - 구매 확정 및 거래 완료 프로세스를 처리하는 화면
 
 ---
-
 ## 📂 Project Structure
 ```text
-com.sopt.bunjan
+com.sopt.bunjang
 ├── core           # 공통 코드 및 Util
 ├── data           # API 통신 및 데이터 로직
 ├── navigation     # 화면 이동 및 Route 관리
@@ -78,3 +63,24 @@ com.sopt.bunjan
     ├── home       # 홈 그리드 리스트 화면
     ├── detail     # 상품 상세 화면
     └── completed  # 거래 완료 화면
+```
+
+---
+## 🪧 Convention
+
+#### 🌿 Branch Category
+| 유형 | 설명 | 유형 | 설명 |
+| :---: | :--- | :---: | :--- |
+| `feat` | 구현 | `mod` | 수정 |
+| `add` | 추가 | `del` | 삭제 |
+| `fix` | 버그 수정 | `refactor` | 리팩토링 |
+
+#### 📍 Commit Category
+| 유형 | 설명 | 유형 | 설명 |
+| :---: | :--- | :---: | :--- |
+| `feat` | 새로운 기능 구현 | `mod` | 코드 수정 |
+| `add` | 부수적인 코드/라이브러리 추가 | `del` | 코드 삭제 |
+| `fix` | 버그 수정 | `docs` | 문서 추가, 수정, 삭제 |
+| `init` | 프로젝트 초기 세팅 | `chore` | 변수명/함수명 등 사소한 수정 |
+
+**Commit Format**: `Type/#IssueNumber: 작업 내용` (ex: `feature/#2: 홈 뷰 구현`)
