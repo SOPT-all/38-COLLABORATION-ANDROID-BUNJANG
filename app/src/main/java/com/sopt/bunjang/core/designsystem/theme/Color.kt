@@ -39,7 +39,7 @@ data class BunjangColors(
     val yellow: Color,
     val lightYellow: Color,
     val lightBlue: Color,
-    )
+)
 
 val defaultBunjangColors = BunjangColors(
     gray900 = Color(0xFF191919),

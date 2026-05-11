@@ -29,32 +29,32 @@ object BunjangFont {
 sealed interface TypographyTokens {
     @Immutable
     data class Title(
-        val b19: TextStyle,
-        val b18: TextStyle,
-        val b16: TextStyle,
-        val sb16: TextStyle,
-        val b14: TextStyle,
-        val sb14: TextStyle
+        val title1: TextStyle,
+        val title2: TextStyle,
+        val title3: TextStyle,
+        val title4: TextStyle,
+        val title5: TextStyle,
+        val title6: TextStyle
     ) : TypographyTokens
 
     @Immutable
     data class Body(
-        val m14: TextStyle,
-        val b14_1: TextStyle,
-        val sb12: TextStyle,
-        val sb12_1: TextStyle,
-        val r12: TextStyle,
-        val m11: TextStyle,
-        val m11_1: TextStyle,
-        val m10: TextStyle
+        val body1: TextStyle,
+        val body1_1: TextStyle,
+        val body2: TextStyle,
+        val body2_1: TextStyle,
+        val body3: TextStyle,
+        val body4: TextStyle,
+        val body4_1: TextStyle,
+        val body5: TextStyle
     ) : TypographyTokens
 
     @Immutable
     data class Label(
-        val b11: TextStyle,
-        val sb11: TextStyle,
-        val b10: TextStyle,
-        val r10: TextStyle
+        val label1: TextStyle,
+        val label2: TextStyle,
+        val label3: TextStyle,
+        val label4: TextStyle
     ) : TypographyTokens
 }
 
@@ -79,37 +79,37 @@ private fun bunjangTextStyle(
 
 val defaultBunjangTypography = BunjangTypography(
     title = TypographyTokens.Title(
-        b19 = bunjangTextStyle(
+        title1 = bunjangTextStyle(
             fontFamily = BunjangFont.bold,
             fontSize = 19.sp,
             lineHeight = 1.35.em,
             letterSpacing = 0.01.em
         ),
-        b18 = bunjangTextStyle(
+        title2 = bunjangTextStyle(
             fontFamily = BunjangFont.bold,
             fontSize = 18.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.03).em
         ),
-        b16 = bunjangTextStyle(
+        title3 = bunjangTextStyle(
             fontFamily = BunjangFont.bold,
             fontSize = 16.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.02).em
         ),
-        sb16 = bunjangTextStyle(
+        title4 = bunjangTextStyle(
             fontFamily = BunjangFont.semibold,
             fontSize = 16.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.03).em
         ),
-        b14 = bunjangTextStyle(
+        title5 = bunjangTextStyle(
             fontFamily = BunjangFont.bold,
             fontSize = 14.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.02).em
         ),
-        sb14 = bunjangTextStyle(
+        title6 = bunjangTextStyle(
             fontFamily = BunjangFont.semibold,
             fontSize = 14.sp,
             lineHeight = 1.35.em,
@@ -118,49 +118,49 @@ val defaultBunjangTypography = BunjangTypography(
     ),
 
     body = TypographyTokens.Body(
-        m14 = bunjangTextStyle(
+        body1 = bunjangTextStyle(
             fontFamily = BunjangFont.medium,
             fontSize = 14.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.01).em
         ),
-        b14_1 = bunjangTextStyle(
+        body1_1 = bunjangTextStyle(
             fontFamily = BunjangFont.bold,
             fontSize = 14.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.01).em
         ),
-        sb12 = bunjangTextStyle(
+        body2 = bunjangTextStyle(
             fontFamily = BunjangFont.semibold,
             fontSize = 12.sp,
             lineHeight = 1.35.em,
             letterSpacing = 0.02.em
         ),
-        sb12_1 = bunjangTextStyle(
+        body2_1 = bunjangTextStyle(
             fontFamily = BunjangFont.semibold,
             fontSize = 12.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.03).em
         ),
-        r12 = bunjangTextStyle(
+        body3 = bunjangTextStyle(
             fontFamily = BunjangFont.regular,
             fontSize = 12.sp,
             lineHeight = 1.5.em,
             letterSpacing = 0.em
         ),
-        m11 = bunjangTextStyle(
+        body4 = bunjangTextStyle(
             fontFamily = BunjangFont.medium,
             fontSize = 11.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.01).em
         ),
-        m11_1 = bunjangTextStyle(
+        body4_1 = bunjangTextStyle(
             fontFamily = BunjangFont.medium,
             fontSize = 11.sp,
             lineHeight = 1.35.em,
             letterSpacing = 0.01.em
         ),
-        m10 = bunjangTextStyle(
+        body5 = bunjangTextStyle(
             fontFamily = BunjangFont.medium,
             fontSize = 10.sp,
             lineHeight = 1.35.em,
@@ -169,25 +169,25 @@ val defaultBunjangTypography = BunjangTypography(
     ),
 
     label = TypographyTokens.Label(
-        b11 = bunjangTextStyle(
+        label1 = bunjangTextStyle(
             fontFamily = BunjangFont.bold,
             fontSize = 11.sp,
             lineHeight = 1.35.em,
             letterSpacing = 0.01.em
         ),
-        sb11 = bunjangTextStyle(
+        label2 = bunjangTextStyle(
             fontFamily = BunjangFont.semibold,
             fontSize = 11.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.02).em
         ),
-        b10 = bunjangTextStyle(
+        label3 = bunjangTextStyle(
             fontFamily = BunjangFont.bold,
             fontSize = 10.sp,
             lineHeight = 1.35.em,
             letterSpacing = (-0.03).em
         ),
-        r10 = bunjangTextStyle(
+        label4 = bunjangTextStyle(
             fontFamily = BunjangFont.regular,
             fontSize = 10.sp,
             lineHeight = 1.5.em,
@@ -206,30 +206,30 @@ private fun BunjangTypographyPreview() {
                 .background(BunjangTheme.colors.white)
                 .padding(8.dp)
         ) {
-            Text("Title b19", style = BunjangTheme.typography.title.b19)
-            Text("Title b18", style = BunjangTheme.typography.title.b18)
-            Text("Title b16", style = BunjangTheme.typography.title.b16)
-            Text("Title sb16", style = BunjangTheme.typography.title.sb16)
-            Text("Title b14", style = BunjangTheme.typography.title.b14)
-            Text("Title sb14", style = BunjangTheme.typography.title.sb14)
+            Text("Title1", style = BunjangTheme.typography.title.title1)
+            Text("Title2", style = BunjangTheme.typography.title.title2)
+            Text("Title3", style = BunjangTheme.typography.title.title3)
+            Text("Title4", style = BunjangTheme.typography.title.title4)
+            Text("Title5", style = BunjangTheme.typography.title.title5)
+            Text("Title6", style = BunjangTheme.typography.title.title6)
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text("Body m14", style = BunjangTheme.typography.body.m14)
-            Text("Body b14_1", style = BunjangTheme.typography.body.b14_1)
-            Text("Body sb12", style = BunjangTheme.typography.body.sb12)
-            Text("Body sb12_1", style = BunjangTheme.typography.body.sb12_1)
-            Text("Body r12", style = BunjangTheme.typography.body.r12)
-            Text("Body m11", style = BunjangTheme.typography.body.m11)
-            Text("Body m11_1", style = BunjangTheme.typography.body.m11_1)
-            Text("Body m10", style = BunjangTheme.typography.body.m10)
+            Text("Body1", style = BunjangTheme.typography.body.body1)
+            Text("Body1-1", style = BunjangTheme.typography.body.body1_1)
+            Text("Body2", style = BunjangTheme.typography.body.body2)
+            Text("Body2-1", style = BunjangTheme.typography.body.body2_1)
+            Text("Body3", style = BunjangTheme.typography.body.body3)
+            Text("Body4", style = BunjangTheme.typography.body.body4)
+            Text("Body4_1", style = BunjangTheme.typography.body.body4_1)
+            Text("Body5", style = BunjangTheme.typography.body.body5)
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text("label b11", style = BunjangTheme.typography.label.b11)
-            Text("label sb11", style = BunjangTheme.typography.label.sb11)
-            Text("label b10", style = BunjangTheme.typography.label.b10)
-            Text("label r10", style = BunjangTheme.typography.label.r10)
+            Text("label1", style = BunjangTheme.typography.label.label1)
+            Text("label2", style = BunjangTheme.typography.label.label2)
+            Text("label3", style = BunjangTheme.typography.label.label3)
+            Text("label4", style = BunjangTheme.typography.label.label4)
         }
     }
 }
