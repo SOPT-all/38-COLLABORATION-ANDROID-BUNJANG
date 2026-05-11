@@ -1,4 +1,4 @@
-package com.sopt.bunjang.ui.theme
+package com.sopt.bunjang.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

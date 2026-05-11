@@ -1,4 +1,4 @@
-package com.sopt.bunjang.ui.theme
+package com.sopt.bunjang.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
