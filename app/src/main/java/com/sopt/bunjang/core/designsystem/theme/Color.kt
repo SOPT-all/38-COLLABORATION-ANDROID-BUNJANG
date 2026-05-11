@@ -1,7 +1,17 @@
 package com.sopt.bunjang.core.designsystem.theme
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 @Immutable
 data class BunjangColors(
@@ -57,3 +67,49 @@ val defaultBunjangColors = BunjangColors(
     lightYellow = Color(0xFFFFE1A6),
     lightBlue = Color(0xFFEFF2FE),
 )
+
+@Preview(showBackground = true)
+@Composable
+private fun BunjangColorsPreview() {
+    BunjangTheme {
+        Column {
+            listOf(
+                BunjangTheme.colors.gray900,
+                BunjangTheme.colors.gray800,
+                BunjangTheme.colors.gray700,
+                BunjangTheme.colors.gray600,
+                BunjangTheme.colors.gray500,
+                BunjangTheme.colors.gray400,
+                BunjangTheme.colors.gray300,
+                BunjangTheme.colors.gray200,
+                BunjangTheme.colors.gray100,
+                BunjangTheme.colors.gray500_70,
+
+                BunjangTheme.colors.black,
+                BunjangTheme.colors.white,
+                BunjangTheme.colors.white_70,
+                BunjangTheme.colors.black_15,
+
+                BunjangTheme.colors.darkRed,
+                BunjangTheme.colors.primaryRed,
+                BunjangTheme.colors.lightRed,
+
+                BunjangTheme.colors.mint,
+                BunjangTheme.colors.yellow,
+                BunjangTheme.colors.lightYellow,
+                BunjangTheme.colors.lightBlue,
+            ).chunked(6).forEach { rowColors ->
+                Row(modifier = Modifier.padding(vertical = 4.dp)) {
+                    rowColors.forEach { c ->
+                        Box(
+                            modifier = Modifier
+                                .size(24.dp)
+                                .background(c)
+                                .padding(end = 8.dp),
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
