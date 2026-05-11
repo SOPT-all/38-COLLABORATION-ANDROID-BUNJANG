@@ -1,7 +1,7 @@
 ---
 name: 이슈 템플릿
-about: 과제 이슈 템플릿입니다.
-title: "[Week1] ex) 1주차 과제"
+about: 이슈 템플릿입니다.
+title: ''
 labels: ''
 assignees: seungjae708
 
