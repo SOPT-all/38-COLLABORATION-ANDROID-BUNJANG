@@ -8,6 +8,7 @@ import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 
 val LocalBunjangColors = staticCompositionLocalOf { defaultBunjangColors }
+val LocalBunjangTypography = staticCompositionLocalOf { defaultBunjangTypography }
 
 private val BunjangColorScheme = lightColorScheme(
     primary = defaultBunjangColors.primaryRed,
@@ -20,15 +21,21 @@ object BunjangTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalBunjangColors.current
+    val typography: BunjangTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalBunjangTypography.current
 }
 
 @Composable
-fun ProvideBunjangColors(
+fun ProvideBunjangTheme(
     colors: BunjangColors = defaultBunjangColors,
+    typography: BunjangTypography = defaultBunjangTypography,
     content: @Composable () -> Unit
-){
+) {
     CompositionLocalProvider(
         LocalBunjangColors provides colors,
+        LocalBunjangTypography provides typography,
         content = content,
     )
 }
@@ -37,10 +44,9 @@ fun ProvideBunjangColors(
 fun BunjangTheme(
     content: @Composable () -> Unit
 ) {
-    ProvideBunjangColors {
+    ProvideBunjangTheme {
         MaterialTheme(
             colorScheme = BunjangColorScheme,
-            typography = Typography,
             content = content
         )
     }
