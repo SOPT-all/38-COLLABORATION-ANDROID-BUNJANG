@@ -5,7 +5,6 @@ data class ProductCardState(
     val price: Int,
     val title: String,
     val createdAt: String? = null,
-    val isAd: Boolean = false,
     val isFavorite: Boolean = false,
     val favoriteCount: Int? = null,
 ) {
