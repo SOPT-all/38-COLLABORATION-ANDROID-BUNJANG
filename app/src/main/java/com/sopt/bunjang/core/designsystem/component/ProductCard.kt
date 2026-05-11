@@ -1,14 +1,19 @@
 package com.sopt.bunjang.core.designsystem.component
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
 data class ProductCardState(
     val imageUrl: String,
@@ -31,26 +36,32 @@ fun SmallProductCard(
     Column(
         modifier = modifier
             .clickable { onCardClick() }
-            .fillMaxSize()
+            .width(102.dp)
     ) {
-        AsyncImage(
-            model = state.imageUrl,
-            contentDescription = state.title,
-            modifier = Modifier
-                .fillMaxSize()
-                .height(125.dp)
-        )
-        Text(
-            // 상품명
-            text = state.title,
-            /*  style = BunjangTheme.typography.body.m14,
-              color = BunjangTheme.colors.black */
-        )
-        Text(
-            // 가격
-            text = state.formattedPrice,
-            /*  style = BunjangTheme.typography.title.b16,
-              color = BunjangTheme.colors.black */
-        )
+        Box {
+            AsyncImage(
+                model = state.imageUrl,
+                contentDescription = state.title,
+                modifier = Modifier
+                    .height(125.dp)
+                    .clip(RoundedCornerShape(4.dp))
+            )
+
+            Spacer(modifier = Modifier.height(6.dp))
+
+            Text(
+                // 가격
+                text = state.formattedPrice,
+                style = BunjangTheme.typography.body.body1_1,
+                color = BunjangTheme.colors.gray900
+            )
+            Text(
+                // 상품명
+                text = state.title,
+                style = BunjangTheme.typography.label.label1,
+                color = BunjangTheme.colors.gray800
+            )
+            // 아이콘 띄우기
+        }
     }
 }
