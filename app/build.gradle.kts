@@ -89,5 +89,8 @@ dependencies {
 
         // Timber
         implementation(libs.timber)
+
+        // Coil
+        implementation("io.coil-kt:coil-compose:2.6.0")
     }
 }
