@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Bunjang</string>
+
+    <string name="tab_home">홈</string>
+    <string name="tab_favorite">관심</string>
+    <string name="tab_register">등록</string>
+    <string name="tab_chat">번개톡</string>
+    <string name="tab_my_page">MY</string>
 </resources>
