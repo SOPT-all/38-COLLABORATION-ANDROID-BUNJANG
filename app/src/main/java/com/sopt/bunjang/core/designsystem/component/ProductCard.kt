@@ -64,6 +64,8 @@ fun BigProductCard(
             color = BunjangTheme.colors.gray900
         )
 
+        Spacer(modifier = Modifier.height(2.dp))
+
         Text(
             // 상품명
             text = state.title,
@@ -73,29 +75,32 @@ fun BigProductCard(
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        if (state.createdAt != null) {
-            Text(
-                text = state.createdAt,
-                style = BunjangTheme.typography.label.label2,
-                color = BunjangTheme.colors.gray400
-            )
-        }
-        Box(modifier = Modifier.fillMaxWidth()) {
-            if (state.favoriteCount != null) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            if (state.createdAt != null) {
                 Text(
-                    text = state.favoriteCount.toString(),
+                    text = state.createdAt,
                     style = BunjangTheme.typography.label.label2,
-                    color = BunjangTheme.colors.gray500,
-                    modifier = Modifier
-                        .align(Alignment.CenterEnd)
-                        .padding(horizontal = 2.dp, vertical = 8.dp)
+                    color = BunjangTheme.colors.gray400,
+                    modifier = Modifier.padding(vertical = 8.dp)
                 )
             }
-            // icon 넣기
+            Spacer(modifier = Modifier.weight(1f))
+                if (state.favoriteCount != null) {
+                    // icon 넣기
+                    Text(
+                        text = state.favoriteCount.toString(),
+                        style = BunjangTheme.typography.label.label2,
+                        color = BunjangTheme.colors.gray500,
+                        modifier = Modifier
+                            .padding(horizontal = 2.dp, vertical = 8.dp)
+                    )
+                }
+            }
         }
     }
-
-}
 
 @Composable
 fun SmallProductCard(
