@@ -27,7 +27,7 @@ data class ProductCardState(
     val imageUrl: String,
     val price: Int,
     val title: String,
-    val createdAt: String? = null,
+    val time: String? = null,
     val isFavorite: Boolean = false,
     val favoriteCount: Int? = 0,
 ) {
@@ -79,9 +79,9 @@ fun BigProductCard(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            if (state.createdAt != null) {
+            if (state.time != null) {
                 Text(
-                    text = state.createdAt,
+                    text = state.time,
                     style = BunjangTheme.typography.label.label2,
                     color = BunjangTheme.colors.gray400,
                     modifier = Modifier.padding(vertical = 8.dp)
@@ -154,7 +154,7 @@ fun ProductCardPreview() {
                     imageUrl = "",
                     price = 690000,
                     title = "상품명",
-                    createdAt = "1일 전",
+                    time = "1일 전",
                     favoriteCount = 0
                 )
             )
