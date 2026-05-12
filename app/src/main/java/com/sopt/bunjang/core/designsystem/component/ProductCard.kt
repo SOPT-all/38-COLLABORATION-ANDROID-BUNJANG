@@ -182,6 +182,8 @@ fun SmallProductCard(
             color = BunjangTheme.colors.gray900
         )
 
+        Spacer(modifier = Modifier.height(2.dp))
+
         Text(
             // 상품명
             text = state.title,
