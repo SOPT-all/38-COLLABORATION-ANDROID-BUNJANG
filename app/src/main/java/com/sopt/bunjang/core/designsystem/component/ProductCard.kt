@@ -142,7 +142,8 @@ fun BigProductCard(
 fun SmallProductCard(
     state: ProductCardState,
     modifier: Modifier = Modifier,
-    onCardClick: () -> Unit = {}
+    onCardClick: () -> Unit = {},
+    onLikeClick: () -> Unit = {}
 ) {
     Column(
         modifier = modifier
@@ -174,7 +175,6 @@ fun SmallProductCard(
             style = BunjangTheme.typography.label.label1,
             color = BunjangTheme.colors.gray800
         )
-        // 아이콘 띄우기
     }
 }
 
