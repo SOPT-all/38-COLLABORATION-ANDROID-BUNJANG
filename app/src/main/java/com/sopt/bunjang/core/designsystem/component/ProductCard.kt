@@ -49,7 +49,7 @@ fun BigProductCard(
 ) {
     Column(
         modifier = modifier
-            .size(width = 160.dp, height = 266.dp)
+            .width(160.dp)
             .background(BunjangTheme.colors.white)
             .clickable { onCardClick() }
     ) {
@@ -106,7 +106,7 @@ fun BigProductCard(
                     text = state.time,
                     style = BunjangTheme.typography.label.label2,
                     color = BunjangTheme.colors.gray400,
-                    modifier = Modifier.padding(vertical = 8.dp)
+                    modifier = Modifier.padding(horizontal = 2.dp, vertical = 8.dp)
                 )
             }
             Spacer(modifier = Modifier.weight(1f))
