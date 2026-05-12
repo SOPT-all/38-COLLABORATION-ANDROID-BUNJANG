@@ -63,7 +63,6 @@ fun BigProductCard(
                 placeholder = ColorPainter(Color.LightGray),  // 아이콘이랑 구분되게 하려고
                 modifier = Modifier
                     .size(width = 160.dp, height = 194.dp)
-                    .clip(RoundedCornerShape(4.dp))
             )
 
             Icon(
@@ -152,14 +151,27 @@ fun SmallProductCard(
             .width(102.dp)
     )
     {
-        AsyncImage(
-            model = state.imageUrl,
-            contentDescription = state.title,
-            placeholder = ColorPainter(Color.LightGray),
-            modifier = Modifier
-                .height(125.dp)
-                .clip(RoundedCornerShape(4.dp))
-        )
+        Box()
+        {
+            AsyncImage(
+                model = state.imageUrl,
+                contentDescription = state.title,
+                placeholder = ColorPainter(Color.LightGray),
+                modifier = Modifier
+                    .height(125.dp)
+                    .clip(RoundedCornerShape(4.dp))
+            )
+            Icon(
+                painter = painterResource(id = R.drawable.ic_heart_outlined_24),
+                contentDescription = "like",
+                tint = BunjangTheme.colors.white,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(8.dp)
+                    .size(24.dp)
+                    .clickable { onLikeClick() }
+            )
+        }
 
         Spacer(modifier = Modifier.height(6.dp))
 
@@ -169,6 +181,7 @@ fun SmallProductCard(
             style = BunjangTheme.typography.body.body1_1,
             color = BunjangTheme.colors.gray900
         )
+
         Text(
             // 상품명
             text = state.title,
