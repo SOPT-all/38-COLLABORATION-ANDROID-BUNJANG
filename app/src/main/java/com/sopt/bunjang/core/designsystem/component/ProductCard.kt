@@ -26,8 +26,8 @@ data class ProductCardState(
     val price: Int,
     val title: String,
     val time: String? = null,
-    val isFavorite: Boolean = false,
-    val favoriteCount: Int? = 0,
+    val isLike: Boolean = false,
+    val likes: Int? = 0,
 ) {
     val formattedPrice: String
         get() = "%,d".format(price) + "원"
@@ -38,7 +38,7 @@ fun BigProductCard(
     state: ProductCardState,
     modifier: Modifier = Modifier,
     onCardClick: () -> Unit = {},
-    onFavoriteClick: () -> Unit = {}
+    onLikeClick: () -> Unit = {}
 ) {
     Column(
         modifier = modifier
@@ -86,10 +86,10 @@ fun BigProductCard(
                 )
             }
             Spacer(modifier = Modifier.weight(1f))
-                if (state.favoriteCount != null) {
+                if (state.likes != null) {
                     // icon 넣기
                     Text(
-                        text = state.favoriteCount.toString(),
+                        text = state.likes.toString(),
                         style = BunjangTheme.typography.label.label2,
                         color = BunjangTheme.colors.gray500,
                         modifier = Modifier
@@ -153,7 +153,7 @@ fun ProductCardPreview() {
                     price = 690000,
                     title = "상품명",
                     time = "1일 전",
-                    favoriteCount = 0
+                    likes = 0
                 )
             )
             SmallProductCard(
