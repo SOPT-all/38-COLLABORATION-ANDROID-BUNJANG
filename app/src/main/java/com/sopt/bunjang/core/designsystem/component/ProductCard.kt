@@ -3,6 +3,7 @@ package com.sopt.bunjang.core.designsystem.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,13 +13,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.ColorPainter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
 data class ProductCardState(
@@ -46,13 +53,30 @@ fun BigProductCard(
             .background(BunjangTheme.colors.white)
             .clickable { onCardClick() }
     ) {
-        AsyncImage(
-            model = state.imageUrl,
-            contentDescription = state.title,
+        Box(
             modifier = Modifier
                 .size(width = 160.dp, height = 194.dp)
-                .clip(RoundedCornerShape(4.dp))
-        )
+        ) {
+            AsyncImage(
+                model = state.imageUrl,
+                contentDescription = state.title,
+                placeholder = ColorPainter(Color.LightGray),  // 아이콘이랑 구분되게 하려고
+                modifier = Modifier
+                    .size(width = 160.dp, height = 194.dp)
+                    .clip(RoundedCornerShape(4.dp))
+            )
+
+            Icon(
+                painter = painterResource(id = R.drawable.ic_heart_outlined_24),
+                contentDescription = "like",
+                tint = BunjangTheme.colors.white,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(8.dp)
+                    .size(24.dp)
+                    .clickable { onLikeClick() }
+            )
+        }
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
@@ -75,7 +99,8 @@ fun BigProductCard(
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             if (state.time != null) {
                 Text(
@@ -86,19 +111,32 @@ fun BigProductCard(
                 )
             }
             Spacer(modifier = Modifier.weight(1f))
-                if (state.likes != null) {
-                    // icon 넣기
+
+            if (state.likes != null) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_heart_outlined_18),
+                        contentDescription = "like",
+                        tint = BunjangTheme.colors.gray200,
+                        modifier = Modifier
+                            .size(12.dp)
+                            .padding(end = 1.dp)
+                            .clickable { onLikeClick() }
+                    )
+
                     Text(
                         text = state.likes.toString(),
                         style = BunjangTheme.typography.label.label2,
                         color = BunjangTheme.colors.gray500,
-                        modifier = Modifier
-                            .padding(horizontal = 2.dp, vertical = 8.dp)
+                        modifier = Modifier.padding(end = 2.dp)
                     )
                 }
             }
         }
     }
+}
 
 @Composable
 fun SmallProductCard(
@@ -116,6 +154,7 @@ fun SmallProductCard(
         AsyncImage(
             model = state.imageUrl,
             contentDescription = state.title,
+            placeholder = ColorPainter(Color.LightGray),
             modifier = Modifier
                 .height(125.dp)
                 .clip(RoundedCornerShape(4.dp))
