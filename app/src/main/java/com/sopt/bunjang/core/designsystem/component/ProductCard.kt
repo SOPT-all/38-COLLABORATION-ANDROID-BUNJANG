@@ -1,13 +1,11 @@
 package com.sopt.bunjang.core.designsystem.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -36,6 +34,7 @@ fun BigProductCard(
     price: Int,
     title: String,
     time: String? = null,
+    isLike: Boolean = false,
     likes: Int? = null,
     onCardClick: () -> Unit = {},
     onLikeClick: () -> Unit = {}
@@ -62,7 +61,9 @@ fun BigProductCard(
             )
 
             Icon(
-                painter = painterResource(id = R.drawable.ic_heart_outlined_24),
+                painter = painterResource(
+                    id = if (isLike) R.drawable.ic_home_fillheart else R.drawable.ic_heart_outlined_24
+                ),
                 contentDescription = "like",
                 tint = BunjangTheme.colors.white,
                 modifier = Modifier
