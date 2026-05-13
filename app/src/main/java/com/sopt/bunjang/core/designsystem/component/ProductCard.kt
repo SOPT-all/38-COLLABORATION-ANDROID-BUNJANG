@@ -28,27 +28,20 @@ import coil.compose.AsyncImage
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
-data class ProductCardState(
-    val imageUrl: String,
-    val price: Int,
-    val title: String,
-    val time: String? = null,
-    val isLike: Boolean = false,
-    val likes: Int? = 0,
-) {
-    val formattedPrice: String
-        get() = "%,d".format(price) + "원"
-}
-
 @Composable
 fun BigProductCard(
-    state: ProductCardState,
-    modifier: Modifier = Modifier,
+    imageUrl: String,
+    price: Int,
+    title: String,
+    time: String? = null,
+    likes: Int? = null,
     onCardClick: () -> Unit = {},
     onLikeClick: () -> Unit = {}
 ) {
+    val formattedPrice = "%,d".format(price) + "원"
+
     Column(
-        modifier = modifier
+        modifier = Modifier
             .width(160.dp)
             .background(BunjangTheme.colors.white)
             .clickable { onCardClick() }
@@ -58,8 +51,8 @@ fun BigProductCard(
                 .size(width = 160.dp, height = 194.dp)
         ) {
             AsyncImage(
-                model = state.imageUrl,
-                contentDescription = state.title,
+                model = imageUrl,
+                contentDescription = title,
                 placeholder = ColorPainter(Color.LightGray),  // 아이콘이랑 구분되게 하려고
                 modifier = Modifier
                     .size(width = 160.dp, height = 194.dp)
@@ -81,7 +74,7 @@ fun BigProductCard(
 
         Text(
             // 가격
-            text = state.formattedPrice,
+            text = formattedPrice,
             style = BunjangTheme.typography.title.title5,
             color = BunjangTheme.colors.gray900
         )
@@ -90,7 +83,7 @@ fun BigProductCard(
 
         Text(
             // 상품명
-            text = state.title,
+            text = title,
             style = BunjangTheme.typography.body.body2,
             color = BunjangTheme.colors.gray700
         )
@@ -102,9 +95,9 @@ fun BigProductCard(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            if (state.time != null) {
+            if (time != null) {
                 Text(
-                    text = state.time,
+                    text = time,
                     style = BunjangTheme.typography.label.label2,
                     color = BunjangTheme.colors.gray400,
                     modifier = Modifier.padding(horizontal = 2.dp, vertical = 8.dp)
@@ -112,7 +105,7 @@ fun BigProductCard(
             }
             Spacer(modifier = Modifier.weight(1f))
 
-            if (state.likes != null) {
+            if (likes != null) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -127,7 +120,7 @@ fun BigProductCard(
                     )
 
                     Text(
-                        text = state.likes.toString(),
+                        text = likes.toString(),
                         style = BunjangTheme.typography.label.label2,
                         color = BunjangTheme.colors.gray500,
                         modifier = Modifier.padding(end = 2.dp)
@@ -140,13 +133,16 @@ fun BigProductCard(
 
 @Composable
 fun SmallProductCard(
-    state: ProductCardState,
-    modifier: Modifier = Modifier,
+    imageUrl: String,
+    price: Int,
+    title: String,
     onCardClick: () -> Unit = {},
     onLikeClick: () -> Unit = {}
 ) {
+    val formattedPrice = "%,d".format(price) + "원"
+
     Column(
-        modifier = modifier
+        modifier = Modifier
             .background(BunjangTheme.colors.white)
             .clickable { onCardClick() }
             .width(102.dp)
@@ -155,8 +151,8 @@ fun SmallProductCard(
         Box()
         {
             AsyncImage(
-                model = state.imageUrl,
-                contentDescription = state.title,
+                model = imageUrl,
+                contentDescription = title,
                 placeholder = ColorPainter(Color.LightGray),
                 modifier = Modifier
                     .height(125.dp)
@@ -178,7 +174,7 @@ fun SmallProductCard(
 
         Text(
             // 가격
-            text = state.formattedPrice,
+            text = formattedPrice,
             style = BunjangTheme.typography.body.body1_1,
             color = BunjangTheme.colors.gray900
         )
@@ -187,7 +183,7 @@ fun SmallProductCard(
 
         Text(
             // 상품명
-            text = state.title,
+            text = title,
             style = BunjangTheme.typography.label.label1,
             color = BunjangTheme.colors.gray800
         )
@@ -203,20 +199,17 @@ private fun ProductCardPreview() {
             horizontalArrangement = Arrangement.spacedBy(5.dp)
         ) {
             BigProductCard(
-                state = ProductCardState(
-                    imageUrl = "",
-                    price = 690000,
-                    title = "상품명",
-                    time = "1일 전",
-                    likes = 0
-                )
+                imageUrl = "",
+                price = 690000,
+                title = "상품명",
+                time = "1일 전",
+                likes = 0
+
             )
             SmallProductCard(
-                state = ProductCardState(
-                    imageUrl = "",
-                    price = 100,
-                    title = "상품명"
-                )
+                imageUrl = "",
+                price = 100,
+                title = "상품명"
             )
         }
     }
