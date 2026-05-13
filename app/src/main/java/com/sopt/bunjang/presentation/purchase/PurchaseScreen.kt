@@ -4,15 +4,15 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 
 @Composable
-fun PurChaseRoute(
+fun PurchaseRoute(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit
 ) {
-    PurChaseScreen()
+    PurchaseScreen()
 }
 
 @Composable
-private fun PurChaseScreen(
+private fun PurchaseScreen(
 
 ) {
 

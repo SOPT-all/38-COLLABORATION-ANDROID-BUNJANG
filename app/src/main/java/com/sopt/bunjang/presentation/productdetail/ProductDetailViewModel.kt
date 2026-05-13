@@ -24,9 +24,9 @@ class ProductDetailViewModel : ViewModel() {
         }
     }
 
-    fun onPurChaseIconClick() {
+    fun onPurchaseIconClick() {
         viewModelScope.launch {
-            _sideEffect.emit(ProductDetailSideEffect.NavigateToPurChase)
+            _sideEffect.emit(ProductDetailSideEffect.NavigateToPurchase)
         }
     }
 }

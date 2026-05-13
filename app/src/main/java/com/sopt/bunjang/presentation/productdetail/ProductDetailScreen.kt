@@ -21,7 +21,7 @@ fun ProductDetailRoute(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit,
     navigateToHome: () -> Unit,
-    navigateToPurChase: () -> Unit,
+    navigateToPurchase: () -> Unit,
     viewModel: ProductDetailViewModel = viewModel()
 ) {
     LaunchedEffect(viewModel) {
@@ -29,7 +29,7 @@ fun ProductDetailRoute(
             when (effect) {
                 is ProductDetailSideEffect.NavigateUp -> navigateUp()
                 is ProductDetailSideEffect.NavigateToHome -> navigateToHome()
-                is ProductDetailSideEffect.NavigateToPurChase -> navigateToPurChase()
+                is ProductDetailSideEffect.NavigateToPurchase -> navigateToPurchase()
             }
         }
     }
@@ -38,7 +38,7 @@ fun ProductDetailRoute(
         paddingValues = paddingValues,
         onBackIconClick = viewModel::onBackIconClick,
         onHomeIconClick = viewModel::onHomeIconClick,
-        onPurChaseIconClick = viewModel::onPurChaseIconClick
+        onPurchaseIconClick = viewModel::onPurchaseIconClick
     )
 }
 
@@ -47,7 +47,7 @@ private fun ProductDetailScreen(
     paddingValues: PaddingValues,
     onBackIconClick: () -> Unit,
     onHomeIconClick: () -> Unit,
-    onPurChaseIconClick: () -> Unit,
+    onPurchaseIconClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -70,7 +70,7 @@ private fun ProductDetailScreen(
                 TopBarIconButton(
                     iconRes = R.drawable.ic_top_bar_search,
                     // Todo: 하단 구매하기 버튼 구현 후, 버튼 클릭 시 동작으로 이동 필요
-                    onClick = onPurChaseIconClick
+                    onClick = onPurchaseIconClick
                 )
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
             }
@@ -87,7 +87,7 @@ private fun ProductDetailScreenPreview() {
             paddingValues = PaddingValues(),
             onBackIconClick = {},
             onHomeIconClick = {},
-            onPurChaseIconClick = {}
+            onPurchaseIconClick = {}
         )
     }
 }

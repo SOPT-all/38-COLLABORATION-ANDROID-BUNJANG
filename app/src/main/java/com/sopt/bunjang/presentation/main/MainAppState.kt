@@ -10,7 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.sopt.bunjang.presentation.home.navigation.Home
 import com.sopt.bunjang.presentation.productdetail.navigation.ProductDetail
-import com.sopt.bunjang.presentation.purchase.navigation.PurChase
+import com.sopt.bunjang.presentation.purchase.navigation.Purchase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -78,8 +78,8 @@ class MainAppState(
         navController.navigate(Home, clearStackNavOptions)
     }
 
-    fun navigateToPurChase() {
-        navController.navigate(PurChase)
+    fun navigateToPurchase() {
+        navController.navigate(Purchase)
     }
 
     fun navigateToProductDetail() {

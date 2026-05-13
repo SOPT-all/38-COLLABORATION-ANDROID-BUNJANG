@@ -6,19 +6,19 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.sopt.bunjang.core.navigation.Route
-import com.sopt.bunjang.presentation.purchase.PurChaseRoute
+import com.sopt.bunjang.presentation.purchase.PurchaseRoute
 import kotlinx.serialization.Serializable
 
-fun NavController.navigatePurChase(navOptions: NavOptions? = null) {
-    navigate(PurChase, navOptions)
+fun NavController.navigatePurchase(navOptions: NavOptions? = null) {
+    navigate(Purchase, navOptions)
 }
 
-fun NavGraphBuilder.purChaseGraph(
+fun NavGraphBuilder.purchaseGraph(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit
 ) {
-    composable<PurChase> {
-        PurChaseRoute(
+    composable<Purchase> {
+        PurchaseRoute(
             paddingValues = paddingValues,
             navigateUp = navigateUp
         )
@@ -26,4 +26,4 @@ fun NavGraphBuilder.purChaseGraph(
 }
 
 @Serializable
-data object PurChase : Route
+data object Purchase : Route

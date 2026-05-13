@@ -17,14 +17,14 @@ fun NavGraphBuilder.productDetailGraph(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit,
     navigateToHome: () -> Unit,
-    navigateToPurChase: () -> Unit
+    navigateToPurchase: () -> Unit
 ) {
     composable<ProductDetail> {
         ProductDetailRoute(
             paddingValues = paddingValues,
             navigateUp = navigateUp,
             navigateToHome = navigateToHome,
-            navigateToPurChase = navigateToPurChase
+            navigateToPurchase = navigateToPurchase
         )
     }
 }

@@ -19,7 +19,7 @@ import com.sopt.bunjang.presentation.home.navigation.homeGraph
 import com.sopt.bunjang.presentation.main.component.MainBottomBar
 import com.sopt.bunjang.presentation.mypage.navigation.myPageGraph
 import com.sopt.bunjang.presentation.productdetail.navigation.productDetailGraph
-import com.sopt.bunjang.presentation.purchase.navigation.purChaseGraph
+import com.sopt.bunjang.presentation.purchase.navigation.purchaseGraph
 import com.sopt.bunjang.presentation.register.navigation.registerGraph
 import kotlinx.collections.immutable.toPersistentList
 
@@ -108,10 +108,10 @@ fun MainScreen(
                 paddingValues = innerPadding,
                 navigateUp = appState::navigateUp,
                 navigateToHome = appState::navigateToHome,
-                navigateToPurChase = appState::navigateToPurChase
+                navigateToPurchase = appState::navigateToPurchase
             )
 
-            purChaseGraph(
+            purchaseGraph(
                 paddingValues = innerPadding,
                 navigateUp = appState::navigateUp
             )
