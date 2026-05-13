@@ -109,7 +109,7 @@ fun BigProductCard(
                     text = time,
                     style = BunjangTheme.typography.label.label2,
                     color = BunjangTheme.colors.gray400,
-                    modifier = Modifier.padding(horizontal = 2.dp, vertical = 8.dp)
+                    modifier = Modifier.padding(start = 2.dp, end = 2.dp, bottom = 8.dp)
                 )
             }
             Spacer(modifier = Modifier.weight(1f))
