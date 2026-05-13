@@ -195,7 +195,7 @@ fun SmallProductCard(
 
 @Preview(showBackground = true)
 @Composable
-fun ProductCardPreview() {
+private fun ProductCardPreview() {
     BunjangTheme {
         Row(
             modifier = Modifier.padding(16.dp),
