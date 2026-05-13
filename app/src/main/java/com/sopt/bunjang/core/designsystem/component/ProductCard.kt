@@ -63,6 +63,7 @@ fun BigProductCard(
                 placeholder = ColorPainter(Color.LightGray),  // 아이콘이랑 구분되게 하려고
                 modifier = Modifier
                     .size(width = 160.dp, height = 194.dp)
+                    .clip(RoundedCornerShape(4.dp))
             )
 
             Icon(
