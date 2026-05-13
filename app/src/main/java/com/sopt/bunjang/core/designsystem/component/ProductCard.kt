@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.ColorPainter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,6 +59,7 @@ fun BigProductCard(
                 model = imageUrl,
                 contentDescription = title,
                 placeholder = ColorPainter(Color.LightGray),  // 아이콘이랑 구분되게 하려고
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(160f / 194f)
@@ -166,6 +168,7 @@ fun SmallProductCard(
                 model = imageUrl,
                 contentDescription = title,
                 placeholder = ColorPainter(Color.LightGray),
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(102f / 125f)
