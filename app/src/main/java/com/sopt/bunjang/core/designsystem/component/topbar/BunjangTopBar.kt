@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
 @Composable
@@ -45,8 +46,12 @@ private fun BunjangTopBarPreview() {
     BunjangTheme {
         BunjangTopBar(
             leftContent = {
+                TopBarIconButton(iconRes = R.drawable.ic_top_bar_back,)
             },
             rightContent = {
+                TopBarIconButton(iconRes = R.drawable.ic_top_bar_home,)
+                TopBarIconButton(iconRes = R.drawable.ic_top_bar_bell)
+                TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
             }
         )
     }
