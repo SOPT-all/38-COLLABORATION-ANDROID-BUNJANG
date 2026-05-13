@@ -15,10 +15,15 @@ fun NavController.navigateHome(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.homeGraph(
     paddingValues: PaddingValues,
-    navigateUp: () -> Unit
+    navigateUp: () -> Unit,
+    navigateToProductDetail: () -> Unit
 ) {
     composable<Home> {
-        HomeRoute()
+        HomeRoute(
+            paddingValues = paddingValues,
+            navigateUp = navigateUp,
+            navigateToProductDetail = navigateToProductDetail
+        )
     }
 }
 
