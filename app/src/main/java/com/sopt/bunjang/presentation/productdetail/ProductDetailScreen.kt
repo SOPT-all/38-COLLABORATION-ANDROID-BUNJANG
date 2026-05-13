@@ -5,28 +5,49 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun ProductDetailRoute(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit,
     navigateToHome: () -> Unit,
-    navigateToPurChase: () -> Unit
+    navigateToPurChase: () -> Unit,
+    viewModel: ProductDetailViewModel = viewModel()
 ) {
+    LaunchedEffect(viewModel) {
+        viewModel.sideEffect.collectLatest { effect ->
+            when (effect) {
+                is ProductDetailSideEffect.NavigateUp -> navigateUp()
+                is ProductDetailSideEffect.NavigateToHome -> navigateToHome()
+                is ProductDetailSideEffect.NavigateToPurChase -> navigateToPurChase()
+            }
+        }
+    }
+
     ProductDetailScreen(
         paddingValues = paddingValues,
+        onBackIconClick = viewModel::onBackIconClick,
+        onHomeIconClick = viewModel::onHomeIconClick,
+        onPurChaseIconClick = viewModel::onPurChaseIconClick
     )
 }
 
 @Composable
 private fun ProductDetailScreen(
     paddingValues: PaddingValues,
+    onBackIconClick: () -> Unit,
+    onHomeIconClick: () -> Unit,
+    onPurChaseIconClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -36,11 +57,21 @@ private fun ProductDetailScreen(
     ) {
         BunjangTopBar(
             leftContent = {
-                TopBarIconButton(iconRes = R.drawable.ic_top_bar_back)
+                TopBarIconButton(
+                    iconRes = R.drawable.ic_top_bar_back,
+                    onClick = onBackIconClick
+                )
             },
             rightContent = {
-                TopBarIconButton(iconRes = R.drawable.ic_top_bar_home)
-                TopBarIconButton(iconRes = R.drawable.ic_top_bar_search)
+                TopBarIconButton(
+                    iconRes = R.drawable.ic_top_bar_home,
+                    onClick = onHomeIconClick
+                )
+                TopBarIconButton(
+                    iconRes = R.drawable.ic_top_bar_search,
+                    // Todo: 하단 구매하기 버튼 구현 후, 버튼 클릭 시 동작으로 이동 필요
+                    onClick = onPurChaseIconClick
+                )
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
             }
         )
@@ -53,7 +84,10 @@ private fun ProductDetailScreen(
 private fun ProductDetailScreenPreview() {
     BunjangTheme {
         ProductDetailScreen(
-            paddingValues = PaddingValues()
+            paddingValues = PaddingValues(),
+            onBackIconClick = {},
+            onHomeIconClick = {},
+            onPurChaseIconClick = {}
         )
     }
 }

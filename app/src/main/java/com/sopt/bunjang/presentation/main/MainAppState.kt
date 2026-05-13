@@ -75,7 +75,7 @@ class MainAppState(
     }
 
     fun navigateToHome() {
-        navController.navigate(Home)
+        navController.navigate(Home, clearStackNavOptions)
     }
 
     fun navigateToPurChase() {
