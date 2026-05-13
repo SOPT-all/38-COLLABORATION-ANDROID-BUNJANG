@@ -17,27 +17,27 @@ enum class MainTab(
     val route: MainTabRoute,
 ) {
     HOME(
-        icon = R.drawable.ic_launcher_background,
+        icon = R.drawable.ic_home_home,
         contentDescription = R.string.tab_home,
         route = Home,
     ),
     FAVORITE(
-        icon = R.drawable.ic_launcher_background,
+        icon = R.drawable.ic_home_like,
         contentDescription = R.string.tab_favorite,
         route = Favorite,
     ),
     REGISTER(
-        icon = R.drawable.ic_launcher_background,
+        icon = R.drawable.ic_home_post,
         contentDescription = R.string.tab_register,
         route = Register,
     ),
     CHAT(
-        icon = R.drawable.ic_launcher_background,
+        icon = R.drawable.ic_home_talk,
         contentDescription = R.string.tab_chat,
         route = Chat,
     ),
     MY_PAGE(
-        icon = R.drawable.ic_launcher_background,
+        icon = R.drawable.ic_home_my,
         contentDescription = R.string.tab_my_page,
         route = MyPage,
     );
