@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
 @Composable
-fun HomeLogo(
+fun HomeMainToggle(
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -53,8 +53,8 @@ fun HomeLogo(
 
 @Preview(showBackground = false)
 @Composable
-private fun HomeLogoPreview() {
+private fun HomeMainTogglePreview() {
     BunjangTheme {
-        HomeLogo()
+        HomeMainToggle()
     }
 }

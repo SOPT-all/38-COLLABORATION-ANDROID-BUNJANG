@@ -14,7 +14,7 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-import com.sopt.bunjang.presentation.home.component.HomeLogo
+import com.sopt.bunjang.presentation.home.component.HomeMainToggle
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
 import kotlinx.coroutines.flow.collectLatest
 
@@ -51,7 +51,7 @@ private fun HomeScreen(
             .padding(paddingValues)
     ) {
         BunjangTopBar(
-            leftContent = { HomeLogo() },
+            leftContent = { HomeMainToggle() },
             rightContent = {
                 TopBarIconButton(
                     iconRes = R.drawable.ic_top_bar_search,
