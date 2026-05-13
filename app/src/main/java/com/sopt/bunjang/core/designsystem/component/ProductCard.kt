@@ -116,7 +116,7 @@ fun BigProductCard(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_heart_outlined_18),
+                        painter = painterResource(id = R.drawable.ic_home_fillheart),
                         contentDescription = "like",
                         tint = BunjangTheme.colors.gray200,
                         modifier = Modifier
