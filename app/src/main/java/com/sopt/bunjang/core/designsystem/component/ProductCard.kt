@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import com.sopt.bunjang.core.extension.noRippleClickable
 
 @Composable
 fun BigProductCard(
@@ -44,7 +46,7 @@ fun BigProductCard(
         modifier = Modifier
             .width(160.dp)
             .background(BunjangTheme.colors.white)
-            .clickable { onCardClick() }
+            .noRippleClickable { onCardClick() }
     ) {
         Box(
             modifier = Modifier
@@ -67,7 +69,7 @@ fun BigProductCard(
                     .align(Alignment.TopEnd)
                     .padding(8.dp)
                     .size(24.dp)
-                    .clickable { onLikeClick() }
+                    .noRippleClickable { onLikeClick() }
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
@@ -116,7 +118,7 @@ fun BigProductCard(
                         modifier = Modifier
                             .size(12.dp)
                             .padding(end = 1.dp)
-                            .clickable { onLikeClick() }
+                            .noRippleClickable { onLikeClick() }
                     )
 
                     Text(
@@ -144,7 +146,7 @@ fun SmallProductCard(
     Column(
         modifier = Modifier
             .background(BunjangTheme.colors.white)
-            .clickable { onCardClick() }
+            .noRippleClickable { onCardClick() }
             .width(102.dp)
     )
     {
@@ -166,7 +168,7 @@ fun SmallProductCard(
                     .align(Alignment.TopEnd)
                     .padding(8.dp)
                     .size(24.dp)
-                    .clickable { onLikeClick() }
+                    .noRippleClickable { onLikeClick() }
             )
         }
 
