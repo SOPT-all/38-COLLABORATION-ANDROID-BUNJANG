@@ -30,8 +30,11 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.core.extension.noRippleClickable
 
+enum class ProductCardType { BIG, SMALL }
+
 @Composable
-fun BigProductCard(
+fun ProductCard(
+    type: ProductCardType,
     modifier: Modifier = Modifier,
     imageUrl: String,
     price: Int,
@@ -43,6 +46,18 @@ fun BigProductCard(
     onLikeClick: () -> Unit = {}
 ) {
     val formattedPrice = "%,d".format(price) + "원"
+    val imageRatio = when (type) {
+        ProductCardType.BIG -> 160f / 194f
+        ProductCardType.SMALL -> 102f / 125f
+    }
+    val priceStyle = when (type) {
+        ProductCardType.BIG -> BunjangTheme.typography.title.title5
+        ProductCardType.SMALL -> BunjangTheme.typography.body.body1_1
+    }
+    val titleStyle = when (type) {
+        ProductCardType.BIG -> BunjangTheme.typography.body.body2
+        ProductCardType.SMALL -> BunjangTheme.typography.label.label1
+    }
 
     Column(
         modifier = modifier
@@ -53,7 +68,7 @@ fun BigProductCard(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(160f / 194f)
+                .aspectRatio(imageRatio)
         ) {
             AsyncImage(
                 model = imageUrl,
@@ -62,7 +77,7 @@ fun BigProductCard(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .aspectRatio(160f / 194f)
+                    .aspectRatio(imageRatio)
                     .clip(RoundedCornerShape(4.dp))
             )
 
@@ -84,7 +99,7 @@ fun BigProductCard(
         Text(
             // 가격
             text = formattedPrice,
-            style = BunjangTheme.typography.title.title5,
+            style = priceStyle,
             color = BunjangTheme.colors.gray900
         )
 
@@ -93,47 +108,49 @@ fun BigProductCard(
         Text(
             // 상품명
             text = title,
-            style = BunjangTheme.typography.body.body2,
+            style = titleStyle,
             color = BunjangTheme.colors.gray700
         )
 
-        Spacer(modifier = Modifier.height(4.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            if (time != null) {
-                Text(
-                    text = time,
-                    style = BunjangTheme.typography.label.label2,
-                    color = BunjangTheme.colors.gray400,
-                    modifier = Modifier.padding(start = 2.dp, end = 2.dp, bottom = 8.dp)
-                )
-            }
-            Spacer(modifier = Modifier.weight(1f))
-
-            if (likes != null) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_home_fillheart),
-                        contentDescription = "like",
-                        tint = BunjangTheme.colors.gray200,
-                        modifier = Modifier
-                            .size(12.dp)
-                            .padding(end = 1.dp)
-                            .noRippleClickable { onLikeClick() }
-                    )
-
+        if (type == ProductCardType.BIG) {
+            Spacer(modifier = Modifier.height(4.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                if (time != null) {
                     Text(
-                        text = likes.toString(),
+                        text = time,
                         style = BunjangTheme.typography.label.label2,
-                        color = BunjangTheme.colors.gray500,
-                        modifier = Modifier.padding(end = 2.dp)
+                        color = BunjangTheme.colors.gray400,
+                        modifier = Modifier.padding(start = 2.dp, end = 2.dp, bottom = 8.dp)
                     )
+                }
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                if (likes != null) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_home_fillheart),
+                            contentDescription = "like",
+                            tint = BunjangTheme.colors.gray200,
+                            modifier = Modifier
+                                .size(12.dp)
+                                .padding(end = 9.5.dp)
+                                .noRippleClickable { onLikeClick() }
+                        )
+
+                        Text(
+                            text = likes.toString(),
+                            style = BunjangTheme.typography.label.label2,
+                            color = BunjangTheme.colors.gray500,
+                            modifier = Modifier.padding(end = 8.dp)
+                        )
+                    }
                 }
             }
         }
@@ -214,16 +231,17 @@ private fun ProductCardPreview() {
             modifier = Modifier.padding(16.dp),
             horizontalArrangement = Arrangement.spacedBy(5.dp)
         ) {
-            BigProductCard(
+            ProductCard(
+                type = ProductCardType.BIG,
                 imageUrl = "",
                 price = 690000,
                 title = "상품명",
                 time = "1일 전",
                 likes = 0,
                 modifier = Modifier.width(160.dp)
-
             )
-            SmallProductCard(
+            ProductCard(
+                type = ProductCardType.SMALL,
                 imageUrl = "",
                 price = 100,
                 title = "상품명",
