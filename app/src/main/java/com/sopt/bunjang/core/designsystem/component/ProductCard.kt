@@ -139,16 +139,18 @@ fun ProductCard(
                             contentDescription = "like",
                             tint = BunjangTheme.colors.gray200,
                             modifier = Modifier
+                                .padding(bottom = 9.5.dp)
                                 .size(12.dp)
-                                .padding(end = 9.5.dp)
                                 .noRippleClickable { onLikeClick() }
                         )
+
+                        Spacer(modifier = Modifier.width(1.dp))
 
                         Text(
                             text = likes.toString(),
                             style = BunjangTheme.typography.label.label2,
                             color = BunjangTheme.colors.gray500,
-                            modifier = Modifier.padding(end = 8.dp)
+                            modifier = Modifier.padding(end = 2.dp, bottom = 8.dp)
                         )
                     }
                 }
