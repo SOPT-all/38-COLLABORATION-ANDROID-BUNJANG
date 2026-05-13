@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,6 +31,7 @@ import com.sopt.bunjang.core.extension.noRippleClickable
 
 @Composable
 fun BigProductCard(
+    modifier: Modifier = Modifier,
     imageUrl: String,
     price: Int,
     title: String,
@@ -42,21 +44,23 @@ fun BigProductCard(
     val formattedPrice = "%,d".format(price) + "원"
 
     Column(
-        modifier = Modifier
-            .width(160.dp)
+        modifier = modifier
+            .fillMaxWidth()
             .background(BunjangTheme.colors.white)
             .noRippleClickable { onCardClick() }
     ) {
         Box(
             modifier = Modifier
-                .size(width = 160.dp, height = 194.dp)
+                .fillMaxWidth()
+                .aspectRatio(160f / 194f)
         ) {
             AsyncImage(
                 model = imageUrl,
                 contentDescription = title,
                 placeholder = ColorPainter(Color.LightGray),  // 아이콘이랑 구분되게 하려고
                 modifier = Modifier
-                    .size(width = 160.dp, height = 194.dp)
+                    .fillMaxWidth()
+                    .aspectRatio(160f / 194f)
                     .clip(RoundedCornerShape(4.dp))
             )
 
@@ -136,6 +140,7 @@ fun BigProductCard(
 
 @Composable
 fun SmallProductCard(
+    modifier: Modifier = Modifier,
     imageUrl: String,
     price: Int,
     title: String,
@@ -145,20 +150,25 @@ fun SmallProductCard(
     val formattedPrice = "%,d".format(price) + "원"
 
     Column(
-        modifier = Modifier
+        modifier = modifier
+            .fillMaxWidth()
             .background(BunjangTheme.colors.white)
             .noRippleClickable { onCardClick() }
-            .width(102.dp)
     )
     {
-        Box()
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(102f / 125f)
+        )
         {
             AsyncImage(
                 model = imageUrl,
                 contentDescription = title,
                 placeholder = ColorPainter(Color.LightGray),
                 modifier = Modifier
-                    .height(125.dp)
+                    .fillMaxWidth()
+                    .aspectRatio(102f / 125f)
                     .clip(RoundedCornerShape(4.dp))
             )
             Icon(
@@ -206,13 +216,15 @@ private fun ProductCardPreview() {
                 price = 690000,
                 title = "상품명",
                 time = "1일 전",
-                likes = 0
+                likes = 0,
+                modifier = Modifier.width(160.dp)
 
             )
             SmallProductCard(
                 imageUrl = "",
                 price = 100,
-                title = "상품명"
+                title = "상품명",
+                modifier = Modifier.width(102.dp)
             )
         }
     }
