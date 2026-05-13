@@ -54,7 +54,7 @@ private fun HomeScreen(
             leftContent = { HomeLogo() },
             rightContent = {
                 TopBarIconButton(
-                    iconRes = R.drawable.ic_top_bar_home,
+                    iconRes = R.drawable.ic_top_bar_search,
                     // Todo: 상품 아이템 구현 후, 아이템 클릭 시 동작으로 이동 필요
                     onClick = onProductItemClick
                 )
