@@ -47,7 +47,7 @@ fun CartButton(
 
 @Preview
 @Composable
-private fun ChatButtonPreview() {
+private fun CartButtonPreview() {
     BunjangTheme {
         CartButton(
             text = "장바구니"
