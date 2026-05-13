@@ -11,7 +11,6 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-import com.sopt.bunjang.presentation.home.component.HomeLogo
 
 @Composable
 fun ProductDetailRoute(
@@ -36,7 +35,9 @@ private fun ProductDetailScreen(
             .padding(paddingValues)
     ) {
         BunjangTopBar(
-            leftContent = { HomeLogo() },
+            leftContent = {
+                TopBarIconButton(iconRes = R.drawable.ic_top_bar_back)
+            },
             rightContent = {
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_home)
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_search)
