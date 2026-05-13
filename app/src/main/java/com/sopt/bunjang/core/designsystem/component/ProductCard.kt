@@ -119,35 +119,30 @@ fun ProductCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (time != null) {
+                // 시간 표시: let 활용
+                time?.let {
                     Text(
-                        text = time,
+                        text = it,
                         style = BunjangTheme.typography.label.label2,
                         color = BunjangTheme.colors.gray400,
-                        modifier = Modifier.padding(start = 2.dp, end = 2.dp, bottom = 8.dp)
+                        modifier = Modifier.padding(horizontal = 2.dp).padding(bottom = 8.dp)
                     )
                 }
-
                 Spacer(modifier = Modifier.weight(1f))
-
-                if (likes != null) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
+                // 좋아요 표시: let 활용
+                likes?.let { count ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_home_fillheart),
-                            contentDescription = "like",
+                            contentDescription = "like count",
                             tint = BunjangTheme.colors.gray200,
                             modifier = Modifier
                                 .padding(bottom = 9.5.dp)
                                 .size(12.dp)
-                                .noRippleClickable { onLikeClick() }
                         )
-
                         Spacer(modifier = Modifier.width(1.dp))
-
                         Text(
-                            text = likes.toString(),
+                            text = count.toString(),
                             style = BunjangTheme.typography.label.label2,
                             color = BunjangTheme.colors.gray500,
                             modifier = Modifier.padding(end = 2.dp, bottom = 8.dp)
