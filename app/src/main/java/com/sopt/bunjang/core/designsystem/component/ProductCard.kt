@@ -35,10 +35,10 @@ enum class ProductCardType { BIG, SMALL }
 @Composable
 fun ProductCard(
     type: ProductCardType,
-    modifier: Modifier = Modifier,
     imageUrl: String,
     price: Int,
     title: String,
+    modifier: Modifier = Modifier,
     time: String? = null,
     isLike: Boolean = false,
     likes: Int? = null,
