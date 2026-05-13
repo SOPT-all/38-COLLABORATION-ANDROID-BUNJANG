@@ -1,10 +1,9 @@
-package com.sopt.bunjang.presentation.home
+package com.sopt.bunjang.presentation.productdetail
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,18 +14,19 @@ import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.presentation.home.component.HomeLogo
 
 @Composable
-fun HomeRoute(
+fun ProductDetailRoute(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit,
-    navigateToProductDetail: () -> Unit
+    navigateToHome: () -> Unit,
+    navigateToPurChase: () -> Unit
 ) {
-    HomeScreen(
+    ProductDetailScreen(
         paddingValues = paddingValues,
     )
 }
 
 @Composable
-private fun HomeScreen(
+private fun ProductDetailScreen(
     paddingValues: PaddingValues,
     modifier: Modifier = Modifier
 ) {
@@ -39,27 +39,19 @@ private fun HomeScreen(
             leftContent = { HomeLogo() },
             rightContent = {
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_home)
-                TopBarIconButton(iconRes = R.drawable.ic_top_bar_bell)
+                TopBarIconButton(iconRes = R.drawable.ic_top_bar_search)
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
             }
         )
 
-        LazyColumn(
-
-        ) {
-            item {
-
-            }
-        }
-
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-private fun HomeScreenPreview() {
-    BunjangTheme{
-        HomeScreen(
+private fun ProductDetailScreenPreview() {
+    BunjangTheme {
+        ProductDetailScreen(
             paddingValues = PaddingValues()
         )
     }
