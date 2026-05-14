@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -24,7 +24,7 @@ import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 fun HomeTabBar(
     modifier: Modifier
 ) {
-    var textWidth by remember { mutableStateOf(0) }
+    var textWidth by remember { mutableIntStateOf(0) }
 
     Row(
         modifier = modifier
