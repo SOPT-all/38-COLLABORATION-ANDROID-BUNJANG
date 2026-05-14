@@ -28,12 +28,11 @@ fun OrderButton(
 ) {
     Row(
         modifier = modifier
-            .width(148.dp)
             .height(48.dp)
             .clip(shape = RoundedCornerShape(6.dp))
             .background(color = backgroundColor)
             .noRippleClickable(onClick)
-            .padding(vertical = 12.dp),
+            .padding(vertical = 12.dp, horizontal = 47.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ){
