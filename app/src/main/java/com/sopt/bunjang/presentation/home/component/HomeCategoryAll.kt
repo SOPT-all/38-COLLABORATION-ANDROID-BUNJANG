@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -58,6 +59,7 @@ fun HomeCategoryItem(
     ) {
         Box(
             modifier = Modifier
+                .padding(top = 16.dp)
                 .size(52.dp)
                 .background(color = BunjangTheme.colors.gray100, RoundedCornerShape(16.dp)),
             contentAlignment = Alignment.Center
@@ -78,6 +80,7 @@ fun HomeCategoryItem(
             textAlign = TextAlign.Center,
             overflow = TextOverflow.Ellipsis
         )
+        Spacer(modifier = Modifier.height(15.dp))
     }
 }
 
