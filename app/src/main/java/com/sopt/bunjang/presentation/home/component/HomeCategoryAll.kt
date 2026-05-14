@@ -2,8 +2,10 @@ package com.sopt.bunjang.presentation.home.component
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -78,7 +80,11 @@ fun HomeCategoryItem(
 fun HomeCategoryAll(
     modifier: Modifier = Modifier
 ) {
-    LazyRow(modifier = modifier) {
+    LazyRow(
+        modifier = modifier,
+        contentPadding = PaddingValues(horizontal = 20.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
         items(CategoryItem.entries) { item ->
             HomeCategoryItem(item = item)
         }
