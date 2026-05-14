@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import com.sopt.bunjang.core.extension.noRippleClickable
 
 @Composable
 fun CartButton(
@@ -32,7 +33,7 @@ fun CartButton(
             .height(48.dp)
             .clip(shape = RoundedCornerShape(6.dp))
             .background(color = backgroundColor)
-            .clickable(onClick = onClick)
+            .noRippleClickable(onClick)
             .padding(vertical = 12.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically

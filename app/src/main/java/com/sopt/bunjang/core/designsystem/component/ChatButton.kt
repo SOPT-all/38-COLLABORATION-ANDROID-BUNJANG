@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import com.sopt.bunjang.core.extension.noRippleClickable
 
 @Composable
 fun ChatButton(
@@ -33,7 +34,7 @@ fun ChatButton(
             .clip(shape = RoundedCornerShape(6.dp))
             .border(1.dp, BunjangTheme.colors.gray200, RoundedCornerShape(6.dp))
             .background(color = backgroundColor)
-            .clickable(onClick = onClick)
+            .noRippleClickable(onClick)
             .padding(horizontal = 12.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
