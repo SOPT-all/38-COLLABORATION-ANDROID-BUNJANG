@@ -14,17 +14,16 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.core.extension.noRippleClickable
 import com.sopt.bunjang.presentation.main.MainTab
 import kotlinx.collections.immutable.ImmutableList
@@ -64,7 +63,6 @@ fun MainBottomBar(
     }
 }
 
-// Todo: 스타일 및 색상 변경 필요
 @Composable
 fun MainBottomBarTab(
     tab: MainTab,
@@ -72,6 +70,12 @@ fun MainBottomBarTab(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val contentColor = if (isSelected) {
+        BunjangTheme.colors.gray900
+    } else {
+        BunjangTheme.colors.gray300
+    }
+
     Column (
         modifier = modifier
             .noRippleClickable(onClick)
@@ -82,8 +86,7 @@ fun MainBottomBarTab(
         Icon(
             imageVector = ImageVector.vectorResource(tab.icon),
             contentDescription = tab.contentDescription.toString(),
-            tint = if (isSelected) Color.Black
-            else Color.Gray,
+            tint = contentColor,
             modifier = Modifier.size(24.dp)
         )
 
@@ -91,7 +94,8 @@ fun MainBottomBarTab(
 
         Text(
             text = stringResource(tab.contentDescription),
-            style = MaterialTheme.typography.labelSmall,
+            style = BunjangTheme.typography.body.body5,
+            color = contentColor
         )
     }
 }

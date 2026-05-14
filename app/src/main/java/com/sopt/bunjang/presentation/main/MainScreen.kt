@@ -18,11 +18,14 @@ import com.sopt.bunjang.presentation.favorite.navigation.favoriteGraph
 import com.sopt.bunjang.presentation.home.navigation.homeGraph
 import com.sopt.bunjang.presentation.main.component.MainBottomBar
 import com.sopt.bunjang.presentation.mypage.navigation.myPageGraph
+import com.sopt.bunjang.presentation.productdetail.navigation.productDetailGraph
+import com.sopt.bunjang.presentation.purchase.navigation.purchaseGraph
 import com.sopt.bunjang.presentation.register.navigation.registerGraph
 import kotlinx.collections.immutable.toPersistentList
 
 @Composable
 fun MainScreen(
+    modifier: Modifier = Modifier,
     appState: MainAppState = rememberMainAppState(),
 ) {
     val isBottomBarVisible by appState.isBottomBarVisible.collectAsStateWithLifecycle()
@@ -37,7 +40,7 @@ fun MainScreen(
                 onTabSelected = appState::navigate
             )
         },
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .navigationBarsPadding()
             .statusBarsPadding()
@@ -77,7 +80,8 @@ fun MainScreen(
 
             homeGraph(
                 paddingValues = innerPadding,
-                navigateUp = appState::navigateUp
+                navigateUp = appState::navigateUp,
+                navigateToProductDetail = appState::navigateToProductDetail
             )
 
             favoriteGraph(
@@ -96,6 +100,18 @@ fun MainScreen(
             )
 
             myPageGraph(
+                paddingValues = innerPadding,
+                navigateUp = appState::navigateUp
+            )
+
+            productDetailGraph(
+                paddingValues = innerPadding,
+                navigateUp = appState::navigateUp,
+                navigateToHome = appState::navigateToHome,
+                navigateToPurchase = appState::navigateToPurchase
+            )
+
+            purchaseGraph(
                 paddingValues = innerPadding,
                 navigateUp = appState::navigateUp
             )

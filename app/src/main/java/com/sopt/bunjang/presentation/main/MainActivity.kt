@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.ui.Modifier
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,7 +16,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BunjangTheme {
-                MainScreen()
+                MainScreen(
+                    modifier = Modifier
+                        .background(color = BunjangTheme.colors.white)
+                )
             }
         }
     }
