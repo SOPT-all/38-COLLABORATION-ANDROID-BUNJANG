@@ -64,7 +64,7 @@ fun HomeCategoryItem(
                 modifier = Modifier.size(30.dp)
             )
         }
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = item.label,
             style = BunjangTheme.typography.body.body4,
