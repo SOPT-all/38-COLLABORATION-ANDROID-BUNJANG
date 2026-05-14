@@ -1,6 +1,7 @@
 package com.sopt.bunjang.presentation.home.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,7 +30,8 @@ fun HomeTabBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(BunjangTheme.colors.white)
+            .background(BunjangTheme.colors.white),
+        horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         Spacer(modifier = Modifier.width(21.dp))
 
@@ -82,6 +84,8 @@ fun HomeTabBar(
             style = BunjangTheme.typography.body.body1,
             color = BunjangTheme.colors.gray800
         )
+
+        Spacer(modifier = Modifier.width(21.dp))
     }
 }
 

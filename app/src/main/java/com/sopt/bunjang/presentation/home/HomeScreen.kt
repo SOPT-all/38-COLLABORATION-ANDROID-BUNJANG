@@ -15,6 +15,7 @@ import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.presentation.home.component.HomeMainToggle
+import com.sopt.bunjang.presentation.home.component.HomeTabBar
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
 import kotlinx.coroutines.flow.collectLatest
 
@@ -63,11 +64,9 @@ private fun HomeScreen(
             }
         )
 
-        LazyColumn(
-
-        ) {
+        LazyColumn {
             item {
-
+                HomeTabBar(modifier = Modifier.fillMaxSize())
             }
         }
 
