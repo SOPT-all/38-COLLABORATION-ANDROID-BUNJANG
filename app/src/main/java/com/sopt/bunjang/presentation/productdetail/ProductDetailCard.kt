@@ -20,13 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import com.sopt.bunjang.core.extension.noRippleClickable
 
 @Composable
 fun ProductDetailCard(
@@ -94,6 +94,7 @@ fun ProductDetailCard(
                 modifier = Modifier
                     .padding(vertical = 5.5.dp)
                     .size(39.dp)
+                    .noRippleClickable { onLikeClick() }
             )
         }
 
@@ -108,8 +109,8 @@ fun ProductDetailCard(
                 .padding(bottom = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
-        ){
-            time?.let{
+        ) {
+            time?.let {
                 Text(
                     text = it,
                     style = BunjangTheme.typography.body.body3,
@@ -119,7 +120,7 @@ fun ProductDetailCard(
 
             Spacer(modifier = Modifier.weight(1f))
 
-            views?.let{count ->
+            views?.let { count ->
                 Icon(
                     painter = painterResource(id = R.drawable.ic_detail_page_view),
                     contentDescription = "views",
@@ -133,12 +134,12 @@ fun ProductDetailCard(
                     text = count.toString(),
                     style = BunjangTheme.typography.body.body3,
                     color = BunjangTheme.colors.gray300
-                    )
+                )
             }
 
             Spacer(modifier = Modifier.width(6.dp))
 
-            likes?.let{count ->
+            likes?.let { count ->
                 Icon(
                     painter = painterResource(id = R.drawable.ic_detail_page_heart),
                     contentDescription = "likes",
@@ -157,7 +158,7 @@ fun ProductDetailCard(
 
             Spacer(modifier = Modifier.width(6.dp))
 
-            comments?.let{count ->
+            comments?.let { count ->
                 Icon(
                     painter = painterResource(id = R.drawable.ic_detail_page_comment),
                     contentDescription = "comments",
