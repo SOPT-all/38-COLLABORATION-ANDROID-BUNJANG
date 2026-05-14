@@ -56,7 +56,7 @@ fun HomeTabBar(
             Box(
                 modifier = Modifier
                     .width(with(LocalDensity.current) { textWidth.toDp() })
-                    .height(2.dp)
+                    .height(3.dp)
                     .background(BunjangTheme.colors.gray900)
             )
         }
