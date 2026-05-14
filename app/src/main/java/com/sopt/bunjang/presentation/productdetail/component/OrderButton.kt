@@ -1,4 +1,4 @@
-package com.sopt.bunjang.core.designsystem.component
+package com.sopt.bunjang.presentation.productdetail.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
