@@ -65,7 +65,7 @@ fun HomeCategoryItem(
             Icon(
                 painter = painterResource(id = item.iconRes),
                 contentDescription = item.label,
-                modifier = Modifier.size(30.dp),
+                modifier = Modifier.size(48.dp),
                 tint = Color.Unspecified
             )
         }
