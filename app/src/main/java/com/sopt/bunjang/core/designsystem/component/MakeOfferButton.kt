@@ -2,6 +2,7 @@ package com.sopt.bunjang.core.designsystem.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,7 +33,7 @@ fun MakeOfferButton(
             .clip(shape = RoundedCornerShape(6.dp))
             .border(1.dp, BunjangTheme.colors.gray200, RoundedCornerShape(6.dp))
             .background(color = backgroundColor)
-            .noRippleClickable(onClick)
+            .clickable(onClick = onClick)
             .padding(vertical = 10.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
