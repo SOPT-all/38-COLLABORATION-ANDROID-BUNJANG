@@ -55,13 +55,14 @@ fun HomeCategoryItem(
         Box(
             modifier = Modifier
                 .size(52.dp)
-                .background(Color.White, RoundedCornerShape(16.dp)),
+                .background(color = BunjangTheme.colors.gray100, RoundedCornerShape(16.dp)),
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 painter = painterResource(id = item.iconRes),
                 contentDescription = item.label,
-                modifier = Modifier.size(30.dp)
+                modifier = Modifier.size(30.dp),
+                tint = Color.Unspecified
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
