@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
@@ -59,5 +60,13 @@ fun HomeTabBar(
             style = BunjangTheme.typography.body.body1,
             color = BunjangTheme.colors.gray800
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewHomeTabBar() {
+    BunjangTheme {
+        HomeTabBar(modifier = Modifier)
     }
 }
