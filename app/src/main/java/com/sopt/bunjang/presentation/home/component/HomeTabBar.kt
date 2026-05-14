@@ -10,7 +10,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
@@ -19,6 +24,8 @@ import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 fun HomeTabBar(
     modifier: Modifier
 ) {
+    var textWidth by remember { mutableStateOf(0) }
+
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -38,12 +45,15 @@ fun HomeTabBar(
             Text(
                 text = "추천",
                 style = BunjangTheme.typography.body.body1_1,
-                color = BunjangTheme.colors.gray900
+                color = BunjangTheme.colors.gray900,
+                onTextLayout = { textLayoutResult ->
+                    textWidth = textLayoutResult.size.width
+                }
             )
             Spacer(modifier = Modifier.height(4.dp))
             Box(
                 modifier = Modifier
-                    .width(30.dp)
+                    .width(with(LocalDensity.current) { textWidth.toDp() })
                     .height(2.dp)
                     .background(BunjangTheme.colors.gray900)
             )
