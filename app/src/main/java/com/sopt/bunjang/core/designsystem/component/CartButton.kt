@@ -29,12 +29,11 @@ fun CartButton(
 ) {
     Row(
         modifier = modifier
-            .width(114.dp)
             .height(48.dp)
             .clip(shape = RoundedCornerShape(6.dp))
             .background(color = backgroundColor)
             .noRippleClickable(onClick)
-            .padding(vertical = 12.dp),
+            .padding(vertical = 12.dp, horizontal = 30.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ){
