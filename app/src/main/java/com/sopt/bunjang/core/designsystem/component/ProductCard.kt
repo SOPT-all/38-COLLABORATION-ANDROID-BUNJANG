@@ -125,7 +125,7 @@ fun ProductCard(
                         text = it,
                         style = BunjangTheme.typography.label.label2,
                         color = BunjangTheme.colors.gray400,
-                        modifier = Modifier.padding(horizontal = 2.dp).padding(bottom = 8.dp)
+                        modifier = Modifier.padding(horizontal = 2.dp)
                     )
                 }
                 Spacer(modifier = Modifier.weight(1f))
@@ -137,7 +137,6 @@ fun ProductCard(
                             contentDescription = "like count",
                             tint = BunjangTheme.colors.gray200,
                             modifier = Modifier
-                                .padding(bottom = 9.5.dp)
                                 .size(12.dp)
                         )
                         Spacer(modifier = Modifier.width(1.dp))
@@ -145,7 +144,7 @@ fun ProductCard(
                             text = count.toString(),
                             style = BunjangTheme.typography.label.label2,
                             color = BunjangTheme.colors.gray500,
-                            modifier = Modifier.padding(end = 2.dp, bottom = 8.dp)
+                            modifier = Modifier.padding(end = 2.dp)
                         )
                     }
                 }
