@@ -24,9 +24,11 @@ import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.presentation.home.component.HomeCategoryAll
 import com.sopt.bunjang.presentation.home.component.HomeGlassesSection
+import com.sopt.bunjang.presentation.home.component.HomeKidultSection
 import com.sopt.bunjang.presentation.home.component.HomeMainToggle
 import com.sopt.bunjang.presentation.home.component.HomeRecentProduct
 import com.sopt.bunjang.presentation.home.component.HomeTabBar
+import com.sopt.bunjang.presentation.home.component.homeKidultList
 import com.sopt.bunjang.presentation.home.component.homeProductList
 import com.sopt.bunjang.presentation.home.component.homeRecentProductList
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
@@ -128,6 +130,13 @@ private fun HomeScreen(
                         .fillMaxWidth()
                         .aspectRatio(361f / 624f),
                     contentScale = ContentScale.Crop
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.height(16.dp))
+                HomeKidultSection(
+                    modifier = Modifier.fillMaxSize(),
+                    homeKidultList = homeKidultList
                 )
             }
         }
