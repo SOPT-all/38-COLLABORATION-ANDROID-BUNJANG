@@ -22,13 +22,13 @@ import kotlinx.coroutines.flow.collectLatest
 fun HomeRoute(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit,
-    navigateToProductDetail: () -> Unit,
+    navigateToProductDetail: (Long) -> Unit,
     viewModel: HomeViewModel = viewModel()
 ) {
     LaunchedEffect(viewModel) {
-        viewModel.sideEffect.collectLatest { effect ->
-            when (effect) {
-                is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail()
+        viewModel.sideEffect.collectLatest { sideEffect ->
+            when (sideEffect) {
+                is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail(sideEffect.id)
             }
         }
     }
@@ -42,7 +42,7 @@ fun HomeRoute(
 @Composable
 private fun HomeScreen(
     paddingValues: PaddingValues,
-    onProductItemClick: () -> Unit,
+    onProductItemClick: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -56,7 +56,7 @@ private fun HomeScreen(
                 TopBarIconButton(
                     iconRes = R.drawable.ic_top_bar_search,
                     // Todo: 상품 아이템 구현 후, 아이템 클릭 시 동작으로 이동 필요
-                    onClick = onProductItemClick
+                    onClick = { onProductItemClick(1L) } // 임시 ID 1L 전달
                 )
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_bell)
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)

@@ -9,8 +9,11 @@ import com.sopt.bunjang.core.navigation.Route
 import com.sopt.bunjang.presentation.productdetail.ProductDetailRoute
 import kotlinx.serialization.Serializable
 
-fun NavController.navigateProductDetail(navOptions: NavOptions? = null) {
-    navigate(ProductDetail, navOptions)
+fun NavController.navigateProductDetail(
+    productId: Long,
+    navOptions: NavOptions? = null
+) {
+    navigate(ProductDetail(productId = productId), navOptions)
 }
 
 fun NavGraphBuilder.productDetailGraph(
@@ -30,4 +33,6 @@ fun NavGraphBuilder.productDetailGraph(
 }
 
 @Serializable
-data object ProductDetail : Route
+data class ProductDetail(
+    val productId: Long
+) : Route

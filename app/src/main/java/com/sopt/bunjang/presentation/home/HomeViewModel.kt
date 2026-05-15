@@ -12,9 +12,9 @@ class HomeViewModel : ViewModel() {
     private val _sideEffect = MutableSharedFlow<HomeSideEffect>()
     val sideEffect: SharedFlow<HomeSideEffect> = _sideEffect.asSharedFlow()
 
-    fun onProductItemClick() {
+    fun onProductItemClick(id: Long) {
         viewModelScope.launch {
-            _sideEffect.emit(HomeSideEffect.NavigateToProductDetail)
+            _sideEffect.emit(HomeSideEffect.NavigateToProductDetail(id))
         }
     }
 }
