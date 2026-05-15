@@ -27,7 +27,6 @@ fun CartButton(
 ) {
     Row(
         modifier = modifier
-            .height(48.dp)
             .clip(shape = RoundedCornerShape(6.dp))
             .background(color = backgroundColor)
             .noRippleClickable(onClick)
