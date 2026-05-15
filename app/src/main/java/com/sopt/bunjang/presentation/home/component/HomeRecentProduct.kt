@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.ProductCard
@@ -116,6 +117,16 @@ fun HomeRecentProduct(
             contentDescription = null,
             tint = Color.Unspecified,
             modifier = Modifier.height(3.dp)
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewHomeRecentProduct() {
+    BunjangTheme {
+        HomeRecentProduct(
+            homeRecentProductList = homeRecentProductList
         )
     }
 }
