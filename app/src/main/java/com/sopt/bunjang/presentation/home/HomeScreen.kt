@@ -25,8 +25,10 @@ import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.presentation.home.component.HomeCategoryAll
 import com.sopt.bunjang.presentation.home.component.HomeGlassesSection
 import com.sopt.bunjang.presentation.home.component.HomeMainToggle
+import com.sopt.bunjang.presentation.home.component.HomeRecentProduct
 import com.sopt.bunjang.presentation.home.component.HomeTabBar
 import com.sopt.bunjang.presentation.home.component.homeProductList
+import com.sopt.bunjang.presentation.home.component.homeRecentProductList
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
 import kotlinx.coroutines.flow.collectLatest
 
@@ -106,8 +108,16 @@ private fun HomeScreen(
             }
             item {
                 Spacer(modifier = Modifier.height(24.dp))
-                HomeGlassesSection(modifier = Modifier.fillMaxSize(),
+                HomeGlassesSection(
+                    modifier = Modifier.fillMaxSize(),
                     homeProductList = homeProductList
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.height(24.dp))
+                HomeRecentProduct(
+                    modifier = Modifier.fillMaxSize(),
+                    homeRecentProductList = homeRecentProductList
                 )
             }
         }
