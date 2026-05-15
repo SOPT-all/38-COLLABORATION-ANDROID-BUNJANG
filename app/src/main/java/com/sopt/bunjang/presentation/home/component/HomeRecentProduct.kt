@@ -112,6 +112,7 @@ fun HomeRecentProduct(
         ) {
             items(homeRecentProductList) { item ->
                 ProductCard(
+                    modifier = Modifier.width(102.dp),
                     type = ProductCardType.SMALL,
                     imageUrl = item.imageUrl,
                     price = item.price,
@@ -119,12 +120,14 @@ fun HomeRecentProduct(
                 )
             }
         }
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(18.dp))
         Icon(
             painter = painterResource(id = R.drawable.ic_slider_left),
             contentDescription = null,
             tint = Color.Unspecified,
-            modifier = Modifier.height(3.dp)
+            modifier = Modifier
+                .height(3.dp)
+                .align(Alignment.CenterHorizontally)
         )
     }
 }
