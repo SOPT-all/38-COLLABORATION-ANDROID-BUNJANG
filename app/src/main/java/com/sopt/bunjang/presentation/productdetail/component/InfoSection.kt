@@ -110,6 +110,35 @@ fun InfoSection(
                 style = BunjangTheme.typography.body.body2,
             )
         }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        description.split("\n").forEachIndexed { index, line ->
+            if (index > 0) Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = line,
+                color = BunjangTheme.colors.black,
+                style = BunjangTheme.typography.title.title4
+            )
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Column {
+            Text(
+                text = "배송비",
+                color = BunjangTheme.colors.gray900,
+                style = BunjangTheme.typography.title.title6
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Text(
+                text = "일반 %,d원".format(deliveryFee),
+                color = BunjangTheme.colors.gray800,
+                style = BunjangTheme.typography.body.body1
+            )
+        }
     }
 }
 
