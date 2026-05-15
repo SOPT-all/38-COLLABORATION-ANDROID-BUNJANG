@@ -120,6 +120,16 @@ private fun HomeScreen(
                     homeRecentProductList = homeRecentProductList
                 )
             }
+            item {
+                Image(
+                    painter = painterResource(id = R.drawable.img_baseball_festa),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(361f / 624f),
+                    contentScale = ContentScale.Crop
+                )
+            }
         }
     }
 }
