@@ -1,5 +1,6 @@
 package com.sopt.bunjang.presentation.home.component
 
+import android.R.attr.text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -38,10 +40,10 @@ data class HomeProduct(
 )
 
 val homeProductList = listOf(
-    HomeProduct("", 100, "상품명"),
-    HomeProduct("", 100, "상품명"),
-    HomeProduct("", 100, "상품명"),
-    HomeProduct("", 200, "상품명"),
+    HomeProduct("", 100, "상품명", time = "1일 전", likes = 0),
+    HomeProduct("", 100, "상품명", time = "1일 전", likes = 0),
+    HomeProduct("", 100, "상품명", time = "1일 전", likes = 0),
+    HomeProduct("", 200, "상품명", time = "1일 전", likes = 0),
 )
 
 @Composable
@@ -49,7 +51,7 @@ fun HomeGlassesSection(
     modifier: Modifier = Modifier,
     homeProductList: List<HomeProduct>) {
     Column(modifier = modifier) {
-        Row(modifier = modifier) {
+        Row(modifier = modifier.padding(horizontal = 17.dp)) {
             Text(
                 text = "안경",
                 style = BunjangTheme.typography.title.title3,
@@ -64,12 +66,14 @@ fun HomeGlassesSection(
         }
         Spacer(modifier = Modifier.height(4.dp))
         Text(
+            modifier = modifier.padding(horizontal = 17.dp),
             text = "최근 본 카테고리의 상품 기반으로 추천해줘요",
             style = BunjangTheme.typography.body.body4,
             color = BunjangTheme.colors.gray500
         )
+        Spacer(modifier = Modifier.height(16.dp))
         FlowRow(
-            modifier = modifier,
+            modifier = Modifier.padding(horizontal = 16.5.dp),
             maxItemsInEachRow = 2,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -89,9 +93,10 @@ fun HomeGlassesSection(
         }
         Row(
             modifier = Modifier
+                .padding(horizontal = 18.5.dp, vertical = 16.dp)
+                .height(38.dp)
                 .fillMaxWidth()
                 .border(1.dp, BunjangTheme.colors.gray200, RoundedCornerShape(6.dp))
-                .padding(vertical = 12.dp)
                 .background(color = BunjangTheme.colors.white),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
