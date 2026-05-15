@@ -30,7 +30,10 @@ fun MakeOfferButton(
         modifier = modifier
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(6.dp))
-            .border(1.dp, BunjangTheme.colors.gray200, RoundedCornerShape(6.dp))
+            .border(
+                width = 1.dp,
+                color = BunjangTheme.colors.gray200,
+                shape = RoundedCornerShape(6.dp))
             .background(color = backgroundColor)
             .clickable(onClick = onClick)
             .padding(vertical = 10.dp),
