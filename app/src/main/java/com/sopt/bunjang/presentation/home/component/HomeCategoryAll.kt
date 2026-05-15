@@ -29,7 +29,7 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
 enum class CategoryItem(
-    @DrawableRes val iconRes: Int,
+    @param:DrawableRes val iconRes: Int,
     val label: String
 ) {
     MENU(R.drawable.ic_home_category_menu, "전체메뉴"),
