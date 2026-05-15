@@ -1,5 +1,6 @@
 package com.sopt.bunjang.core.designsystem.component
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -42,6 +43,7 @@ fun ProductCard(
     time: String? = null,
     isLike: Boolean = false,
     likes: Int? = null,
+    isAd: Boolean = false,
     onCardClick: () -> Unit = {},
     onLikeClick: () -> Unit = {}
 ) {
@@ -57,6 +59,10 @@ fun ProductCard(
     val titleStyle = when (type) {
         ProductCardType.BIG -> BunjangTheme.typography.body.body2
         ProductCardType.SMALL -> BunjangTheme.typography.label.label1
+    }
+    val adPadding = when (type) {
+        ProductCardType.BIG -> 11.dp
+        ProductCardType.SMALL -> 9.dp
     }
 
     Column(
@@ -93,7 +99,18 @@ fun ProductCard(
                     .size(24.dp)
                     .noRippleClickable { onLikeClick() }
             )
+
+            if (isAd) {
+                Image(
+                    painter = painterResource(R.drawable.ic_detail_page_ad),
+                    contentDescription = "ad",
+                    modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(bottom = adPadding, start = 10.dp)
+                )
+            }
         }
+
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
@@ -114,6 +131,7 @@ fun ProductCard(
 
         if (type == ProductCardType.BIG) {
             Spacer(modifier = Modifier.height(4.dp))
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -125,9 +143,12 @@ fun ProductCard(
                         text = it,
                         style = BunjangTheme.typography.label.label2,
                         color = BunjangTheme.colors.gray400,
-                        modifier = Modifier.padding(horizontal = 2.dp).padding(bottom = 8.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 2.dp)
+                            .padding(bottom = 8.dp)
                     )
                 }
+
                 Spacer(modifier = Modifier.weight(1f))
                 // 좋아요 표시: let 활용
                 likes?.let { count ->
@@ -140,7 +161,9 @@ fun ProductCard(
                                 .padding(bottom = 9.5.dp)
                                 .size(12.dp)
                         )
+
                         Spacer(modifier = Modifier.width(1.dp))
+
                         Text(
                             text = count.toString(),
                             style = BunjangTheme.typography.label.label2,
@@ -169,8 +192,11 @@ private fun ProductCardPreview() {
                 title = "상품명",
                 time = "1일 전",
                 likes = 0,
+                isLike = true,
+                isAd = true,
                 modifier = Modifier.width(160.dp)
             )
+
             ProductCard(
                 type = ProductCardType.SMALL,
                 imageUrl = "",
