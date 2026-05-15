@@ -113,7 +113,8 @@ fun MainScreen(
 
             purchaseGraph(
                 paddingValues = innerPadding,
-                navigateUp = appState::navigateUp
+                navigateUp = appState::navigateUp,
+                navigateToProductDetail = appState::navigateToProductDetail
             )
         }
     }
