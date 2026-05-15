@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
@@ -72,15 +73,20 @@ fun HomeCategoryItem(
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = item.label,
-            style = BunjangTheme.typography.body.body4,
-            color = BunjangTheme.colors.gray800,
-            maxLines = 2,
-            textAlign = TextAlign.Center,
-            overflow = TextOverflow.Ellipsis
-        )
-        Spacer(modifier = Modifier.height(15.dp))
+        Box(
+            modifier = Modifier
+                .heightIn(min = 30.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = item.label,
+                style = BunjangTheme.typography.body.body4,
+                color = BunjangTheme.colors.gray800,
+                maxLines = 2,
+                textAlign = TextAlign.Center,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
     }
 }
 
