@@ -3,10 +3,13 @@ package com.sopt.bunjang.presentation.home
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -21,8 +24,10 @@ import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.presentation.home.component.HomeCategoryAll
+import com.sopt.bunjang.presentation.home.component.HomeGlassesSection
 import com.sopt.bunjang.presentation.home.component.HomeMainToggle
 import com.sopt.bunjang.presentation.home.component.HomeTabBar
+import com.sopt.bunjang.presentation.home.component.homeProductList
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
 import kotlinx.coroutines.flow.collectLatest
 
@@ -98,6 +103,12 @@ private fun HomeScreen(
                         .fillMaxWidth()
                         .aspectRatio(327f / 106f),
                     contentScale = ContentScale.Crop
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.height(24.dp))
+                HomeGlassesSection(modifier = Modifier.fillMaxSize(),
+                    homeProductList = homeProductList
                 )
             }
         }
