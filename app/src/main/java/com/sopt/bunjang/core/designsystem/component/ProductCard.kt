@@ -42,6 +42,7 @@ fun ProductCard(
     time: String? = null,
     isLike: Boolean = false,
     likes: Int? = null,
+    isAd: Boolean = false,
     onCardClick: () -> Unit = {},
     onLikeClick: () -> Unit = {}
 ) {
@@ -80,6 +81,31 @@ fun ProductCard(
                     .aspectRatio(imageRatio)
                     .clip(RoundedCornerShape(4.dp))
             )
+
+            if (isAd) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(6.dp)
+                        .background(
+                            color = when (type) {
+                                ProductCardType.BIG -> BunjangTheme.colors.white_70
+                                ProductCardType.SMALL -> BunjangTheme.colors.white
+                            },
+                            shape = RoundedCornerShape(1.dp)
+                        )
+                        .padding(start = 5.dp, end = 4.dp, bottom = 1.dp)
+                ) {
+                    Text(
+                        text = "AD",
+                        style = BunjangTheme.typography.label.label3,
+                        color = when (type) {
+                            ProductCardType.BIG -> BunjangTheme.colors.gray600
+                            ProductCardType.SMALL -> BunjangTheme.colors.gray500
+                        }
+                    )
+                }
+            }
 
             Icon(
                 painter = painterResource(
