@@ -34,11 +34,12 @@ import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 data class HomeSimilarProduct(
     val imageUrl: String,
     val price: Int,
-    val title: String
+    val title: String,
+    val isAd: Boolean = false
 )
 
 val homeRecentProductList = listOf(
-    HomeSimilarProduct("", 100, "상품명"),
+    HomeSimilarProduct("", 100, "상품명", isAd = true),
     HomeSimilarProduct("", 100, "상품명"),
     HomeSimilarProduct("", 100, "상품명"),
     HomeSimilarProduct("", 200, "상품명")
@@ -118,7 +119,8 @@ fun HomeRecentProduct(
                     type = ProductCardType.SMALL,
                     imageUrl = item.imageUrl,
                     price = item.price,
-                    title = item.title
+                    title = item.title,
+                    isAd = item.isAd
                 )
             }
         }
