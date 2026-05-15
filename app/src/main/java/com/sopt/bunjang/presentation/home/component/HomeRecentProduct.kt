@@ -53,7 +53,9 @@ fun HomeRecentProduct(
 ) {
     Column(modifier = modifier) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 17.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 17.dp, end = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -62,18 +64,19 @@ fun HomeRecentProduct(
                 style = BunjangTheme.typography.title.title3,
                 color = BunjangTheme.colors.black
             )
-            Spacer(modifier = Modifier.width(121.dp))
-            Text(
-                text = "더보기",
-                style = BunjangTheme.typography.label.label1,
-                color = BunjangTheme.colors.gray700
-            )
-            Icon(
-                painter = painterResource(id = R.drawable.ic_more_18),
-                contentDescription = null,
-                tint = Color.Unspecified,
-                modifier = Modifier.size(15.dp)
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "더보기",
+                    style = BunjangTheme.typography.label.label1,
+                    color = BunjangTheme.colors.gray700
+                )
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_more_18),
+                    contentDescription = null,
+                    tint = Color.Unspecified,
+                    modifier = Modifier.size(15.dp)
+                )
+            }
         }
         Spacer(modifier = Modifier.height(8.dp))
         LazyRow(
