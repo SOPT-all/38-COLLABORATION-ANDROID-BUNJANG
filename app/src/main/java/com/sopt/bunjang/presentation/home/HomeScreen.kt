@@ -1,6 +1,7 @@
 package com.sopt.bunjang.presentation.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -65,6 +66,7 @@ private fun HomeScreen(
         modifier = modifier
             .fillMaxSize()
             .padding(paddingValues)
+            .background(color = BunjangTheme.colors.white)
     ) {
         BunjangTopBar(
             leftContent = { HomeMainToggle() },
