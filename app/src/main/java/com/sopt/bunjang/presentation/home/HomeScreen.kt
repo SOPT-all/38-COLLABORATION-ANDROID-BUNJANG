@@ -125,6 +125,7 @@ private fun HomeScreen(
                 )
             }
             item {
+                Spacer(modifier = Modifier.height(11.dp))
                 Image(
                     painter = painterResource(id = R.drawable.img_baseball_festa),
                     contentDescription = null,
@@ -140,6 +141,7 @@ private fun HomeScreen(
                     modifier = Modifier.fillMaxSize(),
                     homeKidultList = homeKidultList
                 )
+                Spacer(modifier = Modifier.height(21.dp))
             }
         }
     }
