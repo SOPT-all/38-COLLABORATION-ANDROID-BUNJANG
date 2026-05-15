@@ -7,11 +7,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,7 +36,7 @@ import com.sopt.bunjang.presentation.productdetail.component.MakeOfferButton
 
 @Composable
 fun ProductDetailCard(
-    imageUrl: String,
+    imageUrls: List<String>,
     title: String,
     price: Int,
     modifier: Modifier = Modifier,
@@ -42,6 +47,8 @@ fun ProductDetailCard(
     comments: Int? = null,
     onLikeClick: () -> Unit = {}
 ) {
+    val pagerState = rememberPagerState(pageCount = { imageUrls.size })
+
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -52,14 +59,22 @@ fun ProductDetailCard(
                 .fillMaxWidth()
                 .aspectRatio(361f / 360f)
         ) {
-            AsyncImage(
-                model = imageUrl,
-                contentDescription = title,
-                placeholder = ColorPainter(Color.LightGray),
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(361f / 360f)
+            HorizontalPager(
+                state = pagerState,
+                modifier = Modifier.fillMaxSize()
+            ) { page ->
+                AsyncImage(
+                    model = imageUrls[page],
+                    contentDescription = "Product Image ${page + 1}",
+                    placeholder = ColorPainter(Color.LightGray),
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+
+            DetailPagerIndicator(
+                pagerState = pagerState,
+                modifier = Modifier.align(Alignment.TopEnd)
             )
         }
 
@@ -101,13 +116,12 @@ fun ProductDetailCard(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Row(
+        MakeOfferButton(
+            text = "가격제안",
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 19.dp)
-        ) {
-            MakeOfferButton(text = "가격제안")
-        }
+        )
 
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -187,12 +201,34 @@ fun ProductDetailCard(
     }
 }
 
+@Composable
+private fun DetailPagerIndicator(
+    pagerState: PagerState,
+    modifier: Modifier = Modifier
+) {
+    val currentPage = pagerState.currentPage + 1
+    val totalPages = pagerState.pageCount
+
+    Text(
+        text = "$currentPage/$totalPages",
+        color = BunjangTheme.colors.white,
+        style = BunjangTheme.typography.body.body2_1,
+        modifier = modifier
+            .padding(horizontal = 13.dp, vertical = 15.dp)
+            .background(
+                color = BunjangTheme.colors.gray500_70,
+                shape = RoundedCornerShape(12.dp)
+            )
+            .padding(horizontal = 9.dp, vertical = 3.dp)
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 private fun ProductDetailCardPreview() {
     BunjangTheme {
         ProductDetailCard(
-            imageUrl = "",
+            imageUrls = listOf("", ""),
             price = 210000,
             title = "이펙터 코러스 GLCY",
             time = "1일 전",
