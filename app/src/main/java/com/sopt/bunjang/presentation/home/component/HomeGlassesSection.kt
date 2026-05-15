@@ -33,11 +33,12 @@ data class HomeGlassesProduct(
     val title: String,
     val time: String? = null,
     val isLike: Boolean = false,
-    val likes: Int? = null
+    val likes: Int? = null,
+    val isAd: Boolean = false
 )
 
 val homeProductList = listOf(
-    HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
+    HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
     HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
     HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
     HomeGlassesProduct("", 200, "상품명", time = "1일 전", likes = 0),
@@ -84,7 +85,8 @@ fun HomeGlassesSection(
                     title = item.title,
                     time = item.time,
                     isLike = item.isLike,
-                    likes = item.likes
+                    likes = item.likes,
+                    isAd = item.isAd
                 )
             }
         }
