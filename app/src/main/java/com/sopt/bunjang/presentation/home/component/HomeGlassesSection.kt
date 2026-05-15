@@ -92,7 +92,8 @@ fun HomeGlassesSection(
         }
         Row(
             modifier = Modifier
-                .padding(horizontal = 18.5.dp, vertical = 16.dp)
+                .padding(horizontal = 18.5.dp)
+                .padding(top = 16.dp)
                 .height(38.dp)
                 .fillMaxWidth()
                 .border(1.dp, BunjangTheme.colors.gray200, RoundedCornerShape(6.dp))
