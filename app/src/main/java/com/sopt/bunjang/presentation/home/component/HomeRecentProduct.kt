@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextFieldDefaults.contentPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -97,12 +98,13 @@ fun HomeRecentProduct(
                 }
             }
         }
+        Spacer(modifier = Modifier.height(16.dp))
         LazyRow(
             modifier = modifier,
             contentPadding = PaddingValues(horizontal = 17.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(homeRecentProductList) { item ->
+            homeRecentProductList.forEach { item ->
                 ProductCard(
                     modifier = Modifier.weight(1f),
                     type = ProductCardType.SMALL,
@@ -112,6 +114,7 @@ fun HomeRecentProduct(
                 )
             }
         }
+        Spacer(modifier = Modifier.height(8.dp))
         Icon(
             painter = painterResource(id = R.drawable.ic_slider_left),
             contentDescription = null,
