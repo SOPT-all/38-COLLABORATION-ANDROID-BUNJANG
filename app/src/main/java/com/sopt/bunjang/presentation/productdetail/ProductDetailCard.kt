@@ -27,6 +27,7 @@ import coil.compose.AsyncImage
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.core.extension.noRippleClickable
+import com.sopt.bunjang.presentation.productdetail.component.MakeOfferButton
 
 @Composable
 fun ProductDetailCard(
@@ -99,6 +100,14 @@ fun ProductDetailCard(
         }
 
         Spacer(modifier = Modifier.height(16.dp))
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 19.dp)
+        ) {
+            MakeOfferButton(text = "가격제안")
+        }
 
         Spacer(modifier = Modifier.height(12.dp))
 
