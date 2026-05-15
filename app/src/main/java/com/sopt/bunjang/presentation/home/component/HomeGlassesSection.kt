@@ -27,7 +27,7 @@ import com.sopt.bunjang.core.designsystem.component.ProductCard
 import com.sopt.bunjang.core.designsystem.component.ProductCardType
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
-data class HomeProduct(
+data class HomeGlassesProduct(
     val imageUrl: String,
     val price: Int,
     val title: String,
@@ -37,16 +37,16 @@ data class HomeProduct(
 )
 
 val homeProductList = listOf(
-    HomeProduct("", 100, "상품명", time = "1일 전", likes = 0),
-    HomeProduct("", 100, "상품명", time = "1일 전", likes = 0),
-    HomeProduct("", 100, "상품명", time = "1일 전", likes = 0),
-    HomeProduct("", 200, "상품명", time = "1일 전", likes = 0),
+    HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
+    HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
+    HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
+    HomeGlassesProduct("", 200, "상품명", time = "1일 전", likes = 0),
 )
 
 @Composable
 fun HomeGlassesSection(
     modifier: Modifier = Modifier,
-    homeProductList: List<HomeProduct>) {
+    homeProductList: List<HomeGlassesProduct>) {
     Column(modifier = modifier) {
         Row(modifier = modifier.padding(horizontal = 17.dp)) {
             Text(
