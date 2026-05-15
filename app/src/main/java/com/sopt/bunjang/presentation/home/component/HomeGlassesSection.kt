@@ -1,6 +1,5 @@
 package com.sopt.bunjang.presentation.home.component
 
-import android.R.attr.text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -8,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -28,7 +26,6 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.ProductCard
 import com.sopt.bunjang.core.designsystem.component.ProductCardType
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-import com.sopt.bunjang.core.extension.noRippleClickable
 
 data class HomeProduct(
     val imageUrl: String,
