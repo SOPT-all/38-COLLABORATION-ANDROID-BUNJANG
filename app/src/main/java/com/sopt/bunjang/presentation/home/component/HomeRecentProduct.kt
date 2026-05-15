@@ -104,9 +104,8 @@ fun HomeRecentProduct(
             contentPadding = PaddingValues(horizontal = 17.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            homeRecentProductList.forEach { item ->
+            items(homeRecentProductList) { item ->
                 ProductCard(
-                    modifier = Modifier.weight(1f),
                     type = ProductCardType.SMALL,
                     imageUrl = item.imageUrl,
                     price = item.price,
