@@ -87,12 +87,11 @@ fun ProductCard(
                     .clip(RoundedCornerShape(4.dp))
             )
 
-            Icon(
+            Image(
                 painter = painterResource(
-                    id = if (isLike) R.drawable.ic_home_fillheart else R.drawable.ic_heart_outlined_24
+                    id = if (isLike) R.drawable.ic_heart_filled_24 else R.drawable.ic_heart_outlined_24
                 ),
                 contentDescription = "like",
-                tint = BunjangTheme.colors.white,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(8.dp)
