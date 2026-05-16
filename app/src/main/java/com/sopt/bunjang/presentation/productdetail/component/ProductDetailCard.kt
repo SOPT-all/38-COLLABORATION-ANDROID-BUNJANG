@@ -1,4 +1,4 @@
-package com.sopt.bunjang.presentation.productdetail
+package com.sopt.bunjang.presentation.productdetail.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -32,7 +32,6 @@ import coil.compose.AsyncImage
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.core.extension.noRippleClickable
-import com.sopt.bunjang.presentation.productdetail.component.MakeOfferButton
 
 @Composable
 fun ProductDetailCard(
