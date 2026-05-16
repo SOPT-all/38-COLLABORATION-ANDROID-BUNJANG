@@ -84,7 +84,7 @@ private fun HomeScreen(
 
         LazyColumn {
             item {
-                HomeTabBar(modifier = Modifier.fillMaxSize())
+                HomeTabBar(modifier = Modifier.fillMaxWidth())
             }
             item {
                 Image(
@@ -114,7 +114,7 @@ private fun HomeScreen(
             item {
                 Spacer(modifier = Modifier.height(24.dp))
                 HomeGlassesSection(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxWidth(),
                     homeProductList = homeProductList.toImmutableList()
                 )
             }
@@ -139,7 +139,7 @@ private fun HomeScreen(
             item {
                 Spacer(modifier = Modifier.height(16.dp))
                 HomeKidultSection(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxWidth(),
                     homeKidultList = homeKidultList
                 )
                 Spacer(modifier = Modifier.height(21.dp))
