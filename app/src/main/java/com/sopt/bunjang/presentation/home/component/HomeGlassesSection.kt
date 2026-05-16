@@ -96,7 +96,10 @@ fun HomeGlassesSection(
                 .padding(top = 16.dp)
                 .height(38.dp)
                 .fillMaxWidth()
-                .border(1.dp, BunjangTheme.colors.gray200, RoundedCornerShape(6.dp))
+                .border(
+                    width = 1.dp,
+                    color = BunjangTheme.colors.gray200,
+                    shape = RoundedCornerShape(6.dp))
                 .background(color = BunjangTheme.colors.white),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
