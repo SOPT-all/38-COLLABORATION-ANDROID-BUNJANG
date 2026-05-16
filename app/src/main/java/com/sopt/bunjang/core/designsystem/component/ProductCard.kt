@@ -59,6 +59,14 @@ fun ProductCard(
         ProductCardType.BIG -> BunjangTheme.typography.body.body2
         ProductCardType.SMALL -> BunjangTheme.typography.label.label1
     }
+    val adTextColor = when (type) {
+        ProductCardType.BIG -> BunjangTheme.colors.gray600
+        ProductCardType.SMALL -> BunjangTheme.colors.gray500
+    }
+    val adBoxColor = when (type) {
+        ProductCardType.BIG -> BunjangTheme.colors.white_70
+        ProductCardType.SMALL -> BunjangTheme.colors.white
+    }
 
     Column(
         modifier = modifier
@@ -88,10 +96,7 @@ fun ProductCard(
                         .align(Alignment.BottomStart)
                         .padding(6.dp)
                         .background(
-                            color = when (type) {
-                                ProductCardType.BIG -> BunjangTheme.colors.white_70
-                                ProductCardType.SMALL -> BunjangTheme.colors.white
-                            },
+                            color = adBoxColor,
                             shape = RoundedCornerShape(1.dp)
                         )
                         .padding(start = 5.dp, end = 4.dp, bottom = 1.dp)
@@ -99,10 +104,7 @@ fun ProductCard(
                     Text(
                         text = "AD",
                         style = BunjangTheme.typography.label.label3,
-                        color = when (type) {
-                            ProductCardType.BIG -> BunjangTheme.colors.gray600
-                            ProductCardType.SMALL -> BunjangTheme.colors.gray500
-                        }
+                        color = adTextColor
                     )
                 }
             }
