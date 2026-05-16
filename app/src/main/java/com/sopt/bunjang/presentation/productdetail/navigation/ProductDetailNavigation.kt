@@ -20,14 +20,16 @@ fun NavGraphBuilder.productDetailGraph(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit,
     navigateToHome: () -> Unit,
-    navigateToPurchase: () -> Unit
+    navigateToPurchase: () -> Unit,
+    navigateToProductDetail: (Long) -> Unit
 ) {
     composable<ProductDetail> {
         ProductDetailRoute(
             paddingValues = paddingValues,
             navigateUp = navigateUp,
             navigateToHome = navigateToHome,
-            navigateToPurchase = navigateToPurchase
+            navigateToPurchase = navigateToPurchase,
+            navigateToProductDetail = navigateToProductDetail
         )
     }
 }

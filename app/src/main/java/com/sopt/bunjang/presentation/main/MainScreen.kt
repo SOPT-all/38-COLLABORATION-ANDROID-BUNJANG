@@ -108,7 +108,8 @@ fun MainScreen(
                 paddingValues = innerPadding,
                 navigateUp = appState::navigateUp,
                 navigateToHome = appState::navigateToHome,
-                navigateToPurchase = appState::navigateToPurchase
+                navigateToPurchase = appState::navigateToPurchase,
+                navigateToProductDetail = appState::navigateToProductDetail
             )
 
             purchaseGraph(
