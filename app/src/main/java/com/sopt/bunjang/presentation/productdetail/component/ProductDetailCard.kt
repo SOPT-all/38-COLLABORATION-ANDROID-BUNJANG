@@ -69,12 +69,12 @@ fun ProductDetailCard(
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
-            }
+            } //이미지
 
             DetailPagerIndicator(
                 pagerState = pagerState,
                 modifier = Modifier.align(Alignment.TopEnd)
-            )
+            ) //이미지 페이지 표시
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -90,14 +90,14 @@ fun ProductDetailCard(
                 Text(
                     text = title,
                     style = BunjangTheme.typography.title.title4
-                )
+                ) //상품명
 
                 Spacer(modifier = Modifier.height(2.dp))
 
                 Text(
                     text = "%,d".format(price) + "원",
                     style = BunjangTheme.typography.title.title1
-                )
+                ) //가격
             }
 
             Icon(
@@ -107,10 +107,9 @@ fun ProductDetailCard(
                 contentDescription = "like",
                 tint = Color.Unspecified,
                 modifier = Modifier
-                    .padding(vertical = 5.5.dp)
                     .size(39.dp)
                     .noRippleClickable { onLikeClick() }
-            )
+            ) //찜
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -120,7 +119,7 @@ fun ProductDetailCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 19.dp)
-        )
+        ) //가격제안 버튼
 
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -138,7 +137,7 @@ fun ProductDetailCard(
                     style = BunjangTheme.typography.body.body3,
                     color = BunjangTheme.colors.gray300,
                 )
-            }
+            } //시간
 
             Spacer(modifier = Modifier.weight(1f))
 
@@ -157,7 +156,7 @@ fun ProductDetailCard(
                     style = BunjangTheme.typography.body.body3,
                     color = BunjangTheme.colors.gray300
                 )
-            }
+            } //조회수
 
             Spacer(modifier = Modifier.width(6.dp))
 
@@ -176,7 +175,7 @@ fun ProductDetailCard(
                     style = BunjangTheme.typography.body.body3,
                     color = BunjangTheme.colors.gray300
                 )
-            }
+            } //찜 수
 
             Spacer(modifier = Modifier.width(6.dp))
 
@@ -195,7 +194,7 @@ fun ProductDetailCard(
                     style = BunjangTheme.typography.body.body3,
                     color = BunjangTheme.colors.gray300
                 )
-            }
+            } //댓글 수
         }
     }
 }
