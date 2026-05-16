@@ -1,0 +1,14 @@
+package com.sopt.bunjang.data.dummy.model
+
+import androidx.compose.runtime.Immutable
+
+@Immutable
+data class HomeGlassesProduct(
+    val imageUrl: String,
+    val price: Int,
+    val title: String,
+    val time: String? = null,
+    val isLike: Boolean = false,
+    val likes: Int? = null,
+    val isAd: Boolean = false
+)

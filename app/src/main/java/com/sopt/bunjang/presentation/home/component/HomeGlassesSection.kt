@@ -16,7 +16,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,17 +26,7 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.ProductCard
 import com.sopt.bunjang.core.designsystem.component.ProductCardType
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-
-@Immutable
-data class HomeGlassesProduct(
-    val imageUrl: String,
-    val price: Int,
-    val title: String,
-    val time: String? = null,
-    val isLike: Boolean = false,
-    val likes: Int? = null,
-    val isAd: Boolean = false
-)
+import com.sopt.bunjang.data.dummy.model.HomeGlassesProduct
 
 val homeProductList = listOf(
     HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
