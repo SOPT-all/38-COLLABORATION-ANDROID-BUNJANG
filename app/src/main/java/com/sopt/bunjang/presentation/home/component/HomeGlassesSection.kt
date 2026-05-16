@@ -30,13 +30,6 @@ import com.sopt.bunjang.data.dummy.model.HomeGlassesProduct
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 
-val homeProductList = listOf(
-    HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
-    HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
-    HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
-    HomeGlassesProduct("", 200, "상품명", time = "1일 전", likes = 0),
-)
-
 @Composable
 fun HomeGlassesSection(
     modifier: Modifier = Modifier,
@@ -122,6 +115,12 @@ fun HomeGlassesSection(
 @Composable
 private fun PreviewHomeGlassesSection() {
     BunjangTheme {
+        val homeProductList = listOf(
+            HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
+            HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
+            HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
+            HomeGlassesProduct("", 200, "상품명", time = "1일 전", likes = 0),
+        )
         HomeGlassesSection(
             homeProductList = homeProductList.toImmutableList()
         )

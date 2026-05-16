@@ -23,6 +23,7 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import com.sopt.bunjang.data.dummy.model.HomeGlassesProduct
 import com.sopt.bunjang.presentation.home.component.HomeCategoryAll
 import com.sopt.bunjang.presentation.home.component.HomeGlassesSection
 import com.sopt.bunjang.presentation.home.component.HomeKidultSection
@@ -30,7 +31,6 @@ import com.sopt.bunjang.presentation.home.component.HomeMainToggle
 import com.sopt.bunjang.presentation.home.component.HomeRecentProduct
 import com.sopt.bunjang.presentation.home.component.HomeTabBar
 import com.sopt.bunjang.presentation.home.component.homeKidultList
-import com.sopt.bunjang.presentation.home.component.homeProductList
 import com.sopt.bunjang.presentation.home.component.homeRecentProductList
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
 import kotlinx.collections.immutable.toImmutableList
@@ -63,6 +63,13 @@ private fun HomeScreen(
     onProductItemClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val homeProductList = listOf(
+        HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
+        HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
+        HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
+        HomeGlassesProduct("", 200, "상품명", time = "1일 전", likes = 0),
+    )
+
     Column(
         modifier = modifier
             .fillMaxSize()
