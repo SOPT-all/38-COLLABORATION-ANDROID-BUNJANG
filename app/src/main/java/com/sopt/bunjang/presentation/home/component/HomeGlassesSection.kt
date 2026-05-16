@@ -27,6 +27,8 @@ import com.sopt.bunjang.core.designsystem.component.ProductCard
 import com.sopt.bunjang.core.designsystem.component.ProductCardType
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.data.dummy.model.HomeGlassesProduct
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 val homeProductList = listOf(
     HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
@@ -38,7 +40,8 @@ val homeProductList = listOf(
 @Composable
 fun HomeGlassesSection(
     modifier: Modifier = Modifier,
-    homeProductList: List<HomeGlassesProduct>) {
+    homeProductList: ImmutableList<HomeGlassesProduct>
+) {
     Column(modifier = modifier) {
         Row(modifier = modifier.padding(horizontal = 17.dp)) {
             Text(
@@ -120,7 +123,7 @@ fun HomeGlassesSection(
 private fun PreviewHomeGlassesSection() {
     BunjangTheme {
         HomeGlassesSection(
-            homeProductList = homeProductList
+            homeProductList = homeProductList.toImmutableList()
         )
     }
 }

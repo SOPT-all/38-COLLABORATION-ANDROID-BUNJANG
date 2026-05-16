@@ -33,6 +33,7 @@ import com.sopt.bunjang.presentation.home.component.homeKidultList
 import com.sopt.bunjang.presentation.home.component.homeProductList
 import com.sopt.bunjang.presentation.home.component.homeRecentProductList
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -114,7 +115,7 @@ private fun HomeScreen(
                 Spacer(modifier = Modifier.height(24.dp))
                 HomeGlassesSection(
                     modifier = Modifier.fillMaxSize(),
-                    homeProductList = homeProductList
+                    homeProductList = homeProductList.toImmutableList()
                 )
             }
             item {
