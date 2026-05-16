@@ -1,4 +1,4 @@
-package com.sopt.bunjang.presentation.home
+package com.sopt.bunjang.data.dummy.model
 
 import androidx.annotation.DrawableRes
 import com.sopt.bunjang.R
