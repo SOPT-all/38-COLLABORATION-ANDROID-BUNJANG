@@ -2,6 +2,7 @@ package com.sopt.bunjang.presentation.productdetail.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -44,7 +45,10 @@ fun FollowButton(
                 shape = RoundedCornerShape(3.dp)
             )
             .noRippleClickable { onClick() }
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(
+                horizontal = if (isFollowing) 10.dp else 14.dp,
+                vertical = 9.dp
+            )
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -73,10 +77,15 @@ fun FollowButton(
 @Composable
 private fun FollowButtonPreview() {
     BunjangTheme {
-        var isFollowing by remember { mutableStateOf(false) }
-        FollowButton(
-            isFollowing = isFollowing,
-            onClick = { isFollowing = !isFollowing }
-        )
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            FollowButton(
+                isFollowing = false,
+                onClick = {}
+            )
+            FollowButton(
+                isFollowing = true,
+                onClick = {}
+            )
+        }
     }
 }
