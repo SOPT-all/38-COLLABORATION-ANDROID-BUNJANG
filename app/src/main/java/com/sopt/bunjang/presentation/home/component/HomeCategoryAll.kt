@@ -50,7 +50,7 @@ enum class CategoryItem(
 }
 
 @Composable
-fun HomeCategoryItem(
+private fun HomeCategoryItem(
     item: CategoryItem,
     modifier: Modifier = Modifier
 ) {
