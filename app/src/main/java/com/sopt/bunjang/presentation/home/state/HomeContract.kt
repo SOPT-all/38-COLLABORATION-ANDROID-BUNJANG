@@ -20,22 +20,22 @@ data class HomeUiState(
     companion object {
         val dummy = HomeUiState(
             glassesProducts = persistentListOf(
-                HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
-                HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
-                HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
-                HomeGlassesProduct("", 200, "상품명", time = "1일 전", likes = 0)
+                HomeGlassesProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
+                HomeGlassesProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
+                HomeGlassesProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
+                HomeGlassesProduct("https://picsum.photos/200/300", 200, "상품명", time = "1일 전", likes = 0)
             ),
             kidultProducts = persistentListOf(
-                HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
-                HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
-                HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
-                HomeKidultProduct("", 200, "상품명", time = "1일 전", likes = 0)
+                HomeKidultProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
+                HomeKidultProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
+                HomeKidultProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
+                HomeKidultProduct("https://picsum.photos/200/300", 200, "상품명", time = "1일 전", likes = 0)
             ),
             similarProducts = persistentListOf(
-                HomeSimilarProduct("", 100, "상품명", isAd = true),
-                HomeSimilarProduct("", 100, "상품명"),
-                HomeSimilarProduct("", 100, "상품명"),
-                HomeSimilarProduct("", 200, "상품명")
+                HomeSimilarProduct("https://picsum.photos/200/300", 100, "상품명", isAd = true),
+                HomeSimilarProduct("https://picsum.photos/200/300", 100, "상품명"),
+                HomeSimilarProduct("https://picsum.photos/200/300", 100, "상품명"),
+                HomeSimilarProduct("https://picsum.photos/200/300", 200, "상품명")
             )
         )
     }
