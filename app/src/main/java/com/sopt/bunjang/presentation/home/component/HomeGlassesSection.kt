@@ -26,7 +26,7 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.ProductCard
 import com.sopt.bunjang.core.designsystem.component.ProductCardType
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-import com.sopt.bunjang.data.dummy.model.HomeGlassesProduct
+import com.sopt.bunjang.presentation.home.model.HomeGlassesProduct
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 

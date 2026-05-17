@@ -23,7 +23,7 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-import com.sopt.bunjang.data.dummy.model.HomeGlassesProduct
+import com.sopt.bunjang.presentation.home.model.HomeGlassesProduct
 import com.sopt.bunjang.presentation.home.component.HomeCategoryAll
 import com.sopt.bunjang.presentation.home.component.HomeGlassesSection
 import com.sopt.bunjang.presentation.home.component.HomeKidultSection

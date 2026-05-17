@@ -1,4 +1,4 @@
-package com.sopt.bunjang.data.dummy.model
+package com.sopt.bunjang.presentation.home.model
 
 import androidx.compose.runtime.Immutable
 
