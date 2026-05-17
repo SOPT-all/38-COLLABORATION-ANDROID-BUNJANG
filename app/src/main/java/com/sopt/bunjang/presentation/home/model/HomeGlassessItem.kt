@@ -1,8 +1,5 @@
 package com.sopt.bunjang.presentation.home.model
 
-import androidx.compose.runtime.Immutable
-
-@Immutable
 data class HomeGlassesProduct(
     val imageUrl: String,
     val price: Int,

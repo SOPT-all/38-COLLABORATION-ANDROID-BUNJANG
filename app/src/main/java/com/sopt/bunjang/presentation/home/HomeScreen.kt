@@ -13,17 +13,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-import com.sopt.bunjang.presentation.home.model.HomeGlassesProduct
 import com.sopt.bunjang.presentation.home.component.HomeCategoryAll
 import com.sopt.bunjang.presentation.home.component.HomeGlassesSection
 import com.sopt.bunjang.presentation.home.component.HomeKidultSection
@@ -33,7 +34,7 @@ import com.sopt.bunjang.presentation.home.component.HomeTabBar
 import com.sopt.bunjang.presentation.home.component.homeKidultList
 import com.sopt.bunjang.presentation.home.component.homeRecentProductList
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
-import kotlinx.collections.immutable.toImmutableList
+import com.sopt.bunjang.presentation.home.state.HomeUiState
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -43,6 +44,8 @@ fun HomeRoute(
     navigateToProductDetail: () -> Unit,
     viewModel: HomeViewModel = viewModel()
 ) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     LaunchedEffect(viewModel) {
         viewModel.sideEffect.collectLatest { effect ->
             when (effect) {
@@ -53,6 +56,7 @@ fun HomeRoute(
 
     HomeScreen(
         paddingValues = paddingValues,
+        uiState = uiState,
         onProductItemClick = viewModel::onProductItemClick
     )
 }
@@ -61,14 +65,10 @@ fun HomeRoute(
 private fun HomeScreen(
     paddingValues: PaddingValues,
     onProductItemClick: () -> Unit,
+    uiState: HomeUiState,
     modifier: Modifier = Modifier
 ) {
-    val homeProductList = listOf(
-        HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
-        HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
-        HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
-        HomeGlassesProduct("", 200, "상품명", time = "1일 전", likes = 0),
-    )
+    uiState.glassesProducts
 
     Column(
         modifier = modifier
@@ -122,10 +122,11 @@ private fun HomeScreen(
                 Spacer(modifier = Modifier.height(24.dp))
                 HomeGlassesSection(
                     modifier = Modifier.fillMaxWidth(),
-                    homeProductList = homeProductList.toImmutableList()
+                    homeProductList = uiState.glassesProducts
                 )
             }
             item {
+
                 Spacer(modifier = Modifier.height(24.dp))
                 HomeRecentProduct(
                     modifier = Modifier.fillMaxSize(),
@@ -161,7 +162,8 @@ private fun HomeScreenPreview() {
     BunjangTheme {
         HomeScreen(
             paddingValues = PaddingValues(),
-            onProductItemClick = {}
+            onProductItemClick = {},
+            uiState = HomeUiState.dummy
         )
     }
 }
