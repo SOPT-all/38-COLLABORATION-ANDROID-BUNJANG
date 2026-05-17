@@ -67,7 +67,7 @@ fun HomeRecentProduct(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_more_18),
                     contentDescription = null,
-                    tint = Color.Unspecified,
+                    tint = BunjangTheme.colors.gray700,
                     modifier = Modifier.size(15.dp)
                 )
             }
