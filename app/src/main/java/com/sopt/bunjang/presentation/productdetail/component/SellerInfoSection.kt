@@ -12,6 +12,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,6 +47,8 @@ fun SellerInfoSection(
             .fillMaxWidth()
             .padding(horizontal = 19.5.dp, vertical = 24.dp)
     ) {
+        var following by remember { mutableStateOf(isFollowing) }
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -88,8 +94,8 @@ fun SellerInfoSection(
             }
 
             FollowButton(
-                isFollowing = isFollowing,
-                onClick = onFollowClick
+                isFollowing = following,
+                onClick = { following = !following}
             )
         }
 
