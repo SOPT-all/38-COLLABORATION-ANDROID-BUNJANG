@@ -81,7 +81,6 @@ fun HomeGlassesSection(
             modifier = Modifier
                 .padding(horizontal = 18.5.dp)
                 .padding(top = 16.dp)
-                .height(38.dp)
                 .fillMaxWidth()
                 .border(
                     width = 1.dp,
@@ -94,7 +93,8 @@ fun HomeGlassesSection(
             Text(
                 text = "혁준마님 취향 상품 357개 ",
                 style = BunjangTheme.typography.body.body2,
-                color = BunjangTheme.colors.black
+                color = BunjangTheme.colors.black,
+                modifier = Modifier.padding(vertical = 11.dp)
             )
             Text(
                 text = "더 보기",
