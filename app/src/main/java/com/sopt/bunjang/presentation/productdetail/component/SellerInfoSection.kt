@@ -1,5 +1,6 @@
 package com.sopt.bunjang.presentation.productdetail.component
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -8,6 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,20 +23,27 @@ import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
+data class StoreProduct(
+    val imageUrl: String,
+    val title: String,
+    val price: Int,
+    val likes: Int? = null
+)
 @Composable
 fun SellerInfoSection(
+    modifier: Modifier = Modifier,
     storeName: String,
     rating: Double,
     reviewCount: Int,
     transactionCount: Int,
+    products: List<StoreProduct>,
     isFollowing: Boolean = false,
     onFollowClick: () -> Unit = {},
-    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 19.5.dp)
+            .padding(horizontal = 19.5.dp, vertical = 24.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -84,6 +94,22 @@ fun SellerInfoSection(
                 onClick = onFollowClick
             )
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            products.take(4).forEach { product ->
+                StoreProductCard(
+                    imageUrl = product.imageUrl,
+                    title = product.title,
+                    price = product.price,
+                    likes = product.likes,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+        }
     }
 }
 
@@ -96,7 +122,13 @@ private fun SellerInfoSectionPreview() {
             rating = 5.0,
             reviewCount = 15,
             transactionCount = 26,
-            isFollowing = false
+            isFollowing = false,
+            products = listOf(
+                StoreProduct("", "상품명", 100000, 0),
+                StoreProduct("", "상품명", 100000, 0),
+                StoreProduct("", "상품명", 100000, 0),
+                StoreProduct("", "상품명", 100000, 0),
+            )
         )
     }
 }
