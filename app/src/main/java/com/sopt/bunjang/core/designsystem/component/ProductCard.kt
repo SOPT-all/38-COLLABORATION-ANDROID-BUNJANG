@@ -94,7 +94,7 @@ fun ProductCard(
                 Box(
                     modifier = Modifier
                         .align(Alignment.BottomStart)
-                        .padding(6.dp)
+                        .padding(start = 10.dp, bottom = 10.dp)
                         .background(
                             color = adBoxColor,
                             shape = RoundedCornerShape(1.dp)
