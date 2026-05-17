@@ -16,7 +16,6 @@ import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.presentation.home.component.HomeMainToggle
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
-import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun HomeRoute(
@@ -25,8 +24,8 @@ fun HomeRoute(
     navigateToProductDetail: (Long) -> Unit,
     viewModel: HomeViewModel = viewModel()
 ) {
-    LaunchedEffect(viewModel) {
-        viewModel.sideEffect.collectLatest { sideEffect ->
+    LaunchedEffect(Unit) {
+        viewModel.sideEffect.collect { sideEffect ->
             when (sideEffect) {
                 is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail(sideEffect.id)
             }

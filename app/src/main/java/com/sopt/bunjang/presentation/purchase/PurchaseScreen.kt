@@ -26,7 +26,6 @@ import com.sopt.bunjang.presentation.purchase.component.PurchaseSuccessMessage
 import com.sopt.bunjang.presentation.purchase.model.PurchaseProductItem
 import com.sopt.bunjang.presentation.purchase.state.PurchaseSideEffect
 import com.sopt.bunjang.presentation.purchase.state.PurchaseUiState
-import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun PurchaseRoute(
@@ -37,8 +36,8 @@ fun PurchaseRoute(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    LaunchedEffect(viewModel) {
-        viewModel.sideEffect.collectLatest { sideEffect ->
+    LaunchedEffect(Unit) {
+        viewModel.sideEffect.collect { sideEffect ->
             when (sideEffect) {
                 is PurchaseSideEffect.NavigateToProductDetail -> navigateToProductDetail(sideEffect.id)
             }

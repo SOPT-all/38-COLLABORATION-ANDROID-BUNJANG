@@ -30,7 +30,6 @@ import com.sopt.bunjang.presentation.productdetail.component.ProductRecommendSec
 import com.sopt.bunjang.presentation.productdetail.component.ProductSimilarSection
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailUiState
-import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun ProductDetailRoute(
@@ -43,8 +42,8 @@ fun ProductDetailRoute(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    LaunchedEffect(viewModel) {
-        viewModel.sideEffect.collectLatest { sideEffect ->
+    LaunchedEffect(Unit) {
+        viewModel.sideEffect.collect { sideEffect ->
             when (sideEffect) {
                 is ProductDetailSideEffect.NavigateUp -> navigateUp()
                 is ProductDetailSideEffect.NavigateToHome -> navigateToHome()
