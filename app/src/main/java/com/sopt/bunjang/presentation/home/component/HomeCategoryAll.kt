@@ -40,7 +40,6 @@ private fun HomeCategoryItem(
         Box(
             modifier = Modifier
                 .padding(top = 16.dp)
-                .size(52.dp)
                 .background(color = BunjangTheme.colors.gray100, RoundedCornerShape(16.dp)),
             contentAlignment = Alignment.Center
         ) {
