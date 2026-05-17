@@ -39,7 +39,8 @@ fun StoreProductCard(
         AsyncImage(
             model = imageUrl,
             contentDescription = null,
-            placeholder = ColorPainter(Color.LightGray),
+            placeholder = ColorPainter(Color.LightGray), //프리뷰 확인
+            error = ColorPainter(Color.LightGray), //에뮬레이터 확인
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxWidth()
