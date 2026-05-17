@@ -118,7 +118,8 @@ private fun HomeScreen(
                 Spacer(modifier = Modifier.height(24.dp))
                 HomeGlassesSection(
                     modifier = Modifier.fillMaxWidth(),
-                    homeProductList = uiState.glassesProducts
+                    homeProductList = uiState.glassesProducts,
+                    onProductClick = onProductItemClick
                 )
             }
             item {

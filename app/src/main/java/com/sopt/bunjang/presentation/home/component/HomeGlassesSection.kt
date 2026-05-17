@@ -33,7 +33,8 @@ import kotlinx.collections.immutable.toImmutableList
 @Composable
 fun HomeGlassesSection(
     modifier: Modifier = Modifier,
-    homeProductList: ImmutableList<HomeGlassesProduct>
+    homeProductList: ImmutableList<HomeGlassesProduct>,
+    onProductClick: () -> Unit = {}
 ) {
     Column(modifier = modifier) {
         Row(modifier = modifier.padding(horizontal = 17.dp)) {
@@ -73,7 +74,8 @@ fun HomeGlassesSection(
                     time = item.time,
                     isLike = item.isLike,
                     likes = item.likes,
-                    isAd = item.isAd
+                    isAd = item.isAd,
+                    onCardClick = onProductClick
                 )
             }
         }
