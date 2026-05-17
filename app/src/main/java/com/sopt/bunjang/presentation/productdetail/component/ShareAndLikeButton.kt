@@ -1,6 +1,5 @@
 package com.sopt.bunjang.presentation.productdetail.component
 
-import android.R.attr.onClick
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
