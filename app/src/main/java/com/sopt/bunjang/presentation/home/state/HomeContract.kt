@@ -31,7 +31,7 @@ data class HomeUiState(
                 HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
                 HomeKidultProduct("", 200, "상품명", time = "1일 전", likes = 0)
             ),
-            similarProducts= persistentListOf(
+            similarProducts = persistentListOf(
                 HomeSimilarProduct("", 100, "상품명", isAd = true),
                 HomeSimilarProduct("", 100, "상품명"),
                 HomeSimilarProduct("", 100, "상품명"),

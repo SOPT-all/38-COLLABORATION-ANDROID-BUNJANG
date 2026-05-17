@@ -38,13 +38,6 @@ data class HomeSimilarProduct(
     val isAd: Boolean = false
 )
 
-val homeRecentProductList = listOf(
-    HomeSimilarProduct("", 100, "상품명", isAd = true),
-    HomeSimilarProduct("", 100, "상품명"),
-    HomeSimilarProduct("", 100, "상품명"),
-    HomeSimilarProduct("", 200, "상품명")
-)
-
 val recentCategory = listOf("안경", "선글라스", "잡화", "의류", "모자", "티켓")
 
 @Composable
@@ -140,6 +133,12 @@ fun HomeRecentProduct(
 @Composable
 private fun PreviewHomeRecentProduct() {
     BunjangTheme {
+        val homeRecentProductList = listOf(
+            HomeSimilarProduct("", 100, "상품명", isAd = true),
+            HomeSimilarProduct("", 100, "상품명"),
+            HomeSimilarProduct("", 100, "상품명"),
+            HomeSimilarProduct("", 200, "상품명")
+        )
         HomeRecentProduct(
             homeRecentProductList = homeRecentProductList
         )

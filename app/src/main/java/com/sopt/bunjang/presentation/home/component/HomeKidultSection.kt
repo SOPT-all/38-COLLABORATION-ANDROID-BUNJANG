@@ -35,13 +35,6 @@ data class HomeKidultProduct(
     val likes: Int? = null
 )
 
-val homeKidultList = listOf(
-    HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
-    HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
-    HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
-    HomeKidultProduct("", 200, "상품명", time = "1일 전", likes = 0)
-)
-
 @Composable
 fun HomeKidultSection(
     modifier: Modifier = Modifier,
@@ -122,6 +115,12 @@ fun HomeKidultSection(
 @Composable
 private fun PreviewHomeKidultSection() {
     BunjangTheme {
+        val homeKidultList = listOf(
+            HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
+            HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
+            HomeKidultProduct("", 100, "상품명", time = "1일 전", likes = 0),
+            HomeKidultProduct("", 200, "상품명", time = "1일 전", likes = 0)
+        )
         HomeKidultSection(
             homeKidultList = homeKidultList
         )

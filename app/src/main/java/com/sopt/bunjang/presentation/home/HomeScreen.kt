@@ -31,8 +31,6 @@ import com.sopt.bunjang.presentation.home.component.HomeKidultSection
 import com.sopt.bunjang.presentation.home.component.HomeMainToggle
 import com.sopt.bunjang.presentation.home.component.HomeRecentProduct
 import com.sopt.bunjang.presentation.home.component.HomeTabBar
-import com.sopt.bunjang.presentation.home.component.homeKidultList
-import com.sopt.bunjang.presentation.home.component.homeRecentProductList
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
 import com.sopt.bunjang.presentation.home.state.HomeUiState
 import kotlinx.coroutines.flow.collectLatest
@@ -68,8 +66,6 @@ private fun HomeScreen(
     uiState: HomeUiState,
     modifier: Modifier = Modifier
 ) {
-    uiState.glassesProducts
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -130,7 +126,7 @@ private fun HomeScreen(
                 Spacer(modifier = Modifier.height(24.dp))
                 HomeRecentProduct(
                     modifier = Modifier.fillMaxSize(),
-                    homeRecentProductList = homeRecentProductList
+                    homeRecentProductList = uiState.similarProducts
                 )
             }
             item {
@@ -148,7 +144,7 @@ private fun HomeScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 HomeKidultSection(
                     modifier = Modifier.fillMaxWidth(),
-                    homeKidultList = homeKidultList
+                    homeKidultList = uiState.kidultProducts
                 )
                 Spacer(modifier = Modifier.height(21.dp))
             }
