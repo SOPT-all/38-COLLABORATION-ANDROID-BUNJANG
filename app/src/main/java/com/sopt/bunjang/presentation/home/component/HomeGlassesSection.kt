@@ -36,7 +36,8 @@ fun HomeGlassesSection(
     homeProductList: ImmutableList<HomeGlassesProduct>,
     userName: String = "혁준마님",
     productCount: Int = 357,
-    onProductClick: () -> Unit = {}
+    onProductClick: () -> Unit = {},
+    onLikeClick: (Long) -> Unit = {}
 ) {
     Column(modifier = modifier) {
         Row(modifier = modifier.padding(horizontal = 17.dp)) {
