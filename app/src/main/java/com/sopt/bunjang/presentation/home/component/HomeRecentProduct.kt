@@ -40,7 +40,6 @@ val recentCategory = listOf("안경", "선글라스", "잡화", "의류", "모�
 fun HomeRecentProduct(
     modifier: Modifier = Modifier,
     homeRecentProductList: ImmutableList<HomeSimilarProduct>,
-    onProductClick: () -> Unit = {},
     onLikeClick: (Long) -> Unit = {}
 ) {
     Column(modifier = modifier) {
