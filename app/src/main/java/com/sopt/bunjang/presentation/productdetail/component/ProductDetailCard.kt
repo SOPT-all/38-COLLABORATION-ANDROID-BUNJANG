@@ -1,5 +1,6 @@
 package com.sopt.bunjang.presentation.productdetail.component
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -150,57 +151,30 @@ fun ProductDetailCard(
             Spacer(modifier = Modifier.weight(1f))
 
             uiModel.views?.let { count ->
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_detail_page_view),
-                    contentDescription = "views",
-                    tint = BunjangTheme.colors.gray300,
-                    modifier = Modifier.size(12.dp)
-                )
-
-                Spacer(modifier = Modifier.width(2.dp))
-
-                Text(
-                    text = count.toString(),
-                    style = BunjangTheme.typography.body.body3,
-                    color = BunjangTheme.colors.gray300
+                StatItem(
+                    iconRes = R.drawable.ic_detail_page_view,
+                    count = count,
+                    contentDescription = "views"
                 )
             } //조회수
 
             Spacer(modifier = Modifier.width(6.dp))
 
             uiModel.likes?.let { count ->
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_detail_page_heart),
-                    contentDescription = "likes",
-                    tint = BunjangTheme.colors.gray300,
-                    modifier = Modifier.size(12.dp)
-                )
-
-                Spacer(modifier = Modifier.width(2.dp))
-
-                Text(
-                    text = count.toString(),
-                    style = BunjangTheme.typography.body.body3,
-                    color = BunjangTheme.colors.gray300
+                StatItem(
+                    iconRes = R.drawable.ic_detail_page_heart,
+                    count = count,
+                    contentDescription = "likes"
                 )
             } //찜 수
 
             Spacer(modifier = Modifier.width(6.dp))
 
             uiModel.comments?.let { count ->
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_detail_page_comment),
-                    contentDescription = "comments",
-                    tint = BunjangTheme.colors.gray300,
-                    modifier = Modifier.size(12.dp)
-                )
-
-                Spacer(modifier = Modifier.width(2.dp))
-
-                Text(
-                    text = count.toString(),
-                    style = BunjangTheme.typography.body.body3,
-                    color = BunjangTheme.colors.gray300
+                StatItem(
+                    iconRes = R.drawable.ic_detail_page_comment,
+                    count = count,
+                    contentDescription = "comments"
                 )
             } //댓글 수
         }
@@ -226,6 +200,28 @@ private fun DetailPagerIndicator(
                 shape = RoundedCornerShape(12.dp)
             )
             .padding(horizontal = 9.dp, vertical = 3.dp)
+    )
+}
+
+@Composable
+private fun StatItem(
+    @DrawableRes iconRes: Int,
+    count: Int,
+    contentDescription: String,
+) {
+    Icon(
+        painter = painterResource(id = iconRes),
+        contentDescription = contentDescription,
+        tint = BunjangTheme.colors.gray300,
+        modifier = Modifier.size(12.dp)
+    )
+
+    Spacer(modifier = Modifier.width(2.dp))
+
+    Text(
+        text = count.toString(),
+        style = BunjangTheme.typography.body.body3,
+        color = BunjangTheme.colors.gray300
     )
 }
 
