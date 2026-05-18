@@ -78,7 +78,8 @@ fun HomeGlassesSection(
                     isLike = item.isLike,
                     likes = item.likes,
                     isAd = item.isAd,
-                    onCardClick = onProductClick
+                    onCardClick = onProductClick,
+                    onLikeClick = { onLikeClick(item.id) }
                 )
             }
         }
@@ -121,10 +122,10 @@ fun HomeGlassesSection(
 private fun PreviewHomeGlassesSection() {
     BunjangTheme {
         val homeProductList = listOf(
-            HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
-            HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
-            HomeGlassesProduct("", 100, "상품명", time = "1일 전", likes = 0),
-            HomeGlassesProduct("", 200, "상품명", time = "1일 전", likes = 0),
+            HomeGlassesProduct(1, "", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
+            HomeGlassesProduct(1, "", 100, "상품명", time = "1일 전", likes = 0),
+            HomeGlassesProduct(1, "", 100, "상품명", time = "1일 전", likes = 0),
+            HomeGlassesProduct(1, "", 200, "상품명", time = "1일 전", likes = 0),
         )
         HomeGlassesSection(
             homeProductList = homeProductList.toImmutableList()

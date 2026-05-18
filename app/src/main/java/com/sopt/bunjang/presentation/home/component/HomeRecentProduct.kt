@@ -109,7 +109,8 @@ fun HomeRecentProduct(
                     imageUrl = item.imageUrl,
                     price = item.price,
                     title = item.title,
-                    isAd = item.isAd
+                    isAd = item.isAd,
+                    onLikeClick = { onLikeClick(item.id) }
                 )
             }
         }
@@ -130,10 +131,10 @@ fun HomeRecentProduct(
 private fun PreviewHomeRecentProduct() {
     BunjangTheme {
         val homeRecentProductList = listOf(
-            HomeSimilarProduct("", 100, "상품명", isAd = true),
-            HomeSimilarProduct("", 100, "상품명"),
-            HomeSimilarProduct("", 100, "상품명"),
-            HomeSimilarProduct("", 200, "상품명")
+            HomeSimilarProduct(1, "", 100, "상품명", isAd = true),
+            HomeSimilarProduct(1, "", 100, "상품명"),
+            HomeSimilarProduct(1, "", 100, "상품명"),
+            HomeSimilarProduct(1, "", 200, "상품명")
         )
         HomeRecentProduct(
             homeRecentProductList = homeRecentProductList.toImmutableList()
