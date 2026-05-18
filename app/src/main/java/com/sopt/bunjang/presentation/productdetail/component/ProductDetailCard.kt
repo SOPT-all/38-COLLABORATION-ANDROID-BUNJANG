@@ -229,7 +229,7 @@ private fun ProductDetailCardPreview() {
             imageUrls = listOf("", ""),
             price = 210000,
             title = "이펙터 코러스 GLCY",
-            time = "1일 전",
+            time = "4일 전",
             views = 148,
             likes = 7,
             comments = 0
