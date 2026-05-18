@@ -22,22 +22,22 @@ data class HomeUiState(
     companion object {
         val dummy = HomeUiState(
             glassesProducts = persistentListOf(
-                HomeGlassesProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0, isAd = true),
-                HomeGlassesProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
-                HomeGlassesProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
-                HomeGlassesProduct("https://picsum.photos/200/300", 200, "상품명", time = "1일 전", likes = 0)
+                HomeGlassesProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 100, title = "상품명", time = "1일 전", likes = 0, isAd = true),
+                HomeGlassesProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 100, title = "상품명", time = "1일 전", likes = 0),
+                HomeGlassesProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 100, title = "상품명", time = "1일 전", likes = 0),
+                HomeGlassesProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 200, title = "상품명", time = "1일 전", likes = 0)
             ),
             kidultProducts = persistentListOf(
-                HomeKidultProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
-                HomeKidultProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
-                HomeKidultProduct("https://picsum.photos/200/300", 100, "상품명", time = "1일 전", likes = 0),
-                HomeKidultProduct("https://picsum.photos/200/300", 200, "상품명", time = "1일 전", likes = 0)
+                HomeKidultProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 100, title = "상품명", time = "1일 전", likes = 0),
+                HomeKidultProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 100, title = "상품명", time = "1일 전", likes = 0),
+                HomeKidultProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 100, title = "상품명", time = "1일 전", likes = 0),
+                HomeKidultProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 200, title = "상품명", time = "1일 전", likes = 0)
             ),
             similarProducts = persistentListOf(
-                HomeSimilarProduct("https://picsum.photos/200/300", 100, "상품명", isAd = true),
-                HomeSimilarProduct("https://picsum.photos/200/300", 100, "상품명"),
-                HomeSimilarProduct("https://picsum.photos/200/300", 100, "상품명"),
-                HomeSimilarProduct("https://picsum.photos/200/300", 200, "상품명")
+                HomeSimilarProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 100, title = "상품명", isAd = true),
+                HomeSimilarProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 100, title = "상품명"),
+                HomeSimilarProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 100, title = "상품명"),
+                HomeSimilarProduct(id = 1, imageUrl = "https://picsum.photos/200/300", price = 200, title = "상품명")
             )
         )
     }

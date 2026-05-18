@@ -4,6 +4,7 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class HomeGlassesProduct(
+    val id: Long,
     val imageUrl: String,
     val price: Int,
     val title: String,
