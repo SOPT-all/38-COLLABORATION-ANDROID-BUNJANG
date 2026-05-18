@@ -24,20 +24,14 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.ProductCard
 import com.sopt.bunjang.core.designsystem.component.ProductCardType
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-
-data class HomeKidultProduct(
-    val imageUrl: String,
-    val price: Int,
-    val title: String,
-    val time: String? = null,
-    val isLike: Boolean = false,
-    val likes: Int? = null
-)
+import com.sopt.bunjang.presentation.home.model.HomeKidultProduct
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun HomeKidultSection(
     modifier: Modifier = Modifier,
-    homeKidultList: List<HomeKidultProduct>
+    homeKidultList: ImmutableList<HomeKidultProduct>
 ) {
     Column(modifier = modifier) {
         Row(
@@ -121,7 +115,7 @@ private fun PreviewHomeKidultSection() {
             HomeKidultProduct("", 200, "상품명", time = "1일 전", likes = 0)
         )
         HomeKidultSection(
-            homeKidultList = homeKidultList
+            homeKidultList = homeKidultList.toImmutableList()
         )
     }
 }

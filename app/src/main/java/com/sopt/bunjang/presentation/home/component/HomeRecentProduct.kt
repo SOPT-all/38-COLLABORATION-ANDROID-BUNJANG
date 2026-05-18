@@ -30,20 +30,16 @@ import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.ProductCard
 import com.sopt.bunjang.core.designsystem.component.ProductCardType
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-
-data class HomeSimilarProduct(
-    val imageUrl: String,
-    val price: Int,
-    val title: String,
-    val isAd: Boolean = false
-)
+import com.sopt.bunjang.presentation.home.model.HomeSimilarProduct
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 val recentCategory = listOf("안경", "선글라스", "잡화", "의류", "모자", "티켓")
 
 @Composable
 fun HomeRecentProduct(
     modifier: Modifier = Modifier,
-    homeRecentProductList: List<HomeSimilarProduct>
+    homeRecentProductList: ImmutableList<HomeSimilarProduct>
 ) {
     Column(modifier = modifier) {
         Row(
@@ -140,7 +136,7 @@ private fun PreviewHomeRecentProduct() {
             HomeSimilarProduct("", 200, "상품명")
         )
         HomeRecentProduct(
-            homeRecentProductList = homeRecentProductList
+            homeRecentProductList = homeRecentProductList.toImmutableList()
         )
     }
 }
