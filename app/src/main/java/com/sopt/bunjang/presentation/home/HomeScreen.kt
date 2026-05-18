@@ -39,7 +39,7 @@ import kotlinx.coroutines.flow.collectLatest
 fun HomeRoute(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit,
-    navigateToProductDetail: () -> Unit,
+    navigateToProductDetail: (Long) -> Unit,
     viewModel: HomeViewModel = viewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -47,7 +47,7 @@ fun HomeRoute(
     LaunchedEffect(viewModel) {
         viewModel.sideEffect.collectLatest { effect ->
             when (effect) {
-                is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail()
+                is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail(effect.id)
             }
         }
     }
@@ -62,7 +62,7 @@ fun HomeRoute(
 @Composable
 private fun HomeScreen(
     paddingValues: PaddingValues,
-    onProductItemClick: () -> Unit,
+    onProductItemClick: (Long) -> Unit,
     uiState: HomeUiState,
     modifier: Modifier = Modifier
 ) {
@@ -78,7 +78,7 @@ private fun HomeScreen(
                 TopBarIconButton(
                     iconRes = R.drawable.ic_top_bar_search,
                     // Todo: 상품 아이템 구현 후, 아이템 클릭 시 동작으로 이동 필요
-                    onClick = onProductItemClick
+                    onClick = {}
                 )
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_bell)
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
@@ -161,7 +161,7 @@ private fun HomeScreenPreview() {
     BunjangTheme {
         HomeScreen(
             paddingValues = PaddingValues(),
-            onProductItemClick = {},
+            onProductItemClick = { _ -> },
             uiState = HomeUiState.dummy
         )
     }

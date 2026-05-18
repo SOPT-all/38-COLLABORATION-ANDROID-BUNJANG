@@ -36,7 +36,7 @@ fun HomeGlassesSection(
     homeProductList: ImmutableList<HomeGlassesProduct>,
     userName: String = "혁준마님",
     productCount: Int = 357,
-    onProductClick: () -> Unit = {},
+    onProductClick: (Long) -> Unit = {},
     onLikeClick: (Long) -> Unit = {}
 ) {
     Column(modifier = modifier) {
@@ -78,7 +78,7 @@ fun HomeGlassesSection(
                     isLike = item.isLike,
                     likes = item.likes,
                     isAd = item.isAd,
-                    onCardClick = onProductClick,
+                    onCardClick = { onProductClick(item.id) },
                     onLikeClick = { onLikeClick(item.id) }
                 )
             }

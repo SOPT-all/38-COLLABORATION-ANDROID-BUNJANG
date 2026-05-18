@@ -82,7 +82,7 @@ class MainAppState(
         navController.navigate(Purchase)
     }
 
-    fun navigateToProductDetail() {
+    fun navigateToProductDetail(id: Long) {
         navController.navigate(ProductDetail)
     }
 
