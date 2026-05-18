@@ -1,6 +1,7 @@
 package com.sopt.bunjang.presentation.purchase.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -65,7 +66,7 @@ fun PurchaseRecommendSection(
             ) {
                 Text(
                     text = "더보기",
-                    style = BunjangTheme.typography.body.body2,
+                    style = BunjangTheme.typography.label.label1,
                     color = BunjangTheme.colors.gray700
                 )
                 Icon(
@@ -85,6 +86,11 @@ fun PurchaseRecommendSection(
                 .padding(horizontal = 21.dp)
                 .background(
                     color = BunjangTheme.colors.lightRed,
+                    shape = RoundedCornerShape(6.dp)
+                )
+                .border(
+                    width = 1.dp,
+                    color = BunjangTheme.colors.gray100,
                     shape = RoundedCornerShape(6.dp)
                 )
                 .padding(vertical = 8.dp),
@@ -138,6 +144,20 @@ private fun PurchaseRecommendSectionPreview() {
                 ),
                 PurchaseProductItem(
                     id = 2,
+                    imageUrl = "https://picsum.photos/200",
+                    price = 10000,
+                    title = "상품명",
+                    isLike = false
+                ),
+                PurchaseProductItem(
+                    id = 3,
+                    imageUrl = "https://picsum.photos/200",
+                    price = 10000,
+                    title = "상품명",
+                    isLike = false
+                ),
+                PurchaseProductItem(
+                    id = 4,
                     imageUrl = "https://picsum.photos/200",
                     price = 10000,
                     title = "상품명",
