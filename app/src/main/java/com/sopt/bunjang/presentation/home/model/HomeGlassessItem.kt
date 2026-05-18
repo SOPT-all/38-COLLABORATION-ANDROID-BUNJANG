@@ -3,7 +3,7 @@ package com.sopt.bunjang.presentation.home.model
 import androidx.compose.runtime.Immutable
 
 @Immutable
-data class HomeGlassessProduct(
+data class HomeGlassesProduct(
     val imageUrl: String,
     val price: Int,
     val title: String,
