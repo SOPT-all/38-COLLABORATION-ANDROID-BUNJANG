@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,21 +33,28 @@ import coil.compose.AsyncImage
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.core.extension.noRippleClickable
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
+
+@Immutable
+data class ProductDetailCardUiModel(
+    val imageUrls: ImmutableList<String>,
+    val title: String,
+    val price: Int,
+    val time: String? = null,
+    val views: Int? = null,
+    val likes: Int? = null,
+    val comments: Int? = null,
+)
 
 @Composable
 fun ProductDetailCard(
-    imageUrls: List<String>,
-    title: String,
-    price: Int,
+    uiModel: ProductDetailCardUiModel,
     modifier: Modifier = Modifier,
+    pagerState: PagerState = rememberPagerState(pageCount = { uiModel.imageUrls.size }),
     isLike: Boolean = false,
-    time: String? = null,
-    views: Int? = null,
-    likes: Int? = null,
-    comments: Int? = null,
     onLikeClick: () -> Unit = {}
 ) {
-    val pagerState = rememberPagerState(pageCount = { imageUrls.size })
 
     Column(
         modifier = modifier
@@ -63,7 +71,7 @@ fun ProductDetailCard(
                 modifier = Modifier.fillMaxSize()
             ) { page ->
                 AsyncImage(
-                    model = imageUrls[page],
+                    model = uiModel.imageUrls[page],
                     contentDescription = "Product Image ${page + 1}",
                     placeholder = ColorPainter(Color.LightGray),
                     contentScale = ContentScale.Crop,
@@ -88,14 +96,14 @@ fun ProductDetailCard(
         ) {
             Column {
                 Text(
-                    text = title,
+                    text = uiModel.title,
                     style = BunjangTheme.typography.title.title4
                 ) //상품명
 
                 Spacer(modifier = Modifier.height(2.dp))
 
                 Text(
-                    text = "%,d".format(price) + "원",
+                    text = "%,d".format(uiModel.price) + "원",
                     style = BunjangTheme.typography.title.title1
                 ) //가격
             }
@@ -131,7 +139,7 @@ fun ProductDetailCard(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            time?.let {
+            uiModel.time?.let {
                 Text(
                     text = it,
                     style = BunjangTheme.typography.body.body3,
@@ -141,7 +149,7 @@ fun ProductDetailCard(
 
             Spacer(modifier = Modifier.weight(1f))
 
-            views?.let { count ->
+            uiModel.views?.let { count ->
                 Icon(
                     painter = painterResource(id = R.drawable.ic_detail_page_view),
                     contentDescription = "views",
@@ -160,7 +168,7 @@ fun ProductDetailCard(
 
             Spacer(modifier = Modifier.width(6.dp))
 
-            likes?.let { count ->
+            uiModel.likes?.let { count ->
                 Icon(
                     painter = painterResource(id = R.drawable.ic_detail_page_heart),
                     contentDescription = "likes",
@@ -179,7 +187,7 @@ fun ProductDetailCard(
 
             Spacer(modifier = Modifier.width(6.dp))
 
-            comments?.let { count ->
+            uiModel.comments?.let { count ->
                 Icon(
                     painter = painterResource(id = R.drawable.ic_detail_page_comment),
                     contentDescription = "comments",
@@ -226,13 +234,15 @@ private fun DetailPagerIndicator(
 private fun ProductDetailCardPreview() {
     BunjangTheme {
         ProductDetailCard(
-            imageUrls = listOf("", ""),
-            price = 210000,
-            title = "이펙터 코러스 GLCY",
-            time = "4일 전",
-            views = 148,
-            likes = 7,
-            comments = 0
+            uiModel = ProductDetailCardUiModel(
+                imageUrls = listOf("", "").toImmutableList(),
+                price = 210000,
+                title = "이펙터 코러스 GLCY",
+                time = "4일 전",
+                views = 148,
+                likes = 7,
+                comments = 0
+            ),
         )
     }
 }
