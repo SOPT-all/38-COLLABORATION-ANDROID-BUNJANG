@@ -60,14 +60,6 @@ fun ProductCard(
         ProductCardType.BIG -> BunjangTheme.typography.body.body2
         ProductCardType.SMALL -> BunjangTheme.typography.label.label1
     }
-    val adTextColor = when (type) {
-        ProductCardType.BIG -> BunjangTheme.colors.gray600
-        ProductCardType.SMALL -> BunjangTheme.colors.gray500
-    }
-    val adBoxColor = when (type) {
-        ProductCardType.BIG -> BunjangTheme.colors.white_70
-        ProductCardType.SMALL -> BunjangTheme.colors.white
-    }
     val adPadding = when (type) {
         ProductCardType.BIG -> 11.dp
         ProductCardType.SMALL -> 9.dp
@@ -96,22 +88,13 @@ fun ProductCard(
             )
 
             if (isAd) {
-                Box(
+                Image(
+                    painter = painterResource(R.drawable.ic_detail_page_ad),
+                    contentDescription = "ad",
                     modifier = Modifier
                         .align(Alignment.BottomStart)
-                        .padding(start = 10.dp, bottom = 10.dp)
-                        .background(
-                            color = adBoxColor,
-                            shape = RoundedCornerShape(1.dp)
-                        )
-                        .padding(start = 5.dp, end = 4.dp, bottom = 1.dp)
-                ) {
-                    Text(
-                        text = "AD",
-                        style = BunjangTheme.typography.label.label3,
-                        color = adTextColor
-                    )
-                }
+                        .padding(bottom = adPadding, start = 10.dp)
+                )
             }
 
             Image(
