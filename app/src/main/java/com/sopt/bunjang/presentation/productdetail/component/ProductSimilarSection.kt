@@ -76,7 +76,7 @@ fun ProductSimilarSection(
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        horizontalArrangement = Arrangement.spacedBy(3.dp)
                     ) {
                         group.tags.forEach { tag ->
                             ProductSimilarHashTagChip(text = tag)
@@ -145,7 +145,7 @@ private fun ProductSimilarBannerCard(
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(278f / 97f)
-            .clip(RoundedCornerShape(4.dp))
+            .clip(RoundedCornerShape(5.dp))
     ) {
         AsyncImage(
             model = imageUrl,
@@ -293,7 +293,7 @@ private fun ProductSimilarSectionPreview() {
                 id = it.toLong(),
                 imageUrl = "",
                 price = 150000,
-                title = "비슷한 상품명 $it",
+                title = "상품명 $it",
                 isLike = it % 2 == 0
             )
         }.toImmutableList()
@@ -309,7 +309,7 @@ private fun ProductSimilarSectionPreview() {
                 id = (it + 3).toLong(),
                 imageUrl = "",
                 price = 80000,
-                title = "다른 상품명 $it"
+                title = "상품명 $it"
             )
         }.toImmutableList()
     )
