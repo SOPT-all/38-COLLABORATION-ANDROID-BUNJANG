@@ -2,8 +2,6 @@ package com.sopt.bunjang.presentation.productdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sopt.bunjang.presentation.home.state.HomeUiState
-import com.sopt.bunjang.presentation.productdetail.component.ProductDetailCardUiModel
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailUiState
 import kotlinx.coroutines.flow.MutableSharedFlow
