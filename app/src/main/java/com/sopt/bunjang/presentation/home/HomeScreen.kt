@@ -74,11 +74,7 @@ private fun HomeScreen(
         BunjangTopBar(
             leftContent = { HomeMainToggle() },
             rightContent = {
-                TopBarIconButton(
-                    iconRes = R.drawable.ic_top_bar_search,
-                    // Todo: 상품 아이템 구현 후, 아이템 클릭 시 동작으로 이동 필요
-                    onClick = { onProductItemClick(1L) } // 임시 ID 1L 전달
-                )
+                TopBarIconButton(iconRes = R.drawable.ic_top_bar_search,)
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_bell)
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
             }
@@ -115,6 +111,7 @@ private fun HomeScreen(
             }
             item {
                 Spacer(modifier = Modifier.height(24.dp))
+
                 HomeGlassesSection(
                     modifier = Modifier.fillMaxWidth(),
                     homeProductList = uiState.glassesProducts,
@@ -126,6 +123,7 @@ private fun HomeScreen(
             item {
 
                 Spacer(modifier = Modifier.height(24.dp))
+
                 HomeRecentProduct(
                     modifier = Modifier.fillMaxSize(),
                     homeRecentProductList = uiState.similarProducts
@@ -133,6 +131,7 @@ private fun HomeScreen(
             }
             item {
                 Spacer(modifier = Modifier.height(11.dp))
+
                 Image(
                     painter = painterResource(id = R.drawable.img_baseball_festa),
                     contentDescription = null,
@@ -144,10 +143,12 @@ private fun HomeScreen(
             }
             item {
                 Spacer(modifier = Modifier.height(16.dp))
+
                 HomeKidultSection(
                     modifier = Modifier.fillMaxWidth(),
                     homeKidultList = uiState.kidultProducts
                 )
+
                 Spacer(modifier = Modifier.height(21.dp))
             }
         }
