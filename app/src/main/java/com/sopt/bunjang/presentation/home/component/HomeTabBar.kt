@@ -23,7 +23,7 @@ import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
 @Composable
 fun HomeTabBar(
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     var textWidth by remember { mutableIntStateOf(0) }
 
