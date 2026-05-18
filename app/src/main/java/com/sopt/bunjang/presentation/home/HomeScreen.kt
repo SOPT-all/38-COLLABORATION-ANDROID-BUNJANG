@@ -119,6 +119,8 @@ private fun HomeScreen(
                 HomeGlassesSection(
                     modifier = Modifier.fillMaxWidth(),
                     homeProductList = uiState.glassesProducts,
+                    userName = uiState.userName,
+                    productCount = uiState.productCount,
                     onProductClick = onProductItemClick
                 )
             }

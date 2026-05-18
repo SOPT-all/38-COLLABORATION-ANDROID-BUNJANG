@@ -1,9 +1,9 @@
 package com.sopt.bunjang.presentation.home.state
 
 import androidx.compose.runtime.Immutable
-import com.sopt.bunjang.presentation.home.component.HomeKidultProduct
-import com.sopt.bunjang.presentation.home.component.HomeSimilarProduct
 import com.sopt.bunjang.presentation.home.model.HomeGlassesProduct
+import com.sopt.bunjang.presentation.home.model.HomeKidultProduct
+import com.sopt.bunjang.presentation.home.model.HomeSimilarProduct
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
@@ -15,7 +15,9 @@ sealed interface HomeSideEffect {
 data class HomeUiState(
     val glassesProducts: ImmutableList<HomeGlassesProduct> = persistentListOf(),
     val kidultProducts: ImmutableList<HomeKidultProduct> = persistentListOf(),
-    val similarProducts: ImmutableList<HomeSimilarProduct> = persistentListOf()
+    val similarProducts: ImmutableList<HomeSimilarProduct> = persistentListOf(),
+    val userName: String = "혁준마님",
+    val productCount: Int = 357
 ) {
     companion object {
         val dummy = HomeUiState(

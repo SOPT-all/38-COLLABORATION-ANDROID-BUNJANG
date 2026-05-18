@@ -34,6 +34,8 @@ import kotlinx.collections.immutable.toImmutableList
 fun HomeGlassesSection(
     modifier: Modifier = Modifier,
     homeProductList: ImmutableList<HomeGlassesProduct>,
+    userName: String = "혁준마님",
+    productCount: Int = 357,
     onProductClick: () -> Unit = {}
 ) {
     Column(modifier = modifier) {
@@ -93,7 +95,7 @@ fun HomeGlassesSection(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "혁준마님 취향 상품 357개 ",
+                text = "${userName} 취향 상품 ${productCount}개 ",
                 style = BunjangTheme.typography.body.body2,
                 color = BunjangTheme.colors.black,
                 modifier = Modifier.padding(vertical = 11.dp)
