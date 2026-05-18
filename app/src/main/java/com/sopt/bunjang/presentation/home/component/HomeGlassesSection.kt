@@ -95,7 +95,7 @@ fun HomeGlassesSection(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "${userName} 취향 상품 ${productCount}개 ",
+                text = "$userName 취향 상품 ${productCount}개 ",
                 style = BunjangTheme.typography.body.body2,
                 color = BunjangTheme.colors.black,
                 modifier = Modifier.padding(vertical = 11.dp)
