@@ -72,7 +72,7 @@ private fun PurchaseScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             PurchaseNoticeCard(
-                shopName = uiState.shopName,
+                userName = uiState.userName,
                 productName = uiState.productName,
                 time = uiState.noticeTime,
                 modifier = Modifier

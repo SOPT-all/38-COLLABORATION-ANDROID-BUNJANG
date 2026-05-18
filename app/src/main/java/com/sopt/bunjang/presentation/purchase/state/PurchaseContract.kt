@@ -8,14 +8,14 @@ import kotlinx.collections.immutable.toImmutableList
 
 @Immutable
 data class PurchaseUiState(
-    val shopName: String = "",
+    val userName: String = "",
     val productName: String = "",
     val noticeTime: String = "",
     val recommendProducts: ImmutableList<PurchaseProductItem> = persistentListOf()
 ) {
     companion object {
         val dummy = PurchaseUiState(
-            shopName = "혁줌마",
+            userName = "혁줌마",
             productName = "안경닦이",
             noticeTime = "오후11:20",
             recommendProducts = listOf(

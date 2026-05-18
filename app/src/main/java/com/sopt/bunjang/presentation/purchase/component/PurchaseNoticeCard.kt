@@ -24,7 +24,7 @@ import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
 @Composable
 fun PurchaseNoticeCard(
-    shopName: String,
+    userName: String,
     productName: String,
     time: String,
     modifier: Modifier = Modifier,
@@ -34,12 +34,12 @@ fun PurchaseNoticeCard(
             .fillMaxWidth()
             .background(
                 color = BunjangTheme.colors.white,
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(12.dp)
             )
             .border(
                 width = 1.dp,
                 color = BunjangTheme.colors.gray100,
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(12.dp)
             )
             .padding(vertical = 12.dp, horizontal = 16.dp),
     ) {
@@ -87,7 +87,7 @@ fun PurchaseNoticeCard(
 
                 Column {
                     Text(
-                        text = shopName,
+                        text = userName,
                         style = BunjangTheme.typography.body.body2_1,
                         color = BunjangTheme.colors.gray900
                     )
@@ -110,7 +110,7 @@ fun PurchaseNoticeCard(
 private fun PurchaseNoticeCardPreview() {
     BunjangTheme {
         PurchaseNoticeCard(
-            shopName = "혁줌마",
+            userName = "혁줌마",
             productName = "안경닦이",
             time = "오후11:20"
         )
