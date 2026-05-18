@@ -85,7 +85,7 @@ private fun HomeScreen(
             }
         )
 
-        LazyColumn {
+        LazyColumn(modifier = Modifier.weight(1f)) {
             item {
                 HomeTabBar(modifier = Modifier.fillMaxWidth())
             }
