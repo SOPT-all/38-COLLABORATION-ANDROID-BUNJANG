@@ -81,7 +81,7 @@ fun MainScreen(
             homeGraph(
                 paddingValues = innerPadding,
                 navigateUp = appState::navigateUp,
-                navigateToProductDetail = appState::navigateToProductDetail
+                navigateToProductDetail = { id -> appState.navigateToProductDetail(id) }
             )
 
             favoriteGraph(
