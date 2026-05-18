@@ -63,7 +63,7 @@ fun ProductRecommendSection(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 rowProducts.forEach { product ->
                     ProductCard(
