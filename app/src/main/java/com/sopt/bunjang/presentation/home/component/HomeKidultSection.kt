@@ -31,7 +31,9 @@ import kotlinx.collections.immutable.toImmutableList
 @Composable
 fun HomeKidultSection(
     modifier: Modifier = Modifier,
-    homeKidultList: ImmutableList<HomeKidultProduct>
+    homeKidultList: ImmutableList<HomeKidultProduct>,
+    onProductClick: () -> Unit = {},
+    onLikeClick: (Long) -> Unit = {}
 ) {
     Column(modifier = modifier) {
         Row(
