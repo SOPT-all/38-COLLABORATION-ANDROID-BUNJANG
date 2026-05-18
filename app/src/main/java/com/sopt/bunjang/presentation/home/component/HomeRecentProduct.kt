@@ -70,7 +70,6 @@ fun HomeRecentProduct(
         }
         Spacer(modifier = Modifier.height(8.dp))
         LazyRow(
-            modifier = modifier,
             contentPadding = PaddingValues(horizontal = 17.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
@@ -98,7 +97,6 @@ fun HomeRecentProduct(
         }
         Spacer(modifier = Modifier.height(16.dp))
         LazyRow(
-            modifier = modifier,
             contentPadding = PaddingValues(horizontal = 17.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
