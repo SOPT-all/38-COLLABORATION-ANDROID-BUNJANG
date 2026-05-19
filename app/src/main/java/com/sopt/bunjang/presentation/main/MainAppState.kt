@@ -8,9 +8,14 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
+import com.sopt.bunjang.presentation.chat.navigation.navigateChat
+import com.sopt.bunjang.presentation.favorite.navigation.navigateFavorite
 import com.sopt.bunjang.presentation.home.navigation.Home
-import com.sopt.bunjang.presentation.productdetail.navigation.ProductDetail
-import com.sopt.bunjang.presentation.purchase.navigation.Purchase
+import com.sopt.bunjang.presentation.home.navigation.navigateHome
+import com.sopt.bunjang.presentation.mypage.navigation.navigateMyPage
+import com.sopt.bunjang.presentation.productdetail.navigation.navigateProductDetail
+import com.sopt.bunjang.presentation.purchase.navigation.navigatePurchase
+import com.sopt.bunjang.presentation.register.navigation.navigateRegister
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -67,7 +72,14 @@ class MainAppState(
                 launchSingleTop = true
             }
         }
-        navController.navigate(tab.route, navOptions)
+
+        when (tab) {
+            MainTab.HOME -> navController.navigateHome(navOptions)
+            MainTab.FAVORITE -> navController.navigateFavorite(navOptions)
+            MainTab.REGISTER -> navController.navigateRegister(navOptions)
+            MainTab.CHAT -> navController.navigateChat(navOptions)
+            MainTab.MY_PAGE -> navController.navigateMyPage(navOptions)
+        }
     }
 
     fun navigateUp() {
@@ -75,15 +87,15 @@ class MainAppState(
     }
 
     fun navigateToHome() {
-        navController.navigate(Home, clearStackNavOptions)
+        navController.navigateHome(clearStackNavOptions)
     }
 
     fun navigateToPurchase() {
-        navController.navigate(Purchase)
+        navController.navigatePurchase()
     }
 
-    fun navigateToProductDetail(id: Long) {
-        navController.navigate(ProductDetail)
+    fun navigateToProductDetail(productId: Long) {
+        navController.navigateProductDetail(productId)
     }
 
     private val clearStackNavOptions = navOptions {

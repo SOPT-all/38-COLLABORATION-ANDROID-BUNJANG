@@ -9,25 +9,32 @@ import com.sopt.bunjang.core.navigation.Route
 import com.sopt.bunjang.presentation.productdetail.ProductDetailRoute
 import kotlinx.serialization.Serializable
 
-fun NavController.navigateProductDetail(navOptions: NavOptions? = null) {
-    navigate(ProductDetail, navOptions)
+fun NavController.navigateProductDetail(
+    productId: Long,
+    navOptions: NavOptions? = null
+) {
+    navigate(ProductDetail(productId = productId), navOptions)
 }
 
 fun NavGraphBuilder.productDetailGraph(
     paddingValues: PaddingValues,
     navigateUp: () -> Unit,
     navigateToHome: () -> Unit,
-    navigateToPurchase: () -> Unit
+    navigateToPurchase: () -> Unit,
+    navigateToProductDetail: (Long) -> Unit
 ) {
     composable<ProductDetail> {
         ProductDetailRoute(
             paddingValues = paddingValues,
             navigateUp = navigateUp,
             navigateToHome = navigateToHome,
-            navigateToPurchase = navigateToPurchase
+            navigateToPurchase = navigateToPurchase,
+            navigateToProductDetail = navigateToProductDetail
         )
     }
 }
 
 @Serializable
-data object ProductDetail : Route
+data class ProductDetail(
+    val productId: Long
+) : Route

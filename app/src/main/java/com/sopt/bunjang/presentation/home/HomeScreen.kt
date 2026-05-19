@@ -33,7 +33,6 @@ import com.sopt.bunjang.presentation.home.component.HomeRecentProduct
 import com.sopt.bunjang.presentation.home.component.HomeTabBar
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
 import com.sopt.bunjang.presentation.home.state.HomeUiState
-import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun HomeRoute(
@@ -44,10 +43,10 @@ fun HomeRoute(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    LaunchedEffect(viewModel) {
-        viewModel.sideEffect.collectLatest { effect ->
-            when (effect) {
-                is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail(effect.id)
+    LaunchedEffect(Unit) {
+        viewModel.sideEffect.collect { sideEffect ->
+            when (sideEffect) {
+                is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail(sideEffect.id)
             }
         }
     }
@@ -75,11 +74,7 @@ private fun HomeScreen(
         BunjangTopBar(
             leftContent = { HomeMainToggle() },
             rightContent = {
-                TopBarIconButton(
-                    iconRes = R.drawable.ic_top_bar_search,
-                    // Todo: 상품 아이템 구현 후, 아이템 클릭 시 동작으로 이동 필요
-                    onClick = {}
-                )
+                TopBarIconButton(iconRes = R.drawable.ic_top_bar_search,)
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_bell)
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
             }
@@ -116,6 +111,7 @@ private fun HomeScreen(
             }
             item {
                 Spacer(modifier = Modifier.height(24.dp))
+
                 HomeGlassesSection(
                     modifier = Modifier.fillMaxWidth(),
                     homeProductList = uiState.glassesProducts,
@@ -127,6 +123,7 @@ private fun HomeScreen(
             item {
 
                 Spacer(modifier = Modifier.height(24.dp))
+
                 HomeRecentProduct(
                     modifier = Modifier.fillMaxSize(),
                     homeRecentProductList = uiState.similarProducts
@@ -134,6 +131,7 @@ private fun HomeScreen(
             }
             item {
                 Spacer(modifier = Modifier.height(11.dp))
+
                 Image(
                     painter = painterResource(id = R.drawable.img_baseball_festa),
                     contentDescription = null,
@@ -145,10 +143,12 @@ private fun HomeScreen(
             }
             item {
                 Spacer(modifier = Modifier.height(16.dp))
+
                 HomeKidultSection(
                     modifier = Modifier.fillMaxWidth(),
                     homeKidultList = uiState.kidultProducts
                 )
+
                 Spacer(modifier = Modifier.height(21.dp))
             }
         }
