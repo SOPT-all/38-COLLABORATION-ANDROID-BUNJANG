@@ -55,7 +55,8 @@ fun HomeRoute(
     HomeScreen(
         paddingValues = paddingValues,
         uiState = uiState,
-        onProductItemClick = viewModel::onProductItemClick
+        onProductItemClick = viewModel::onProductItemClick,
+        onLikeClick = viewModel::onLikeClick
     )
 }
 
@@ -63,6 +64,7 @@ fun HomeRoute(
 private fun HomeScreen(
     paddingValues: PaddingValues,
     onProductItemClick: (Long) -> Unit,
+    onLikeClick: (Long) -> Unit,
     uiState: HomeUiState,
     modifier: Modifier = Modifier
 ) {
@@ -121,7 +123,8 @@ private fun HomeScreen(
                     homeProductList = uiState.glassesProducts,
                     userName = uiState.userName,
                     productCount = uiState.productCount,
-                    onProductClick = onProductItemClick
+                    onProductClick = onProductItemClick,
+                    onLikeClick = onLikeClick
                 )
             }
             item {
@@ -129,7 +132,8 @@ private fun HomeScreen(
                 Spacer(modifier = Modifier.height(24.dp))
                 HomeRecentProduct(
                     modifier = Modifier.fillMaxSize(),
-                    homeRecentProductList = uiState.similarProducts
+                    homeRecentProductList = uiState.similarProducts,
+                    onLikeClick = onLikeClick
                 )
             }
             item {
@@ -147,7 +151,8 @@ private fun HomeScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 HomeKidultSection(
                     modifier = Modifier.fillMaxWidth(),
-                    homeKidultList = uiState.kidultProducts
+                    homeKidultList = uiState.kidultProducts,
+                    onLikeClick = onLikeClick
                 )
                 Spacer(modifier = Modifier.height(21.dp))
             }
@@ -162,6 +167,7 @@ private fun HomeScreenPreview() {
         HomeScreen(
             paddingValues = PaddingValues(),
             onProductItemClick = { _ -> },
+            onLikeClick = { _ -> },
             uiState = HomeUiState.dummy
         )
     }
