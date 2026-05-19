@@ -14,6 +14,10 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -69,6 +73,8 @@ private fun ProductDetailScreen(
     onPurchaseIconClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var isFollowing by remember { mutableStateOf(false) }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -158,7 +164,8 @@ private fun ProductDetailScreen(
                 rating = 5.0,
                 reviewCount = 15,
                 transactionCount = 26,
-                isFollowing = false,
+                isFollowing = isFollowing,
+                onFollowClick = { isFollowing = !isFollowing },
                 products = listOf(
                     StoreProductItem("", "상품명", 100000, 0),
                     StoreProductItem("", "상품명", 100000, 0),

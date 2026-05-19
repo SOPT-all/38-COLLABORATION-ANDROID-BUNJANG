@@ -45,8 +45,6 @@ fun SellerInfoSection(
             .fillMaxWidth()
             .padding(horizontal = 19.5.dp, vertical = 24.dp)
     ) {
-        var following by remember { mutableStateOf(isFollowing) }
-
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -92,8 +90,8 @@ fun SellerInfoSection(
             }
 
             FollowButton(
-                isFollowing = following,
-                onClick = { following = !following}
+                isFollowing = isFollowing,
+                onClick = onFollowClick,
             )
         }
 
