@@ -24,6 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 data class StoreProduct(
     val imageUrl: String,
@@ -38,7 +40,7 @@ fun SellerInfoSection(
     rating: Double,
     reviewCount: Int,
     transactionCount: Int,
-    products: List<StoreProduct>,
+    products: ImmutableList<StoreProduct>,
     isFollowing: Boolean = false,
     onFollowClick: () -> Unit = {},
 ) {
@@ -132,7 +134,7 @@ private fun SellerInfoSectionPreview() {
                 StoreProduct("", "상품명", 100000, 0),
                 StoreProduct("", "상품명", 100000, 0),
                 StoreProduct("", "상품명", 100000, 0),
-            )
+            ).toImmutableList()
         )
     }
 }

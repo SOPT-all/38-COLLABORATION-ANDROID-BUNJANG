@@ -20,10 +20,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun InfoSection(
-    categories: List<String>,
+    categories: ImmutableList<String>,
     condition: String,
     quantity: Int,
     description: String,
@@ -147,7 +149,7 @@ fun InfoSection(
 private fun InfoSectionPreview() {
     BunjangTheme {
         InfoSection(
-            categories = listOf("패션 액세서리", "안경/선글라스", "안경"),
+            categories = listOf("패션 액세서리", "안경/선글라스", "안경").toImmutableList(),
             condition = "사용감 적음",
             quantity = 1,
             description = "이펙터 코러스 GLCY컬러 판매합니다\n니콘 변색렌즈 장착되어있습니다",
