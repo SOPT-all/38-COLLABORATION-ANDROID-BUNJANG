@@ -35,7 +35,6 @@ import com.sopt.bunjang.presentation.home.component.HomeRecentProduct
 import com.sopt.bunjang.presentation.home.component.HomeTabBar
 import com.sopt.bunjang.presentation.home.state.HomeSideEffect
 import com.sopt.bunjang.presentation.home.state.HomeUiState
-import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun HomeRoute(
@@ -46,10 +45,10 @@ fun HomeRoute(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    LaunchedEffect(viewModel) {
-        viewModel.sideEffect.collectLatest { effect ->
-            when (effect) {
-                is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail(effect.id)
+    LaunchedEffect(Unit) {
+        viewModel.sideEffect.collect { sideEffect ->
+            when (sideEffect) {
+                is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail(sideEffect.id)
             }
         }
     }
@@ -90,7 +89,6 @@ private fun HomeScreen(
                     TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
                 }
             )
-
             if (uiState.errorMessage != null) {
                 Text(
                     text = uiState.errorMessage,

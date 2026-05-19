@@ -1,5 +1,6 @@
 package com.sopt.bunjang.core.designsystem.component
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -59,13 +60,9 @@ fun ProductCard(
         ProductCardType.BIG -> BunjangTheme.typography.body.body2
         ProductCardType.SMALL -> BunjangTheme.typography.label.label1
     }
-    val adTextColor = when (type) {
-        ProductCardType.BIG -> BunjangTheme.colors.gray600
-        ProductCardType.SMALL -> BunjangTheme.colors.gray500
-    }
-    val adBoxColor = when (type) {
-        ProductCardType.BIG -> BunjangTheme.colors.white_70
-        ProductCardType.SMALL -> BunjangTheme.colors.white
+    val adPadding = when (type) {
+        ProductCardType.BIG -> 11.dp
+        ProductCardType.SMALL -> 9.dp
     }
 
     Column(
@@ -92,30 +89,20 @@ fun ProductCard(
             )
 
             if (isAd) {
-                Box(
+                Image(
+                    painter = painterResource(R.drawable.ic_detail_page_ad),
+                    contentDescription = "ad",
                     modifier = Modifier
                         .align(Alignment.BottomStart)
-                        .padding(start = 10.dp, bottom = 10.dp)
-                        .background(
-                            color = adBoxColor,
-                            shape = RoundedCornerShape(1.dp)
-                        )
-                        .padding(start = 5.dp, end = 4.dp, bottom = 1.dp)
-                ) {
-                    Text(
-                        text = "AD",
-                        style = BunjangTheme.typography.label.label3,
-                        color = adTextColor
-                    )
-                }
+                        .padding(bottom = adPadding, start = 10.dp)
+                )
             }
 
-            Icon(
+            Image(
                 painter = painterResource(
-                    id = if (isLike) R.drawable.ic_home_fillheart else R.drawable.ic_heart_outlined_24
+                    id = if (isLike) R.drawable.ic_heart_filled_24 else R.drawable.ic_heart_outlined_24
                 ),
                 contentDescription = "like",
-                tint = BunjangTheme.colors.white,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(8.dp)
@@ -123,6 +110,7 @@ fun ProductCard(
                     .noRippleClickable { onLikeClick() }
             )
         }
+
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
@@ -143,6 +131,7 @@ fun ProductCard(
 
         if (type == ProductCardType.BIG) {
             Spacer(modifier = Modifier.height(4.dp))
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -154,9 +143,12 @@ fun ProductCard(
                         text = it,
                         style = BunjangTheme.typography.label.label2,
                         color = BunjangTheme.colors.gray400,
-                        modifier = Modifier.padding(horizontal = 2.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 2.dp)
+                            .padding(bottom = 8.dp)
                     )
                 }
+
                 Spacer(modifier = Modifier.weight(1f))
                 // 좋아요 표시: let 활용
                 likes?.let { count ->
@@ -166,14 +158,17 @@ fun ProductCard(
                             contentDescription = "like count",
                             tint = BunjangTheme.colors.gray200,
                             modifier = Modifier
+                                .padding(bottom = 9.5.dp)
                                 .size(12.dp)
                         )
+
                         Spacer(modifier = Modifier.width(1.dp))
+
                         Text(
                             text = count.toString(),
                             style = BunjangTheme.typography.label.label2,
                             color = BunjangTheme.colors.gray500,
-                            modifier = Modifier.padding(end = 2.dp)
+                            modifier = Modifier.padding(end = 2.dp, bottom = 8.dp)
                         )
                     }
                 }
@@ -197,8 +192,11 @@ private fun ProductCardPreview() {
                 title = "상품명",
                 time = "1일 전",
                 likes = 0,
+                isLike = true,
+                isAd = true,
                 modifier = Modifier.width(160.dp)
             )
+
             ProductCard(
                 type = ProductCardType.SMALL,
                 imageUrl = "",

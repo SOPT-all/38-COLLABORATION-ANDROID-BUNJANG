@@ -1,4 +1,4 @@
-package com.sopt.bunjang.data.dummy.respositoryimpl
+package com.sopt.bunjang.data.dummy.repositoryimpl
 
 import com.sopt.bunjang.data.dummy.remote.datasource.DummyDataSource
 import com.sopt.bunjang.data.dummy.model.DummyModel
