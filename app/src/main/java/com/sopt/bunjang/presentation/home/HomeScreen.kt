@@ -21,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
