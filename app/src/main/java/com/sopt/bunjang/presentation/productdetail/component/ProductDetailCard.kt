@@ -20,7 +20,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,19 +32,8 @@ import coil.compose.AsyncImage
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.core.extension.noRippleClickable
-import kotlinx.collections.immutable.ImmutableList
+import com.sopt.bunjang.presentation.productdetail.model.ProductDetailCardUiModel
 import kotlinx.collections.immutable.toImmutableList
-
-@Immutable
-data class ProductDetailCardUiModel(
-    val imageUrls: ImmutableList<String>,
-    val title: String,
-    val price: Int,
-    val time: String? = null,
-    val views: Int? = null,
-    val likes: Int? = null,
-    val comments: Int? = null,
-)
 
 @Composable
 fun ProductDetailCard(
