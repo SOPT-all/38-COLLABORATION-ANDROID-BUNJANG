@@ -16,8 +16,16 @@ class ProductDetailViewModel : ViewModel() {
     private val _sideEffect = MutableSharedFlow<ProductDetailSideEffect>()
     val sideEffect: SharedFlow<ProductDetailSideEffect> = _sideEffect.asSharedFlow()
 
-    private val _uiState = MutableStateFlow(ProductDetailUiState())
+    private val _uiState = MutableStateFlow(ProductDetailUiState.dummy)
     val uiState: StateFlow<ProductDetailUiState> = _uiState.asStateFlow()
+
+    fun onLikeClick() {
+        _uiState.value = _uiState.value.copy(isLike = !_uiState.value.isLike)
+    }
+
+    fun onFollowClick() {
+        _uiState.value = _uiState.value.copy(isFollowing = !_uiState.value.isFollowing)
+    }
 
     fun onBackIconClick() {
         viewModelScope.launch {
