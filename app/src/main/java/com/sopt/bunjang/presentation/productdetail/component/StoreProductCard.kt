@@ -56,7 +56,7 @@ fun StoreProductCard(
             style = BunjangTheme.typography.label.label4
         )
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
         Text(
             text = "%,d".format(price) + "원",
@@ -77,7 +77,7 @@ fun StoreProductCard(
                     modifier = Modifier.size(12.dp)
                 )
 
-                Spacer(modifier = Modifier.width(1.dp))
+                Spacer(modifier = Modifier.width(2.dp))
 
                 Text(
                     text = count.toString(),
