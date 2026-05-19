@@ -3,7 +3,9 @@ package com.sopt.bunjang.data.productdetail.remote.datasourceimpl
 import com.sopt.bunjang.data.productdetail.remote.api.ProductDetailService
 import com.sopt.bunjang.data.productdetail.remote.datasource.ProductDetailDataSource
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ProductDetailDataSourceImpl @Inject constructor(
     private val productDetailService: ProductDetailService,
 ) : ProductDetailDataSource {

@@ -41,7 +41,6 @@ import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeType
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailBottomUiState
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailTopUiState
-import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun ProductDetailRoute(
@@ -127,7 +126,7 @@ private fun ProductDetailScreen(
                 ProductDetailCard(
                     uiModel = productDetail,
                     isLike = topUiState.isLike,
-                    onLikeClick = { },
+                    onLikeClick = { onLikeClick(productDetail.id) }
                 )
             }
 
@@ -167,23 +166,20 @@ private fun ProductDetailScreen(
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            InfoSection(
-                categories = listOf("패션 액세서리", "안경/선글라스", "안경").toImmutableList(),
-                condition = "사용감 적음",
-                quantity = 1,
-                description = "이펙터 코러스 GLCY컬러 판매합니다\n니콘 변색렌즈 장착되어있습니다",
-                deliveryFee = 4000
-            )
+            topUiState.productInfo?.let { info ->
+                InfoSection(
+                    productInfo = info
+                )
+            }
 
-            SellerInfoSection(
-                storeName = "Zufall",
-                rating = 5.0,
-                reviewCount = 15,
-                transactionCount = 26,
-                isFollowing = topUiState.isFollowing,
-                onFollowClick = onFollowClick,
-                products = topUiState.storeProducts
-            )
+            topUiState.sellerInfo?.let { info ->
+                SellerInfoSection(
+                    sellerInfo = info,
+                    products = topUiState.storeProducts,
+                    isFollowing = topUiState.isFollowing,
+                    onFollowClick = onFollowClick
+                )
+            }
 
             HorizontalDivider(
                 thickness = 4.dp,
