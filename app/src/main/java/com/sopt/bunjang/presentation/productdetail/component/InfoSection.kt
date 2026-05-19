@@ -20,16 +20,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
-import kotlinx.collections.immutable.ImmutableList
+import com.sopt.bunjang.presentation.productdetail.model.ProductInfoUiModel
 import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun InfoSection(
-    categories: ImmutableList<String>,
-    condition: String,
-    quantity: Int,
-    description: String,
-    deliveryFee: Int,
+    productInfo: ProductInfoUiModel,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -49,7 +45,7 @@ fun InfoSection(
 
             Spacer(modifier = Modifier.width(24.dp))
 
-            categories.forEachIndexed { index, category ->
+            productInfo.categories.forEachIndexed { index, category ->
                 Text(
                     text = category,
                     color = BunjangTheme.colors.gray800,
@@ -59,7 +55,7 @@ fun InfoSection(
 
                 Spacer(modifier = Modifier.width(2.dp))
 
-                if (index < categories.lastIndex) {
+                if (index < productInfo.categories.lastIndex) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_detail_page_category_16),
                         contentDescription = null,
@@ -85,7 +81,7 @@ fun InfoSection(
             Spacer(modifier = Modifier.width(24.dp))
 
             Text(
-                text = condition,
+                text = productInfo.condition,
                 color = BunjangTheme.colors.gray800,
                 style = BunjangTheme.typography.body.body2,
             )
@@ -107,7 +103,7 @@ fun InfoSection(
             Spacer(modifier = Modifier.width(24.dp))
 
             Text(
-                text = "${quantity}개",
+                text = "${productInfo.quantity}개",
                 color = BunjangTheme.colors.gray800,
                 style = BunjangTheme.typography.body.body2,
             )
@@ -115,7 +111,7 @@ fun InfoSection(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        description.split("\n").forEachIndexed { index, line ->
+        productInfo.description.split("\n").forEachIndexed { index, line ->
             if (index > 0) Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = line,
@@ -136,7 +132,7 @@ fun InfoSection(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "일반 %,d원".format(deliveryFee),
+                text = "일반 %,d원".format(productInfo.deliveryFee),
                 color = BunjangTheme.colors.gray800,
                 style = BunjangTheme.typography.body.body1
             )
@@ -149,11 +145,13 @@ fun InfoSection(
 private fun InfoSectionPreview() {
     BunjangTheme {
         InfoSection(
-            categories = listOf("패션 액세서리", "안경/선글라스", "안경").toImmutableList(),
-            condition = "사용감 적음",
-            quantity = 1,
-            description = "이펙터 코러스 GLCY컬러 판매합니다\n니콘 변색렌즈 장착되어있습니다",
-            deliveryFee = 4000
+            productInfo = ProductInfoUiModel(
+                categories = listOf("패션 액세서리", "안경/선글라스", "안경").toImmutableList(),
+                condition = "사용감 적음",
+                quantity = 1,
+                description = "이펙터 코러스 GLCY컬러 판매합니다\n니콘 변색렌즈 장착되어있습니다",
+                deliveryFee = 4000
+            ),
         )
     }
 }

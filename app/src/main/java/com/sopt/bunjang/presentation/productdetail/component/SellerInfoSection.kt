@@ -1,5 +1,6 @@
 package com.sopt.bunjang.presentation.productdetail.component
 
+import android.R.attr.rating
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import com.sopt.bunjang.presentation.productdetail.model.SellerInfoUiModel
 import com.sopt.bunjang.presentation.productdetail.model.StoreProductItem
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
@@ -27,10 +29,7 @@ import kotlin.collections.take
 
 @Composable
 fun SellerInfoSection(
-    storeName: String,
-    rating: Double,
-    reviewCount: Int,
-    transactionCount: Int,
+    sellerInfo: SellerInfoUiModel,
     products: ImmutableList<StoreProductItem>,
     modifier: Modifier = Modifier,
     isFollowing: Boolean = false,
@@ -58,7 +57,7 @@ fun SellerInfoSection(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = storeName,
+                    text = sellerInfo.storeName,
                     color = BunjangTheme.colors.gray900,
                     style = BunjangTheme.typography.title.title4
                 )
@@ -78,7 +77,7 @@ fun SellerInfoSection(
                     Spacer(modifier = Modifier.width(2.dp))
 
                     Text(
-                        text = "$rating · 후기 $reviewCount · 거래내역 $transactionCount",
+                        text = "$rating · 후기 ${sellerInfo.reviewCount} · 거래내역 ${sellerInfo.transactionCount}",
                         color = BunjangTheme.colors.gray500,
                         style = BunjangTheme.typography.body.body2
                     )
@@ -114,17 +113,19 @@ fun SellerInfoSection(
 private fun SellerInfoSectionPreview() {
     BunjangTheme {
         SellerInfoSection(
-            storeName = "Zufall",
-            rating = 5.0,
-            reviewCount = 15,
-            transactionCount = 26,
-            isFollowing = false,
+            sellerInfo = SellerInfoUiModel(
+                storeName = "Zufall",
+                rating = 5.0,
+                reviewCount = 15,
+                transactionCount = 26,
+            ),
             products = listOf(
                 StoreProductItem(1L, "", "상품명", 100000, 0),
                 StoreProductItem(1L, "", "상품명", 100000, 0),
                 StoreProductItem(1L, "", "상품명", 100000, 0),
                 StoreProductItem(1L, "", "상품명", 100000, 0),
-            ).toImmutableList()
+            ).toImmutableList(),
+            isFollowing = false,
         )
     }
 }
