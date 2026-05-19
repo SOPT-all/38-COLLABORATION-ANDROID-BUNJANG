@@ -42,6 +42,7 @@ fun ProductCard(
     time: String? = null,
     isLike: Boolean = false,
     likes: Int? = null,
+    isAd: Boolean = false,
     onCardClick: () -> Unit = {},
     onLikeClick: () -> Unit = {}
 ) {
@@ -57,6 +58,14 @@ fun ProductCard(
     val titleStyle = when (type) {
         ProductCardType.BIG -> BunjangTheme.typography.body.body2
         ProductCardType.SMALL -> BunjangTheme.typography.label.label1
+    }
+    val adTextColor = when (type) {
+        ProductCardType.BIG -> BunjangTheme.colors.gray600
+        ProductCardType.SMALL -> BunjangTheme.colors.gray500
+    }
+    val adBoxColor = when (type) {
+        ProductCardType.BIG -> BunjangTheme.colors.white_70
+        ProductCardType.SMALL -> BunjangTheme.colors.white
     }
 
     Column(
@@ -80,6 +89,25 @@ fun ProductCard(
                     .aspectRatio(imageRatio)
                     .clip(RoundedCornerShape(4.dp))
             )
+
+            if (isAd) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(start = 10.dp, bottom = 10.dp)
+                        .background(
+                            color = adBoxColor,
+                            shape = RoundedCornerShape(1.dp)
+                        )
+                        .padding(start = 5.dp, end = 4.dp, bottom = 1.dp)
+                ) {
+                    Text(
+                        text = "AD",
+                        style = BunjangTheme.typography.label.label3,
+                        color = adTextColor
+                    )
+                }
+            }
 
             Icon(
                 painter = painterResource(
@@ -125,7 +153,7 @@ fun ProductCard(
                         text = it,
                         style = BunjangTheme.typography.label.label2,
                         color = BunjangTheme.colors.gray400,
-                        modifier = Modifier.padding(horizontal = 2.dp).padding(bottom = 8.dp)
+                        modifier = Modifier.padding(horizontal = 2.dp)
                     )
                 }
                 Spacer(modifier = Modifier.weight(1f))
@@ -137,7 +165,6 @@ fun ProductCard(
                             contentDescription = "like count",
                             tint = BunjangTheme.colors.gray200,
                             modifier = Modifier
-                                .padding(bottom = 9.5.dp)
                                 .size(12.dp)
                         )
                         Spacer(modifier = Modifier.width(1.dp))
@@ -145,7 +172,7 @@ fun ProductCard(
                             text = count.toString(),
                             style = BunjangTheme.typography.label.label2,
                             color = BunjangTheme.colors.gray500,
-                            modifier = Modifier.padding(end = 2.dp, bottom = 8.dp)
+                            modifier = Modifier.padding(end = 2.dp)
                         )
                     }
                 }
