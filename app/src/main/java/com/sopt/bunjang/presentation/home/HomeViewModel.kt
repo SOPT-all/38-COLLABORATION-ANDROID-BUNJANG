@@ -32,11 +32,15 @@ class HomeViewModel @Inject constructor(
 
     private fun getHome() {
         viewModelScope.launch {
-            homeRepository.getHome(userId = 1L) // 임시로 1L
-                .onSuccess { glassesProducts ->
+            homeRepository.getHome(userId = 1L)
+                .onSuccess { homeModel ->
                     _uiState.update { currentState ->
                         currentState.copy(
-                            glassesProducts = glassesProducts.toImmutableList()
+                            glassesProducts = homeModel.glassesProducts.toImmutableList(),
+                            similarProducts = homeModel.similarProducts.toImmutableList(),
+                            kidultProducts = homeModel.kidultProducts.toImmutableList(),
+                            userName = homeModel.userName,
+                            productCount = homeModel.productCount
                         )
                     }
                 }

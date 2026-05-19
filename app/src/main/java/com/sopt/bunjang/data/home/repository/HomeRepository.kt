@@ -1,8 +1,7 @@
 package com.sopt.bunjang.data.home.repository
 
-import com.sopt.bunjang.data.home.remote.dto.response.HomeResponseDto
-import com.sopt.bunjang.presentation.home.model.HomeGlassesProduct
+import com.sopt.bunjang.data.home.model.HomeModel
 
 interface HomeRepository {
-    suspend fun getHome(userId: Long): Result<List<HomeGlassesProduct>>
+    suspend fun getHome(userId: Long): Result<HomeModel>
 }
