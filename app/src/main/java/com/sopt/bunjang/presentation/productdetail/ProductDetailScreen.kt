@@ -24,12 +24,15 @@ import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.presentation.productdetail.component.InfoSection
+import com.sopt.bunjang.presentation.productdetail.component.ProductDetailCard
+import com.sopt.bunjang.presentation.productdetail.component.ProductDetailCardUiModel
 import com.sopt.bunjang.presentation.productdetail.component.ProductDetailTabRow
 import com.sopt.bunjang.presentation.productdetail.component.SellerInfoSection
 import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeButton
 import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeType
 import com.sopt.bunjang.presentation.productdetail.component.StoreProduct
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -70,7 +73,6 @@ private fun ProductDetailScreen(
         modifier = modifier
             .fillMaxSize()
             .background(BunjangTheme.colors.white)
-            .verticalScroll(rememberScrollState())
             .padding(paddingValues)
     ) {
         BunjangTopBar(
@@ -94,62 +96,77 @@ private fun ProductDetailScreen(
             }
         )
 
-        HorizontalDivider(
-            thickness = 1.dp,
-            color = BunjangTheme.colors.gray100
-        )
-
-        Row(
-            verticalAlignment = Alignment.CenterVertically
+        Column(
+            modifier = modifier.verticalScroll(rememberScrollState())
         ) {
-            ShareAndLikeButton(
-                type = ShareAndLikeType.SHARE,
-                modifier = Modifier.weight(1f)
+            ProductDetailCard(
+                uiModel = ProductDetailCardUiModel(
+                    imageUrls = listOf("", "").toImmutableList(),
+                    price = 210000,
+                    title = "이펙터 코러스 GLCY",
+                    time = "4일 전",
+                    views = 148,
+                    likes = 7,
+                    comments = 0
+                ),
             )
 
-            VerticalDivider(
-                color = BunjangTheme.colors.gray200,
-                modifier = Modifier.height(33.dp),
-                thickness = 1.dp
+            HorizontalDivider(
+                thickness = 1.dp,
+                color = BunjangTheme.colors.gray100
             )
 
-            ShareAndLikeButton(
-                type = ShareAndLikeType.LIKE,
-                modifier = Modifier.weight(1f)
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                ShareAndLikeButton(
+                    type = ShareAndLikeType.SHARE,
+                    modifier = Modifier.weight(1f)
+                )
+
+                VerticalDivider(
+                    color = BunjangTheme.colors.gray200,
+                    modifier = Modifier.height(33.dp),
+                    thickness = 1.dp
+                )
+
+                ShareAndLikeButton(
+                    type = ShareAndLikeType.LIKE,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+
+            HorizontalDivider(
+                thickness = 4.dp,
+                color = BunjangTheme.colors.gray100
+            )
+
+            ProductDetailTabRow()
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            InfoSection(
+                categories = listOf("패션 액세서리", "안경/선글라스", "안경"),
+                condition = "사용감 적음",
+                quantity = 1,
+                description = "이펙터 코러스 GLCY컬러 판매합니다\n니콘 변색렌즈 장착되어있습니다",
+                deliveryFee = 4000
+            )
+
+            SellerInfoSection(
+                storeName = "Zufall",
+                rating = 5.0,
+                reviewCount = 15,
+                transactionCount = 26,
+                isFollowing = false,
+                products = listOf(
+                    StoreProduct("", "상품명", 100000, 0),
+                    StoreProduct("", "상품명", 100000, 0),
+                    StoreProduct("", "상품명", 100000, 0),
+                    StoreProduct("", "상품명", 100000, 0),
+                )
             )
         }
-
-        HorizontalDivider(
-            thickness = 4.dp,
-            color = BunjangTheme.colors.gray100
-        )
-
-        ProductDetailTabRow()
-
-        Spacer(modifier = Modifier.height(30.dp))
-
-        InfoSection(
-            categories = listOf("패션 액세서리", "안경/선글라스", "안경"),
-            condition = "사용감 적음",
-            quantity = 1,
-            description = "이펙터 코러스 GLCY컬러 판매합니다\n니콘 변색렌즈 장착되어있습니다",
-            deliveryFee = 4000
-        )
-
-        SellerInfoSection(
-            storeName = "Zufall",
-            rating = 5.0,
-            reviewCount = 15,
-            transactionCount = 26,
-            isFollowing = false,
-            products = listOf(
-                StoreProduct("", "상품명", 100000, 0),
-                StoreProduct("", "상품명", 100000, 0),
-                StoreProduct("", "상품명", 100000, 0),
-                StoreProduct("", "상품명", 100000, 0),
-            )
-        )
-
     }
 }
 
