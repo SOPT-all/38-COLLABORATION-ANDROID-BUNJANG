@@ -1,9 +1,9 @@
-package com.sopt.bunjang.data.dto.home
+package com.sopt.bunjang.data.home.remote.dto.response
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class HomeProductDto(
+data class HomeProductItemDto(
     val productId: Long,
     val thumbnailUrl: String,
     val price: Int,
