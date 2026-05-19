@@ -5,11 +5,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -25,11 +29,18 @@ import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.presentation.productdetail.component.CartButton
 import com.sopt.bunjang.presentation.productdetail.component.ChatButton
+import com.sopt.bunjang.presentation.productdetail.component.InfoSection
 import com.sopt.bunjang.presentation.productdetail.component.OrderButton
+import com.sopt.bunjang.presentation.productdetail.component.ProductDetailCard
+import com.sopt.bunjang.presentation.productdetail.component.ProductDetailTabRow
 import com.sopt.bunjang.presentation.productdetail.component.ProductRecommendSection
 import com.sopt.bunjang.presentation.productdetail.component.ProductSimilarSection
+import com.sopt.bunjang.presentation.productdetail.component.SellerInfoSection
+import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeButton
+import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeType
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailUiState
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun ProductDetailRoute(
@@ -48,7 +59,9 @@ fun ProductDetailRoute(
                 is ProductDetailSideEffect.NavigateUp -> navigateUp()
                 is ProductDetailSideEffect.NavigateToHome -> navigateToHome()
                 is ProductDetailSideEffect.NavigateToPurchase -> navigateToPurchase()
-                is ProductDetailSideEffect.NavigateToProductDetail -> navigateToProductDetail(sideEffect.id)
+                is ProductDetailSideEffect.NavigateToProductDetail -> navigateToProductDetail(
+                    sideEffect.id
+                )
             }
         }
     }
@@ -61,6 +74,7 @@ fun ProductDetailRoute(
         onPurchaseIconClick = viewModel::onPurchaseIconClick,
         onProductClick = viewModel::onProductClick,
         onLikeClick = viewModel::onLikeClick,
+        onFollowClick = viewModel::onFollowClick
     )
 }
 
@@ -73,6 +87,7 @@ private fun ProductDetailScreen(
     onPurchaseIconClick: () -> Unit,
     onProductClick: (Long) -> Unit,
     onLikeClick: (Long) -> Unit,
+    onFollowClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -93,45 +108,103 @@ private fun ProductDetailScreen(
                     iconRes = R.drawable.ic_top_bar_home,
                     onClick = onHomeIconClick
                 )
-                TopBarIconButton(iconRes = R.drawable.ic_top_bar_search,)
+                TopBarIconButton(iconRes = R.drawable.ic_top_bar_search)
                 TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
             }
         )
 
-        LazyColumn(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .padding(horizontal = 16.dp)
+                .verticalScroll(rememberScrollState())
         ) {
-            // 지영이 파트 (상단 상품 상세 정보 등)
-
-            item {
-                HorizontalDivider(
-                    thickness = 4.dp,
-                    color = BunjangTheme.colors.gray100,
-                    modifier = Modifier.padding(vertical = 24.dp)
+            uiState.productDetail?.let { productDetail ->
+                ProductDetailCard(
+                    uiModel = productDetail,
+                    isLike = uiState.isLike,
+                    onLikeClick = { },
                 )
             }
 
-            item {
-                ProductRecommendSection(
-                    userName = uiState.userName,
-                    products = uiState.recommendProducts,
-                    onProductClick = onProductClick,
-                    onLikeClick = onLikeClick,
-                    modifier = Modifier.padding(bottom = 24.dp)
+            HorizontalDivider(
+                thickness = 1.dp,
+                color = BunjangTheme.colors.gray100
+            )
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                ShareAndLikeButton(
+                    type = ShareAndLikeType.SHARE,
+                    modifier = Modifier.weight(1f)
+                )
+
+                VerticalDivider(
+                    color = BunjangTheme.colors.gray200,
+                    modifier = Modifier.height(33.dp),
+                    thickness = 1.dp
+                )
+
+                ShareAndLikeButton(
+                    type = ShareAndLikeType.LIKE,
+                    isLike = uiState.isLike,
+                    onLikeClick = {},
+                    modifier = Modifier.weight(1f)
                 )
             }
 
-            item {
-                ProductSimilarSection(
-                    styleGroups = uiState.similarProducts,
-                    onProductClick = onProductClick,
-                    onLikeClick = onLikeClick,
-                    modifier = Modifier.padding(bottom = 24.dp)
-                )
-            }
+            HorizontalDivider(
+                thickness = 4.dp,
+                color = BunjangTheme.colors.gray100
+            )
+
+            ProductDetailTabRow()
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            InfoSection(
+                categories = listOf("패션 액세서리", "안경/선글라스", "안경").toImmutableList(),
+                condition = "사용감 적음",
+                quantity = 1,
+                description = "이펙터 코러스 GLCY컬러 판매합니다\n니콘 변색렌즈 장착되어있습니다",
+                deliveryFee = 4000
+            )
+
+            SellerInfoSection(
+                storeName = "Zufall",
+                rating = 5.0,
+                reviewCount = 15,
+                transactionCount = 26,
+                isFollowing = uiState.isFollowing,
+                onFollowClick = onFollowClick,
+                products = uiState.storeProducts
+            )
+
+            HorizontalDivider(
+                thickness = 4.dp,
+                color = BunjangTheme.colors.gray100,
+                modifier = Modifier.padding(vertical = 24.dp)
+            )
+
+            ProductRecommendSection(
+                userName = uiState.userName,
+                products = uiState.recommendProducts,
+                onProductClick = onProductClick,
+                onLikeClick = onLikeClick,
+                modifier = Modifier
+                    .padding(bottom = 24.dp)
+                    .padding(horizontal = 16.dp)
+            )
+
+            ProductSimilarSection(
+                styleGroups = uiState.similarProducts,
+                onProductClick = onProductClick,
+                onLikeClick = onLikeClick,
+                modifier = Modifier
+                    .padding(bottom = 24.dp)
+                    .padding(horizontal = 16.dp)
+            )
         }
 
         Column(
@@ -170,8 +243,9 @@ private fun ProductDetailScreenPreview() {
             onBackIconClick = {},
             onHomeIconClick = {},
             onPurchaseIconClick = {},
-            onProductClick = {},
             onLikeClick = {},
+            onFollowClick = {},
+            onProductClick = {},
         )
     }
 }

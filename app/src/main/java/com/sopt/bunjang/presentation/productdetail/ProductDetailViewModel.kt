@@ -21,16 +21,30 @@ class ProductDetailViewModel : ViewModel() {
     private val _sideEffect = MutableSharedFlow<ProductDetailSideEffect>()
     val sideEffect: SharedFlow<ProductDetailSideEffect> = _sideEffect.asSharedFlow()
 
+    fun onLikeClick() {
+        _uiState.value = _uiState.value.copy(isLike = !_uiState.value.isLike)
+    }
+
+    fun onFollowClick() {
+        _uiState.value = _uiState.value.copy(isFollowing = !_uiState.value.isFollowing)
+    }
+
     fun onBackIconClick() {
-        viewModelScope.launch { _sideEffect.emit(ProductDetailSideEffect.NavigateUp) }
+        viewModelScope.launch {
+            _sideEffect.emit(ProductDetailSideEffect.NavigateUp)
+        }
     }
 
     fun onHomeIconClick() {
-        viewModelScope.launch { _sideEffect.emit(ProductDetailSideEffect.NavigateToHome) }
+        viewModelScope.launch {
+            _sideEffect.emit(ProductDetailSideEffect.NavigateToHome)
+        }
     }
 
     fun onPurchaseIconClick() {
-        viewModelScope.launch { _sideEffect.emit(ProductDetailSideEffect.NavigateToPurchase) }
+        viewModelScope.launch {
+            _sideEffect.emit(ProductDetailSideEffect.NavigateToPurchase)
+        }
     }
 
     fun onProductClick(id: Long) {
