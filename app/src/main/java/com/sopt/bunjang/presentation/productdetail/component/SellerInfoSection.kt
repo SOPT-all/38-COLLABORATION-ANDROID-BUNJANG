@@ -120,10 +120,10 @@ private fun SellerInfoSectionPreview() {
             transactionCount = 26,
             isFollowing = false,
             products = listOf(
-                StoreProductItem("", "상품명", 100000, 0),
-                StoreProductItem("", "상품명", 100000, 0),
-                StoreProductItem("", "상품명", 100000, 0),
-                StoreProductItem("", "상품명", 100000, 0),
+                StoreProductItem(1L, "", "상품명", 100000, 0),
+                StoreProductItem(1L, "", "상품명", 100000, 0),
+                StoreProductItem(1L, "", "상품명", 100000, 0),
+                StoreProductItem(1L, "", "상품명", 100000, 0),
             ).toImmutableList()
         )
     }

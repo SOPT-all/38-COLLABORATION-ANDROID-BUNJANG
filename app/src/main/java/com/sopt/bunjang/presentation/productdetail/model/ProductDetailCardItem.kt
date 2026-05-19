@@ -5,6 +5,7 @@ import kotlinx.collections.immutable.ImmutableList
 
 @Immutable
 data class ProductDetailCardUiModel(
+    val id: Long,
     val imageUrls: ImmutableList<String>,
     val title: String,
     val price: Int,

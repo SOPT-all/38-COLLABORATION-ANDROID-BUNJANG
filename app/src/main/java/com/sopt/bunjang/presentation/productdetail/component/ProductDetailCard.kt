@@ -218,6 +218,7 @@ private fun ProductDetailCardPreview() {
     BunjangTheme {
         ProductDetailCard(
             uiModel = ProductDetailCardUiModel(
+                id = 1,
                 imageUrls = listOf("", "").toImmutableList(),
                 price = 210000,
                 title = "이펙터 코러스 GLCY",

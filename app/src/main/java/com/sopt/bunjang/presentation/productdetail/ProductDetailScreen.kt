@@ -31,8 +31,6 @@ import com.sopt.bunjang.presentation.productdetail.component.ProductDetailTabRow
 import com.sopt.bunjang.presentation.productdetail.component.SellerInfoSection
 import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeButton
 import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeType
-import com.sopt.bunjang.presentation.productdetail.model.ProductDetailCardUiModel
-import com.sopt.bunjang.presentation.productdetail.model.StoreProductItem
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailUiState
 import kotlinx.collections.immutable.toImmutableList
@@ -110,19 +108,13 @@ private fun ProductDetailScreen(
         Column(
             modifier = modifier.verticalScroll(rememberScrollState())
         ) {
-            ProductDetailCard(
-                uiModel = ProductDetailCardUiModel(
-                    imageUrls = listOf("", "").toImmutableList(),
-                    price = 210000,
-                    title = "이펙터 코러스 GLCY",
-                    time = "4일 전",
-                    views = 148,
-                    likes = 7,
-                    comments = 0
-                ),
-                isLike = uiState.isLike,
-                onLikeClick = onLikeClick,
-            )
+            uiState.productDetail?.let { productDetail ->
+                ProductDetailCard(
+                    uiModel = productDetail,
+                    isLike = uiState.isLike,
+                    onLikeClick = onLikeClick,
+                )
+            }
 
             HorizontalDivider(
                 thickness = 1.dp,
@@ -175,12 +167,7 @@ private fun ProductDetailScreen(
                 transactionCount = 26,
                 isFollowing = uiState.isFollowing,
                 onFollowClick = onFollowClick,
-                products = listOf(
-                    StoreProductItem("", "상품명", 100000, 0),
-                    StoreProductItem("", "상품명", 100000, 0),
-                    StoreProductItem("", "상품명", 100000, 0),
-                    StoreProductItem("", "상품명", 100000, 0),
-                ).toImmutableList()
+                products = uiState.storeProducts
             )
         }
     }
@@ -192,7 +179,7 @@ private fun ProductDetailScreenPreview() {
     BunjangTheme {
         ProductDetailScreen(
             paddingValues = PaddingValues(),
-            uiState = ProductDetailUiState(),
+            uiState = ProductDetailUiState.dummy,
             onBackIconClick = {},
             onHomeIconClick = {},
             onPurchaseIconClick = {},

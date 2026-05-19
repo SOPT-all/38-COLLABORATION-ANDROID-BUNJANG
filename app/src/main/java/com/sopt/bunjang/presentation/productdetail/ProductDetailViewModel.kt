@@ -16,7 +16,7 @@ class ProductDetailViewModel : ViewModel() {
     private val _sideEffect = MutableSharedFlow<ProductDetailSideEffect>()
     val sideEffect: SharedFlow<ProductDetailSideEffect> = _sideEffect.asSharedFlow()
 
-    private val _uiState = MutableStateFlow(ProductDetailUiState())
+    private val _uiState = MutableStateFlow(ProductDetailUiState.dummy)
     val uiState: StateFlow<ProductDetailUiState> = _uiState.asStateFlow()
 
     fun onLikeClick() {
