@@ -81,6 +81,7 @@ fun ProductCard(
                 contentDescription = title,
                 placeholder = ColorPainter(Color.LightGray),  // 아이콘이랑 구분되게 하려고
                 contentScale = ContentScale.Crop,
+                error = ColorPainter(Color.LightGray),
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(imageRatio)

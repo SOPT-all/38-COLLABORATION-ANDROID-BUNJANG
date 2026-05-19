@@ -17,7 +17,8 @@ data class HomeUiState(
     val kidultProducts: ImmutableList<HomeKidultProduct> = persistentListOf(),
     val similarProducts: ImmutableList<HomeSimilarProduct> = persistentListOf(),
     val userName: String = "혁준마님",
-    val productCount: Int = 357
+    val productCount: Int = 357,
+    val errorMessage: String? = null
 ) {
     companion object {
         val dummy = HomeUiState(
