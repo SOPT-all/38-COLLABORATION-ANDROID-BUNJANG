@@ -1,9 +1,11 @@
 package com.sopt.bunjang.presentation.productdetail.state
 
 import androidx.compose.runtime.Immutable
+import com.sopt.bunjang.presentation.productdetail.ProductDetailViewModel
 
 @Immutable
 data class ProductDetailUiState(
+    val productDetail: ProductDetailViewModel? = null,
     val isLike: Boolean = false
 )
 
