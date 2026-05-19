@@ -3,9 +3,10 @@ package com.sopt.bunjang.core.network.model
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-// Todo : 추루 서버 구조에 따라 변경 예정
 @Serializable
 data class BaseResponse<T>(
+    @SerialName("isSuccess")
+    val isSuccess: Boolean,
     @SerialName("code")
     val code: String,
     @SerialName("message")

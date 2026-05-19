@@ -1,7 +1,7 @@
 package com.sopt.bunjang.data.dummy.di
 
 import com.sopt.bunjang.data.dummy.repository.DummyRepository
-import com.sopt.bunjang.data.dummy.respositoryimpl.DummyRepositoryImpl
+import com.sopt.bunjang.data.dummy.repositoryimpl.DummyRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
