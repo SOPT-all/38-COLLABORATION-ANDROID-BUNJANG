@@ -55,6 +55,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.runtime)
     dependencies {
         // AndroidX Core & Lifecycle
         implementation(libs.bundles.androidx.core)

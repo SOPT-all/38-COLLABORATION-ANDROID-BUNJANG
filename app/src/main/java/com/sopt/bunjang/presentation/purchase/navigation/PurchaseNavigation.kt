@@ -15,12 +15,14 @@ fun NavController.navigatePurchase(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.purchaseGraph(
     paddingValues: PaddingValues,
-    navigateUp: () -> Unit
+    navigateUp: () -> Unit,
+    navigateToProductDetail: (Long) -> Unit
 ) {
     composable<Purchase> {
         PurchaseRoute(
             paddingValues = paddingValues,
-            navigateUp = navigateUp
+            navigateUp = navigateUp,
+            navigateToProductDetail = navigateToProductDetail
         )
     }
 }

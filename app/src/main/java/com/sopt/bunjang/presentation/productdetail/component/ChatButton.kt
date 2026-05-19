@@ -33,7 +33,8 @@ fun ChatButton(
             .border(
                 width = 1.dp,
                 color = BunjangTheme.colors.gray200,
-                shape = RoundedCornerShape(6.dp))
+                shape = RoundedCornerShape(6.dp)
+            )
             .background(color = backgroundColor)
             .noRippleClickable(onClick)
             .padding(horizontal = 12.dp, vertical = 12.dp),

@@ -64,7 +64,8 @@ fun HomeKidultSection(
                     Text(
                         text = "AD",
                         style = BunjangTheme.typography.label.label3,
-                        color = BunjangTheme.colors.gray600
+                        color = BunjangTheme.colors.gray600,
+                        modifier = Modifier.padding(horizontal = 4.dp)
                     )
                 }
             }
