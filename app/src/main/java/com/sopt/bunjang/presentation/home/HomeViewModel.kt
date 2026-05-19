@@ -1,4 +1,4 @@
-package com.sopt.bunjang.presentation.home
+    package com.sopt.bunjang.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
