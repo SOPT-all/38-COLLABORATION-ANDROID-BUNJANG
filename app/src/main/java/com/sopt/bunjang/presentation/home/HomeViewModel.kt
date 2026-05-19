@@ -44,8 +44,8 @@ class HomeViewModel @Inject constructor(
                         )
                     }
                 }
-                .onFailure {
-                    // 에러 처리
+                .onFailure { throwable ->
+                    _sideEffect.emit(HomeSideEffect.ShowSnackBar(throwable.message ?: "오류가 발생했습니다"))
                 }
         }
     }
@@ -70,8 +70,8 @@ class HomeViewModel @Inject constructor(
                         )
                     }
                 }
-                .onFailure {
-                    // 에러 처리
+                .onFailure { throwable ->
+                    _sideEffect.emit(HomeSideEffect.ShowSnackBar(throwable.message ?: "오류가 발생했습니다"))
                 }
         }
     }

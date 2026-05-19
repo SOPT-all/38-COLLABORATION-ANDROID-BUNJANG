@@ -20,6 +20,11 @@ android {
     compileSdk = 36
 
     defaultConfig {
+        val properties = Properties().apply {
+            load(project.rootProject.file("local.properties").inputStream())
+        }
+        val baseUrl = properties.getProperty("bunjang.base.url") ?: "\"\""
+
         applicationId = "com.sopt.bunjang"
         minSdk = 30
         targetSdk = 36
@@ -27,7 +32,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", properties["base.url"].toString())
+        buildConfigField("String", "BASE_URL", baseUrl)
     }
 
     buildTypes {

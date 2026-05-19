@@ -9,6 +9,7 @@ import kotlinx.collections.immutable.persistentListOf
 
 sealed interface HomeSideEffect {
     data class NavigateToProductDetail(val id: Long) : HomeSideEffect
+    data class ShowSnackBar(val message: String) : HomeSideEffect
 }
 
 @Immutable
