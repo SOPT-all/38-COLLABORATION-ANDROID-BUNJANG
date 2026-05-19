@@ -6,6 +6,7 @@ import com.sopt.bunjang.data.home.mapper.toKidultModel
 import com.sopt.bunjang.data.home.mapper.toSimilarModel
 import com.sopt.bunjang.data.home.model.HomeModel
 import com.sopt.bunjang.data.home.remote.datasource.HomeRemoteDataSource
+import com.sopt.bunjang.data.home.remote.dto.response.LikeDataDto
 import com.sopt.bunjang.data.home.repository.HomeRepository
 import javax.inject.Inject
 
@@ -21,5 +22,13 @@ class HomeRepositoryImpl @Inject constructor(
             userName = response.recentCategoryProducts.nickname,
             productCount = response.recentCategoryProducts.remainingCount
         )
+    }
+
+    override suspend fun toggleLike(productId: Long, userId: Long): Result<LikeDataDto> {
+        return runCatching {
+            val response = homeRemoteDataSource.toggleLike(productId, userId)
+
+            response.data ?: error("서버에서 찜하기 응답 데이터를 받아오지 못했습니다.")
+        }
     }
 }
