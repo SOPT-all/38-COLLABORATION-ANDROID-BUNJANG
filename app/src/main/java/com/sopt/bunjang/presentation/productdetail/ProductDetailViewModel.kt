@@ -19,6 +19,14 @@ class ProductDetailViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(ProductDetailUiState())
     val uiState: StateFlow<ProductDetailUiState> = _uiState.asStateFlow()
 
+    fun onLikeClick() {
+        _uiState.value = _uiState.value.copy(isLike = !_uiState.value.isLike)
+    }
+
+    fun onFollowClick() {
+        _uiState.value = _uiState.value.copy(isFollowing = !_uiState.value.isFollowing)
+    }
+
     fun onBackIconClick() {
         viewModelScope.launch {
             _sideEffect.emit(ProductDetailSideEffect.NavigateUp)

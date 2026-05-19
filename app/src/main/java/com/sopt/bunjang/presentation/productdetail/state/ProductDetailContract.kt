@@ -6,7 +6,8 @@ import com.sopt.bunjang.presentation.productdetail.ProductDetailViewModel
 @Immutable
 data class ProductDetailUiState(
     val productDetail: ProductDetailViewModel? = null,
-    val isLike: Boolean = false
+    val isLike: Boolean = false,
+    val isFollowing: Boolean = false
 )
 
 sealed interface ProductDetailSideEffect {

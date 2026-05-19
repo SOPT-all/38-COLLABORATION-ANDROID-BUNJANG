@@ -15,13 +15,11 @@ import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
@@ -36,6 +34,7 @@ import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeType
 import com.sopt.bunjang.presentation.productdetail.model.ProductDetailCardUiModel
 import com.sopt.bunjang.presentation.productdetail.model.StoreProductItem
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
+import com.sopt.bunjang.presentation.productdetail.state.ProductDetailUiState
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.collectLatest
 
@@ -47,6 +46,8 @@ fun ProductDetailRoute(
     navigateToPurchase: () -> Unit,
     viewModel: ProductDetailViewModel = viewModel()
 ) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     LaunchedEffect(viewModel) {
         viewModel.sideEffect.collectLatest { effect ->
             when (effect) {
@@ -59,22 +60,26 @@ fun ProductDetailRoute(
 
     ProductDetailScreen(
         paddingValues = paddingValues,
+        uiState = uiState,
         onBackIconClick = viewModel::onBackIconClick,
         onHomeIconClick = viewModel::onHomeIconClick,
-        onPurchaseIconClick = viewModel::onPurchaseIconClick
+        onPurchaseIconClick = viewModel::onPurchaseIconClick,
+        onLikeClick = viewModel::onLikeClick,
+        onFollowClick = viewModel::onFollowClick
     )
 }
 
 @Composable
 private fun ProductDetailScreen(
     paddingValues: PaddingValues,
+    uiState: ProductDetailUiState,
     onBackIconClick: () -> Unit,
     onHomeIconClick: () -> Unit,
     onPurchaseIconClick: () -> Unit,
+    onLikeClick: () -> Unit,
+    onFollowClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var isFollowing by remember { mutableStateOf(false) }
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -115,6 +120,8 @@ private fun ProductDetailScreen(
                     likes = 7,
                     comments = 0
                 ),
+                isLike = uiState.isLike,
+                onLikeClick = onLikeClick,
             )
 
             HorizontalDivider(
@@ -138,6 +145,8 @@ private fun ProductDetailScreen(
 
                 ShareAndLikeButton(
                     type = ShareAndLikeType.LIKE,
+                    isLike = uiState.isLike,
+                    onLikeClick = onLikeClick,
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -164,8 +173,8 @@ private fun ProductDetailScreen(
                 rating = 5.0,
                 reviewCount = 15,
                 transactionCount = 26,
-                isFollowing = isFollowing,
-                onFollowClick = { isFollowing = !isFollowing },
+                isFollowing = uiState.isFollowing,
+                onFollowClick = onFollowClick,
                 products = listOf(
                     StoreProductItem("", "상품명", 100000, 0),
                     StoreProductItem("", "상품명", 100000, 0),
@@ -183,9 +192,12 @@ private fun ProductDetailScreenPreview() {
     BunjangTheme {
         ProductDetailScreen(
             paddingValues = PaddingValues(),
+            uiState = ProductDetailUiState(),
             onBackIconClick = {},
             onHomeIconClick = {},
-            onPurchaseIconClick = {}
+            onPurchaseIconClick = {},
+            onLikeClick = {},
+            onFollowClick = {}
         )
     }
 }

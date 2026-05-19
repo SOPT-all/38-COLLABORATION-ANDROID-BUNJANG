@@ -13,10 +13,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -36,15 +32,13 @@ fun ShareAndLikeButton(
     onShareClick: () -> Unit = {},
     onLikeClick: () -> Unit = {}
 ) {
-    var liked by remember { mutableStateOf(isLike) }
-
     val label = when (type) {
         ShareAndLikeType.SHARE -> "공유"
         ShareAndLikeType.LIKE -> "찜"
     }
     val icon = when (type) {
         ShareAndLikeType.SHARE -> R.drawable.ic_detail_page_share
-        ShareAndLikeType.LIKE -> if (liked) R.drawable.ic_heart_filled_24 else R.drawable.ic_heart_outlined_gray_24
+        ShareAndLikeType.LIKE -> if (isLike) R.drawable.ic_heart_filled_24 else R.drawable.ic_heart_outlined_gray_24
     }
 
     Row(
@@ -55,7 +49,6 @@ fun ShareAndLikeButton(
                 when (type) {
                     ShareAndLikeType.SHARE -> onShareClick()
                     ShareAndLikeType.LIKE -> {
-                        liked = !liked
                         onLikeClick()
                     }
                 }
