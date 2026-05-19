@@ -25,12 +25,12 @@ import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 import com.sopt.bunjang.presentation.productdetail.component.InfoSection
 import com.sopt.bunjang.presentation.productdetail.component.ProductDetailCard
-import com.sopt.bunjang.presentation.productdetail.component.ProductDetailCardUiModel
 import com.sopt.bunjang.presentation.productdetail.component.ProductDetailTabRow
 import com.sopt.bunjang.presentation.productdetail.component.SellerInfoSection
 import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeButton
 import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeType
-import com.sopt.bunjang.presentation.productdetail.component.StoreProduct
+import com.sopt.bunjang.presentation.productdetail.model.ProductDetailCardUiModel
+import com.sopt.bunjang.presentation.productdetail.model.StoreProductItem
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.collectLatest
@@ -146,7 +146,7 @@ private fun ProductDetailScreen(
             Spacer(modifier = Modifier.height(30.dp))
 
             InfoSection(
-                categories = listOf("패션 액세서리", "안경/선글라스", "안경"),
+                categories = listOf("패션 액세서리", "안경/선글라스", "안경").toImmutableList(),
                 condition = "사용감 적음",
                 quantity = 1,
                 description = "이펙터 코러스 GLCY컬러 판매합니다\n니콘 변색렌즈 장착되어있습니다",
@@ -160,11 +160,11 @@ private fun ProductDetailScreen(
                 transactionCount = 26,
                 isFollowing = false,
                 products = listOf(
-                    StoreProduct("", "상품명", 100000, 0),
-                    StoreProduct("", "상품명", 100000, 0),
-                    StoreProduct("", "상품명", 100000, 0),
-                    StoreProduct("", "상품명", 100000, 0),
-                )
+                    StoreProductItem("", "상품명", 100000, 0),
+                    StoreProductItem("", "상품명", 100000, 0),
+                    StoreProductItem("", "상품명", 100000, 0),
+                    StoreProductItem("", "상품명", 100000, 0),
+                ).toImmutableList()
             )
         }
     }
