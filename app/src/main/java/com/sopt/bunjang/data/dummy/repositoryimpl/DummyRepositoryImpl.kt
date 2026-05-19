@@ -7,7 +7,6 @@ import com.sopt.bunjang.core.util.suspendRunCatching
 import com.sopt.bunjang.data.dummy.mapper.toModel
 import javax.inject.Inject
 
-
 class DummyRepositoryImpl @Inject constructor(
     private val dummyDataSource: DummyDataSource
 ) : DummyRepository {

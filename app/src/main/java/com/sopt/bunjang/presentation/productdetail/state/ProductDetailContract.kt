@@ -2,9 +2,11 @@ package com.sopt.bunjang.presentation.productdetail.state
 
 import androidx.compose.runtime.Immutable
 import com.sopt.bunjang.presentation.productdetail.model.ProductDetailCardUiModel
+import com.sopt.bunjang.presentation.productdetail.model.ProductInfoUiModel
 import com.sopt.bunjang.presentation.productdetail.model.ProductRecommendItem
 import com.sopt.bunjang.presentation.productdetail.model.ProductSimilarGroup
 import com.sopt.bunjang.presentation.productdetail.model.ProductSimilarItem
+import com.sopt.bunjang.presentation.productdetail.model.SellerInfoUiModel
 import com.sopt.bunjang.presentation.productdetail.model.StoreProductItem
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
@@ -15,7 +17,10 @@ data class ProductDetailTopUiState(
     val isLike: Boolean = false,
     val isFollowing: Boolean = false,
     val productDetail: ProductDetailCardUiModel? = null,
-    val storeProducts: ImmutableList<StoreProductItem> = persistentListOf()
+    val productInfo: ProductInfoUiModel? = null,
+    val sellerInfo: SellerInfoUiModel? = null,
+    val storeProducts: ImmutableList<StoreProductItem> = persistentListOf(),
+    val errorMessage: String = "",
 ) {
     companion object {
         val dummy = ProductDetailTopUiState(

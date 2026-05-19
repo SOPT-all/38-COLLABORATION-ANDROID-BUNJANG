@@ -4,7 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
-import com.sopt.bunjang.data.product.repository.ProductRepository
+import com.sopt.bunjang.data.productdetail.mapper.toTopUiState
+import com.sopt.bunjang.data.productdetail.repository.ProductDetailRepository
 import com.sopt.bunjang.presentation.productdetail.navigation.ProductDetail
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailBottomUiState
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
@@ -23,7 +24,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductDetailViewModel @Inject constructor(
-    private val productRepository: ProductRepository,
+    private val productDetailRepository: ProductDetailRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val productId: Long = savedStateHandle.toRoute<ProductDetail>().productId
@@ -36,6 +37,33 @@ class ProductDetailViewModel @Inject constructor(
 
     private val _sideEffect = MutableSharedFlow<ProductDetailSideEffect>()
     val sideEffect: SharedFlow<ProductDetailSideEffect> = _sideEffect.asSharedFlow()
+
+    init {
+        getProductDetail()
+    }
+
+    private fun getProductDetail() {
+        viewModelScope.launch {
+            productDetailRepository.getProductDetail(productId, userId)
+                .onSuccess { response ->
+                    _topUiState.value = response.toTopUiState()
+                }
+                .onFailure { throwable ->
+                    val statusCode = (throwable as? retrofit2.HttpException)?.code()
+
+                    _topUiState.update { currentState ->
+                        currentState.copy(
+                            errorMessage = when (statusCode) {
+                                400 -> "잘못된 요청입니다."
+                                404 -> "상품을 찾을 수 없습니다."
+                                500 -> "서버 내부 오류가 발생했습니다."
+                                else -> throwable.message ?: "상품 상세 조회가 실패했습니다."
+                            }
+                        )
+                    }
+                }
+        }
+    }
 
     fun onLikeClick() {
         _topUiState.value = _topUiState.value.copy(isLike = !_topUiState.value.isLike)
