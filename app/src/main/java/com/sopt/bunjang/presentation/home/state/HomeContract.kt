@@ -9,7 +9,6 @@ import kotlinx.collections.immutable.persistentListOf
 
 sealed interface HomeSideEffect {
     data class NavigateToProductDetail(val id: Long) : HomeSideEffect
-    data class ShowSnackBar(val message: String) : HomeSideEffect
 }
 
 @Immutable
@@ -18,7 +17,8 @@ data class HomeUiState(
     val kidultProducts: ImmutableList<HomeKidultProduct> = persistentListOf(),
     val similarProducts: ImmutableList<HomeSimilarProduct> = persistentListOf(),
     val userName: String = "혁준마님",
-    val productCount: Int = 357
+    val productCount: Int = 357,
+    val errorMessage: String? = null
 ) {
     companion object {
         val dummy = HomeUiState(

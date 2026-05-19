@@ -12,12 +12,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -47,13 +45,11 @@ fun HomeRoute(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val snackBarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(viewModel) {
         viewModel.sideEffect.collectLatest { effect ->
             when (effect) {
                 is HomeSideEffect.NavigateToProductDetail -> navigateToProductDetail(effect.id)
-                is HomeSideEffect.ShowSnackBar -> snackBarHostState.showSnackbar(effect.message)
             }
         }
     }
@@ -62,8 +58,7 @@ fun HomeRoute(
         paddingValues = paddingValues,
         uiState = uiState,
         onProductItemClick = viewModel::onProductItemClick,
-        onLikeClick = viewModel::onLikeClick,
-        snackBarHostState = snackBarHostState
+        onLikeClick = viewModel::onLikeClick
     )
 }
 
@@ -73,12 +68,9 @@ private fun HomeScreen(
     onProductItemClick: (Long) -> Unit,
     onLikeClick: (Long) -> Unit,
     uiState: HomeUiState,
-    snackBarHostState: SnackbarHostState,
     modifier: Modifier = Modifier
 ) {
-    Scaffold(
-        snackbarHost = { SnackbarHost(snackBarHostState) }
-    ) { innerPadding ->
+    Scaffold { innerPadding ->
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -98,6 +90,13 @@ private fun HomeScreen(
                     TopBarIconButton(iconRes = R.drawable.ic_top_bar_cart)
                 }
             )
+
+            if (uiState.errorMessage != null) {
+                Text(
+                    text = uiState.errorMessage,
+                    color = BunjangTheme.colors.primaryRed
+                )
+            }
 
             LazyColumn(modifier = Modifier.weight(1f)) {
                 item {
@@ -181,8 +180,7 @@ private fun HomeScreenPreview() {
             paddingValues = PaddingValues(),
             onProductItemClick = { _ -> },
             onLikeClick = { _ -> },
-            uiState = HomeUiState.dummy,
-            snackBarHostState = remember { SnackbarHostState() }
+            uiState = HomeUiState.dummy
         )
     }
 }

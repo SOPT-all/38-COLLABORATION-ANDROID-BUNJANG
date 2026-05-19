@@ -45,7 +45,9 @@ class HomeViewModel @Inject constructor(
                     }
                 }
                 .onFailure { throwable ->
-                    _sideEffect.emit(HomeSideEffect.ShowSnackBar(throwable.message ?: "오류가 발생했습니다"))
+                    _uiState.update { currentState ->
+                        currentState.copy(errorMessage = throwable.message ?: "홈 화면 조회가 실패했습니다.")
+                    }
                 }
         }
     }
@@ -71,7 +73,9 @@ class HomeViewModel @Inject constructor(
                     }
                 }
                 .onFailure { throwable ->
-                    _sideEffect.emit(HomeSideEffect.ShowSnackBar(throwable.message ?: "오류가 발생했습니다"))
+                    _uiState.update { currentState ->
+                        currentState.copy(errorMessage = throwable.message ?: "찜 상태 변경이 실패했습니다.")
+                    }
                 }
         }
     }
