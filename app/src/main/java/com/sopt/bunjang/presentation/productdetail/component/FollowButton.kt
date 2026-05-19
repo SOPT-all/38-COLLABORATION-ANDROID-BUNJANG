@@ -56,7 +56,7 @@ fun FollowButton(
             )
             if (isFollowing) {
 
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(modifier = Modifier.width(2.dp))
 
                 Icon(
                     painter = painterResource(id = R.drawable.ic_detail_page_check),
