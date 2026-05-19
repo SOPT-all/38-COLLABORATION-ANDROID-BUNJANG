@@ -66,7 +66,10 @@ class HomeViewModel @Inject constructor(
                         currentState.copy(
                             glassesProducts = currentState.glassesProducts.map { product ->
                                 if (product.id == likeData.productId) {
-                                    product.copy(isLike = likeData.isLiked, likes = likeData.likeCount)
+                                    product.copy(
+                                        isLike = likeData.isLiked,
+                                        likes = likeData.likeCount
+                                    )
                                 } else product
                             }.toImmutableList()
                         )
