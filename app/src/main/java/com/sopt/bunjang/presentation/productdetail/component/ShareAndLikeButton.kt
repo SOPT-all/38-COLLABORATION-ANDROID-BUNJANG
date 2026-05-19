@@ -68,7 +68,7 @@ fun ShareAndLikeButton(
         Icon(
             painter = painterResource(id = icon),
             contentDescription = label,
-            tint = Color.Unspecified,
+            tint = BunjangTheme.colors.gray700,
             modifier = Modifier
                 .size(24.dp)
         )
