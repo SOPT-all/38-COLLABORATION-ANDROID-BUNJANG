@@ -24,23 +24,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
+import com.sopt.bunjang.presentation.productdetail.model.StoreProductItem
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
+import kotlin.collections.take
 
-data class StoreProduct(
-    val imageUrl: String,
-    val title: String,
-    val price: Int,
-    val likes: Int? = null
-)
 @Composable
 fun SellerInfoSection(
-    modifier: Modifier = Modifier,
     storeName: String,
     rating: Double,
     reviewCount: Int,
     transactionCount: Int,
-    products: ImmutableList<StoreProduct>,
+    products: ImmutableList<StoreProductItem>,
+    modifier: Modifier = Modifier,
     isFollowing: Boolean = false,
     onFollowClick: () -> Unit = {},
 ) {
@@ -130,10 +126,10 @@ private fun SellerInfoSectionPreview() {
             transactionCount = 26,
             isFollowing = false,
             products = listOf(
-                StoreProduct("", "상품명", 100000, 0),
-                StoreProduct("", "상품명", 100000, 0),
-                StoreProduct("", "상품명", 100000, 0),
-                StoreProduct("", "상품명", 100000, 0),
+                StoreProductItem("", "상품명", 100000, 0),
+                StoreProductItem("", "상품명", 100000, 0),
+                StoreProductItem("", "상품명", 100000, 0),
+                StoreProductItem("", "상품명", 100000, 0),
             ).toImmutableList()
         )
     }
