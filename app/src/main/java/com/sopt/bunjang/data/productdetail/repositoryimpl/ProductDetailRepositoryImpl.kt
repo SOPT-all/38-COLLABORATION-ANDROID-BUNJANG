@@ -4,7 +4,9 @@ import com.sopt.bunjang.data.productdetail.remote.datasource.ProductDetailDataSo
 import com.sopt.bunjang.data.productdetail.remote.dto.response.ProductDetailResponseDto
 import com.sopt.bunjang.data.productdetail.repository.ProductDetailRepository
 import jakarta.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ProductDetailRepositoryImpl @Inject constructor(
     private val productDetailDataSource: ProductDetailDataSource
 ) : ProductDetailRepository {
