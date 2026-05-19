@@ -11,17 +11,14 @@ import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
 
 @Immutable
-data class ProductDetailUiState(
+data class ProductDetailTopUiState(
     val isLike: Boolean = false,
     val isFollowing: Boolean = false,
     val productDetail: ProductDetailCardUiModel? = null,
-    val storeProducts: ImmutableList<StoreProductItem> = persistentListOf(),
-    val userName: String = "",
-    val recommendProducts: ImmutableList<ProductRecommendItem> = persistentListOf(),
-    val similarProducts: ImmutableList<ProductSimilarGroup> = persistentListOf(),
+    val storeProducts: ImmutableList<StoreProductItem> = persistentListOf()
 ) {
     companion object {
-        val dummy = ProductDetailUiState(
+        val dummy = ProductDetailTopUiState(
             isLike = false,
             isFollowing = false,
             productDetail = ProductDetailCardUiModel(
@@ -66,7 +63,18 @@ data class ProductDetailUiState(
                     price = 100000,
                     likes = 0
                 ),
-            ),
+            )
+        )
+    }
+}
+@Immutable
+data class ProductDetailBottomUiState(
+    val userName: String = "",
+    val recommendProducts: ImmutableList<ProductRecommendItem> = persistentListOf(),
+    val similarProducts: ImmutableList<ProductSimilarGroup> = persistentListOf(),
+) {
+    companion object {
+        val dummy = ProductDetailBottomUiState(
             userName = "혁줌마",
             recommendProducts = List(6) {
                 ProductRecommendItem(

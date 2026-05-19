@@ -21,8 +21,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sopt.bunjang.R
 import com.sopt.bunjang.core.designsystem.component.topbar.BunjangTopBar
 import com.sopt.bunjang.core.designsystem.component.topbar.TopBarIconButton
@@ -38,8 +38,9 @@ import com.sopt.bunjang.presentation.productdetail.component.ProductSimilarSecti
 import com.sopt.bunjang.presentation.productdetail.component.SellerInfoSection
 import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeButton
 import com.sopt.bunjang.presentation.productdetail.component.ShareAndLikeType
+import com.sopt.bunjang.presentation.productdetail.state.ProductDetailBottomUiState
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
-import com.sopt.bunjang.presentation.productdetail.state.ProductDetailUiState
+import com.sopt.bunjang.presentation.productdetail.state.ProductDetailTopUiState
 import kotlinx.collections.immutable.toImmutableList
 
 @Composable
@@ -49,9 +50,10 @@ fun ProductDetailRoute(
     navigateToHome: () -> Unit,
     navigateToPurchase: () -> Unit,
     navigateToProductDetail: (Long) -> Unit,
-    viewModel: ProductDetailViewModel = viewModel()
+    viewModel: ProductDetailViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val topUiState by viewModel.topUiState.collectAsStateWithLifecycle()
+    val bottomUiState by viewModel.bottomUiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.sideEffect.collect { sideEffect ->
@@ -68,7 +70,8 @@ fun ProductDetailRoute(
 
     ProductDetailScreen(
         paddingValues = paddingValues,
-        uiState = uiState,
+        topUiState = topUiState,
+        bottomUiState = bottomUiState,
         onBackIconClick = viewModel::onBackIconClick,
         onHomeIconClick = viewModel::onHomeIconClick,
         onPurchaseIconClick = viewModel::onPurchaseIconClick,
@@ -81,7 +84,8 @@ fun ProductDetailRoute(
 @Composable
 private fun ProductDetailScreen(
     paddingValues: PaddingValues,
-    uiState: ProductDetailUiState,
+    topUiState: ProductDetailTopUiState,
+    bottomUiState: ProductDetailBottomUiState,
     onBackIconClick: () -> Unit,
     onHomeIconClick: () -> Unit,
     onPurchaseIconClick: () -> Unit,
@@ -119,10 +123,10 @@ private fun ProductDetailScreen(
                 .weight(1f)
                 .verticalScroll(rememberScrollState())
         ) {
-            uiState.productDetail?.let { productDetail ->
+            topUiState.productDetail?.let { productDetail ->
                 ProductDetailCard(
                     uiModel = productDetail,
-                    isLike = uiState.isLike,
+                    isLike = topUiState.isLike,
                     onLikeClick = { },
                 )
             }
@@ -148,7 +152,7 @@ private fun ProductDetailScreen(
 
                 ShareAndLikeButton(
                     type = ShareAndLikeType.LIKE,
-                    isLike = uiState.isLike,
+                    isLike = topUiState.isLike,
                     onLikeClick = {},
                     modifier = Modifier.weight(1f)
                 )
@@ -176,9 +180,9 @@ private fun ProductDetailScreen(
                 rating = 5.0,
                 reviewCount = 15,
                 transactionCount = 26,
-                isFollowing = uiState.isFollowing,
+                isFollowing = topUiState.isFollowing,
                 onFollowClick = onFollowClick,
-                products = uiState.storeProducts
+                products = topUiState.storeProducts
             )
 
             HorizontalDivider(
@@ -188,8 +192,8 @@ private fun ProductDetailScreen(
             )
 
             ProductRecommendSection(
-                userName = uiState.userName,
-                products = uiState.recommendProducts,
+                userName = bottomUiState.userName,
+                products = bottomUiState.recommendProducts,
                 onProductClick = onProductClick,
                 onLikeClick = onLikeClick,
                 modifier = Modifier
@@ -198,7 +202,7 @@ private fun ProductDetailScreen(
             )
 
             ProductSimilarSection(
-                styleGroups = uiState.similarProducts,
+                styleGroups = bottomUiState.similarProducts,
                 onProductClick = onProductClick,
                 onLikeClick = onLikeClick,
                 modifier = Modifier
@@ -239,7 +243,8 @@ private fun ProductDetailScreenPreview() {
     BunjangTheme {
         ProductDetailScreen(
             paddingValues = PaddingValues(),
-            uiState = ProductDetailUiState.dummy,
+            topUiState = ProductDetailTopUiState.dummy,
+            bottomUiState = ProductDetailBottomUiState.dummy,
             onBackIconClick = {},
             onHomeIconClick = {},
             onPurchaseIconClick = {},
