@@ -48,9 +48,7 @@ fun ShareAndLikeButton(
             .noRippleClickable {
                 when (type) {
                     ShareAndLikeType.SHARE -> onShareClick()
-                    ShareAndLikeType.LIKE -> {
-                        onLikeClick()
-                    }
+                    ShareAndLikeType.LIKE -> onLikeClick()
                 }
             }
             .padding(top = 14.dp, bottom = 11.dp),
