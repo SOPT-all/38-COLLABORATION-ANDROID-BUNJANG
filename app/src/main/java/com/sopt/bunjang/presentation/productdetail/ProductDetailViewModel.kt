@@ -1,9 +1,15 @@
 package com.sopt.bunjang.presentation.productdetail
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
+import com.sopt.bunjang.data.product.repository.ProductRepository
+import com.sopt.bunjang.presentation.productdetail.navigation.ProductDetail
+import com.sopt.bunjang.presentation.productdetail.state.ProductDetailBottomUiState
 import com.sopt.bunjang.presentation.productdetail.state.ProductDetailSideEffect
-import com.sopt.bunjang.presentation.productdetail.state.ProductDetailUiState
+import com.sopt.bunjang.presentation.productdetail.state.ProductDetailTopUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,20 +19,30 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProductDetailViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow(ProductDetailUiState.dummy)
-    val uiState: StateFlow<ProductDetailUiState> = _uiState.asStateFlow()
+@HiltViewModel
+class ProductDetailViewModel @Inject constructor(
+    private val productRepository: ProductRepository,
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
+    private val productId: Long = savedStateHandle.toRoute<ProductDetail>().productId
+    private val userId: Long = 1L
+    private val _topUiState = MutableStateFlow(ProductDetailTopUiState.dummy)
+    val topUiState: StateFlow<ProductDetailTopUiState> = _topUiState.asStateFlow()
+
+    private val _bottomUiState = MutableStateFlow(ProductDetailBottomUiState.dummy)
+    val bottomUiState: StateFlow<ProductDetailBottomUiState> = _bottomUiState.asStateFlow()
 
     private val _sideEffect = MutableSharedFlow<ProductDetailSideEffect>()
     val sideEffect: SharedFlow<ProductDetailSideEffect> = _sideEffect.asSharedFlow()
 
     fun onLikeClick() {
-        _uiState.value = _uiState.value.copy(isLike = !_uiState.value.isLike)
+        _topUiState.value = _topUiState.value.copy(isLike = !_topUiState.value.isLike)
     }
 
     fun onFollowClick() {
-        _uiState.value = _uiState.value.copy(isFollowing = !_uiState.value.isFollowing)
+        _topUiState.value = _topUiState.value.copy(isFollowing = !_topUiState.value.isFollowing)
     }
 
     fun onBackIconClick() {
@@ -52,7 +68,7 @@ class ProductDetailViewModel : ViewModel() {
     }
 
     fun onLikeClick(id: Long) {
-        _uiState.update { state ->
+        _bottomUiState.update { state ->
             state.copy(
                 recommendProducts = state.recommendProducts.map { product ->
                     if (product.id == id) product.copy(isLike = !product.isLike)
