@@ -26,10 +26,10 @@ import com.sopt.bunjang.core.designsystem.theme.BunjangTheme
 
 @Composable
 fun StoreProductCard(
-    modifier: Modifier = Modifier,
     imageUrl: String,
     title: String,
     price: Int,
+    modifier: Modifier = Modifier,
     likes: Int? = null,
 ) {
     Column(
